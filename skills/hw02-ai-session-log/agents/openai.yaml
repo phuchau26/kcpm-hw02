@@ -1,0 +1,4 @@
+interface:
+  display_name: "HW02 AI Session Log"
+  short_description: "Log HW02 prompts and qualifying AI artifacts"
+  default_prompt: "Use $hw02-ai-session-log to record this HW02 interaction and update AI-02 when applicable."

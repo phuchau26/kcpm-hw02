@@ -1,0 +1,91 @@
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.2cm,bottom=2.2cm,headheight=25pt,headsep=12pt]{geometry}
+% XeLaTeX reads UTF-8 natively. Use Unicode system fonts so every Vietnamese
+% precomposed character and combining mark is rendered correctly.
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+\usepackage[english,vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[labelfont={bf,color=universityblue},textfont=small]{caption}
+\usepackage{url}
+\usepackage{hyperref}
+
+\definecolor{universityblue}{HTML}{0055A5}
+\definecolor{deepblue}{HTML}{003A70}
+\definecolor{lightblue}{HTML}{D9EAF7}
+\definecolor{paleblue}{HTML}{F2F7FB}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=universityblue,
+  urlcolor=blue,
+  citecolor=deepblue,
+  pdfborder={0 0 0}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+\setlist[itemize]{leftmargin=1.8em,itemsep=0pt,topsep=2pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=0pt,topsep=2pt,parsep=0pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\color{universityblue}}
+  {\filleft\large\bfseries\MakeUppercase{\chaptername}\ \thechapter}
+  {0.35ex}
+  {\raggedright\Huge\bfseries}
+\titlespacing*{\chapter}{0pt}{0pt}{1.35em}
+
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\color{universityblue}\Huge\bfseries}
+  {}
+  {0pt}
+  {\raggedright}
+\titlespacing*{name=\chapter,numberless}{0pt}{0pt}{1.35em}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{deepblue}}
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{deepblue}}
+  {\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{deepblue}}
+  {\thesubsubsection}{0.7em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{deepblue}HW02 -- Domain Testing Report}
+\fancyhead[R]{\small\color{deepblue}\nouppercase{\leftmark}}
+\fancyfoot[C]{\color{universityblue}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{universityblue}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[L]{\small\color{deepblue}HW02 -- Domain Testing Report}
+  \fancyhead[R]{\small\color{deepblue}\nouppercase{\leftmark}}
+  \fancyfoot[C]{\color{universityblue}\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{universityblue}\leaders\hrule height \headrulewidth\hfill}}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{}
+
+\captionsetup{justification=centering,singlelinecheck=true}
+\setlength{\LTpre}{0.5em}
+\setlength{\LTpost}{0.5em}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HW02 Step Commit"
+  short_description: "Commit one verified HW02 testing step"
+  default_prompt: "Use $hw02-step-commit to review and commit my current HW02 testing step."
