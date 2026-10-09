@@ -1,4 +1,20 @@
-\chapter{Feature D (Mobile) --- [Feature name]}
+\chapter{Pool D (Mobile) --- Feature 9: Discount Coupon}
 
-% Spec and oracle -> Domain Testing -> BVA -> test cases -> human review ->
-% execution and evidence -> AI gaps -> bug references.
+\section{Smoke test ban đầu}
+
+Ảnh chụp ngày 09/10/2026 lúc 10:48 AM cho thấy Discount Coupon tại Mobile
+checkout có thể truy cập và coupon \texttt{BIGBUY} được áp dụng trên UI. Lần
+smoke test này chạy bằng Expo Web tại \texttt{localhost:8081}, sử dụng Chrome
+device emulation với profile \texttt{iPhone 16 Pro Max} và viewport
+\texttt{440~\(\times\)~956}; đây không phải thiết bị iOS thật.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../../evidence/D/smoke/D-M09-SMOKE-001-mobile-coupon.png}
+  \caption{D-M09 --- Discount Coupon trên Mobile checkout qua Expo Web.}
+  \label{fig:d-m09-mobile-coupon-smoke}
+\end{figure}
+
+Console trong ảnh có một request đăng nhập trả về \texttt{401 Unauthorized} dù
+UI vẫn hiển thị người dùng và coupon được áp dụng. Quan sát này cần được tái hiện
+và điều tra riêng trước khi kết luận là bug.

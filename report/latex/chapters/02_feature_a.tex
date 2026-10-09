@@ -1,4 +1,25 @@
-\chapter{Feature A --- [Feature name]}
+\chapter{Pool A --- FR-03: Quên mật khẩu và đặt lại mật khẩu}
 
-% Spec and oracle -> Domain Testing -> BVA -> test cases -> human review ->
-% execution and evidence -> AI gaps -> bug references.
+\section{Smoke test ban đầu}
+
+Feature có thể truy cập tại \texttt{localhost:5173/forgot-password}. Hai ảnh được
+chụp ngày 09/10/2026 lúc 10:31 AM, lần lượt thể hiện bước yêu cầu OTP bằng email
+và bước nhập OTP cùng mật khẩu mới. Trạng thái hiện tại là \texttt{Accessible};
+chưa có verdict \texttt{Pass/Fail}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../../evidence/A/smoke/A-FR03-SMOKE-001-forgot-password.png}
+  \caption{A-FR03 --- Màn hình yêu cầu OTP bằng email.}
+  \label{fig:a-fr03-forgot-password-smoke}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../../evidence/A/smoke/A-FR03-SMOKE-002-reset-password.png}
+  \caption{A-FR03 --- Màn hình nhập OTP và mật khẩu mới.}
+  \label{fig:a-fr03-reset-password-smoke}
+\end{figure}
+
+Ảnh thứ hai hiển thị OTP \texttt{7870} và nhãn OTP 4 số. Chi tiết này sẽ được
+đối chiếu với requirement và test oracle trước khi kết luận có sai lệch hay bug.

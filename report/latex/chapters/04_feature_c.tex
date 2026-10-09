@@ -1,4 +1,15 @@
-\chapter{Feature C --- [Feature name]}
+\chapter{Pool C --- FR-14: Quản lý danh mục}
 
-% Spec and oracle -> Domain Testing -> BVA -> test cases -> human review ->
-% execution and evidence -> AI gaps -> bug references.
+\section{Smoke test ban đầu}
+
+Ảnh chụp ngày 09/10/2026 lúc 10:37 AM tại \texttt{localhost:5174} cho thấy
+trang quản lý danh mục và danh sách dữ liệu có thể truy cập. Evidence này chỉ
+xác nhận trạng thái \texttt{Accessible}; chưa chứng minh các thao tác thêm, sửa
+hoặc xóa hoạt động đúng.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../../evidence/C/smoke/C-FR14-SMOKE-001-category-admin.png}
+  \caption{C-FR14 --- Trang quản lý danh mục trên Admin Web.}
+  \label{fig:c-fr14-category-admin-smoke}
+\end{figure}

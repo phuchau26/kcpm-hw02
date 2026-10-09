@@ -5,7 +5,7 @@
 | Trường thông tin | Giá trị |
 |---|---|
 | Bài tập | HW02 — Domain Testing trên EShop |
-| Người phụ trách phạm vi | Sinh viên — bổ sung thông tin cá nhân trong báo cáo cuối |
+| Người phụ trách phạm vi | Nguyễn Phúc Hậu — MSSV 23120252 |
 | Thời điểm ghi nhận | 2026-10-09T09:00:33+07:00 |
 | Múi giờ | Asia/Saigon (`UTC+07:00`) |
 | Thư mục SUT | `SHOP/` |

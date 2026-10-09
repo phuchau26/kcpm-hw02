@@ -561,3 +561,422 @@ Bạn có thể yêu cầu: **“Dùng skill `hw02-step-commit` để khởi t�
 
 - Trạng thái: Chờ sinh viên kiểm tra.
 - AI-02: Không thêm dòng vì phản hồi chỉ hướng dẫn quy trình, không tạo artifact bài nộp.
+
+---
+
+## S001-I010 — Tạo `.gitignore` và root commit
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T10:08:02+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — thao tác cấu hình và Git |
+| AI-02 | Không áp dụng — tương tác Git-only theo Artifact Gate |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+tôi đã remote thư mục submission với repo, bạn hãy tạo file ignore rồi commit lần đầu cho tôi
+````
+
+### Phản hồi cuối của AI — ghi nhận khi hoàn thành
+
+````markdown
+Đã tạo `.gitignore` và root commit đầu tiên trong `submission-src`:
+
+- Commit: `c3effb7 docs: initialize HW02 submission workspace`
+- Nhánh: `master`
+- Nội dung: 45 file, gồm cấu trúc bài nộp, LaTeX template, AI forms/log, scope, hai skill và các `.gitkeep` để giữ thư mục rỗng.
+- Đã loại khỏi Git: secret/`.env`, dependency, cache, database cục bộ, file trung gian LaTeX, file tạm và ZIP cuối.
+- Đã kiểm tra `git diff --cached --check`, tên file có dấu hiệu chứa secret và file lớn hơn 5 MiB; không phát hiện vấn đề.
+- Không push lên remote.
+- AI-02 không được thêm dòng vì đây là thao tác Git-only.
+
+Sau commit, [prompt_log.md](D:/HCMUS/KCPM/HW2/submission-src/ai/prompt_log.md) có một thay đổi chưa commit để ghi lại chính tương tác này. File đó nên được stage cùng commit công việc kế tiếp; mình không tạo thêm commit chỉ để ghi log.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên kiểm tra.
+- Git: root commit đã tạo; không push.
+- AI-02: Không thêm dòng vì tương tác chỉ tạo cấu hình ignore và thực hiện Git commit.
+
+---
+
+## S001-I011 — Xác định bước sau root commit
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T10:12:39+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chỉ tư vấn quy trình |
+| AI-02 | Không áp dụng — không tạo hoặc sửa artifact trực tiếp cho bài nộp |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+bước tiếp theo làm gì
+````
+
+### Phản hồi cuối của AI — ghi nhận khi hoàn thành
+
+````markdown
+Bước tiếp theo là **D1-04 — chạy SUT và smoke test bốn feature** trước khi thiết kế test case.
+
+Bạn cần thực hiện:
+
+1. Đọc `SHOP/setup_guide.md`, khởi chạy backend, Web, Admin Web và Mobile.
+2. Ghi vào `submission-src/supporting/environment.md`:
+   - commit SUT `85af3ba...`;
+   - phiên bản Node/npm, trình duyệt, thiết bị hoặc emulator, hệ điều hành và Expo;
+   - URL/port của từng nền tảng;
+   - test account và cách reset test data, nhưng không ghi mật khẩu/secret thật.
+3. Mở thử đúng bốn luồng:
+   - A-FR03: trang quên/đặt lại mật khẩu;
+   - B-FR09: nhập Discount Coupon tại Web checkout;
+   - C-FR14: trang quản lý danh mục của Admin;
+   - D-M09: nhập Discount Coupon tại Mobile checkout.
+4. Lưu screenshot smoke test riêng vào `evidence/A`, `evidence/B`, `evidence/C`, `evidence/D`.
+5. Nếu nền tảng không chạy được, ghi `Blocked`, log lỗi và bước đã thử; chưa gọi đó là bug sản phẩm.
+
+Khi cả bốn luồng truy cập được, bước kế tiếp mới là **A-FR03 — Step 1: lập spec và test oracle**. Commit tiếp theo nên dành cho `environment.md`, smoke evidence và prompt log bằng message phù hợp như:
+
+```text
+test: establish HW02 test environment and smoke paths
+```
+
+Trước khi làm tiếp, bạn cũng nên review dòng `ART013` trong AI-02 và đổi trạng thái pending theo đánh giá thật của bạn.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên kiểm tra.
+- AI-02: Không thêm dòng vì phản hồi chỉ hướng dẫn bước tiếp theo.
+
+---
+
+## S001-I012 — Tạo tài liệu môi trường trước smoke test
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T10:22:29+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART014 — `supporting/environment.md` |
+| AI-02 | Có — một dòng `ART014`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- setup_guide.md: HW2/SHOP/setup_guide.md
+
+## My request:
+tôi đã chạy được hết các nền tảng, bạn tạo environtment md cho tôi bao gồm các thông tin bạn đã yêu cầu, tuy nhiên tôi chưa kiểm tra các pool A B C D do vậy bạn chỉ thêm doc đến trước các bước này. Sau đó bạn cung cấp hướng dẫn về cách lấy minh chứng và vị trí đặt của chúng
+````
+
+### Phản hồi cuối của AI — ghi nhận khi hoàn thành
+
+````markdown
+Đã tạo [environment.md](D:/HCMUS/KCPM/HW2/submission-src/supporting/environment.md) đến đúng thời điểm trước smoke test.
+
+Tài liệu đã ghi:
+
+- SUT commit, nhánh và trạng thái runtime cục bộ.
+- Windows, Node.js, npm, Git và PowerShell thực tế.
+- Công nghệ, dependency, lệnh chạy và URL/port dự kiến của Backend, Web, Admin Web và Mobile.
+- Xác nhận của bạn rằng các nền tảng đã chạy được.
+- Các port hiện không còn lắng nghe tại thời điểm kiểm tra, nên không ghi là đang chạy.
+- Trình duyệt, thiết bị/emulator, Mobile OS và Expo Go chưa biết được để trống có giải thích.
+- Cả bốn feature đều là `Not Run`; chưa có Pass/Fail, bug hoặc smoke evidence.
+
+## Cách lấy smoke evidence
+
+Khởi động lại từng nền tảng, sau đó với mỗi pool:
+
+1. Mở đúng màn hình feature nhưng chưa cần chạy test case chi tiết.
+2. Chụp ảnh sao cho nhận diện được feature và nền tảng; không để lộ mật khẩu, token hoặc dữ liệu cá nhân.
+3. Ghi kèm thời gian, URL/app screen, build/thiết bị và trạng thái `Accessible` hoặc `Blocked` trong `environment.md`.
+4. Giữ ảnh gốc, không chỉnh sửa nội dung và không dùng ảnh do AI tạo.
+
+Vị trí và tên file đề xuất:
+
+```text
+evidence/A/smoke/A-FR03-SMOKE-001-forgot-password.png
+evidence/B/smoke/B-FR09-SMOKE-001-web-coupon.png
+evidence/C/smoke/C-FR14-SMOKE-001-category-admin.png
+evidence/D/smoke/D-M09-SMOKE-001-mobile-coupon.png
+```
+
+Ảnh nên thể hiện:
+
+- A: trang quên mật khẩu hoặc bước nhập OTP.
+- B: trường nhập Discount Coupon trên Web checkout.
+- C: màn hình quản lý danh mục trên Admin Web.
+- D: trường Discount Coupon trên Mobile checkout, kèm thông tin thiết bị/emulator trong ghi chép.
+
+Nếu feature không mở được, chụp màn hình lỗi và lưu log đã làm sạch vào cùng thư mục `smoke/`, đánh dấu `Blocked`; chưa báo bug cho đến khi loại trừ lỗi setup.
+
+Lượt này đã được ghi vào [prompt_log.md](D:/HCMUS/KCPM/HW2/submission-src/ai/prompt_log.md). AI-02 đã thêm đúng một dòng `ART014` ở trạng thái `PENDING HUMAN REVIEW` vì `environment.md` là artifact trực tiếp của bài nộp. Chưa tạo commit; nên hoàn tất smoke evidence rồi commit tài liệu môi trường và evidence cùng nhau.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: trình duyệt, thiết bị/emulator, URL thực tế, account/test data và việc phân biệt startup với smoke test.
+- AI-02: đã thêm đúng một dòng `ART014` vì AI tạo `supporting/environment.md`.
+
+---
+
+## S001-I013 — Chẩn đoán Mobile không kết nối Backend
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T10:45:36+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chẩn đoán, chưa sửa source hoặc artifact bài nộp |
+| AI-02 | Không áp dụng — inspection/diagnosis only |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: HW2/SHOP/setup_guide.md
+
+## Active selection of the file:
+admin@eshop.com
+## Open tabs:
+- setup_guide.md: HW2/SHOP/setup_guide.md
+- README.md: HW2/SHOP/README.md
+- README.md: HW2/SHOP/frontend-web/README.md
+- README.md: HW2/SHOP/frontend-admin/README.md
+- environment.md: HW2/submission-src/supporting/environment.md
+
+# Files pasted by the user:
+
+## "nning application \"main\" with appParams: {rootTag: '#root', hydrate: undefined}…": C:\Users\DLCH\.codex/attachments/9ae97773-9a34-45c9-899d-21248e1c83e7/pasted-text.txt
+
+## My request:
+hình như cấu hình sai ip nên chưa kết nối được backend
+````
+
+### Phản hồi cuối của AI — ghi nhận khi hoàn thành
+
+````markdown
+Đúng, IP đang cấu hình sai; đồng thời backend hiện cũng chưa chạy.
+
+Kết quả đối chiếu:
+
+- Mobile đang dùng `http://192.168.10.13:3000/api` tại `SHOP/frontend-mobile/App.js:16`.
+- IP Wi‑Fi hiện tại của máy là `10.0.243.137`.
+- Log gọi `192.168.10.13` và nhận `ERR_CONNECTION_TIMED_OUT`.
+- Port `3000` hiện không lắng nghe, nghĩa là backend đã dừng tại thời điểm kiểm tra.
+- Backend dùng `app.listen(PORT)` và đã bật `cors()`, nên source không cho thấy nó bị giới hạn chỉ ở `localhost`.
+
+Thực hiện theo thứ tự:
+
+1. Khởi động backend:
+
+```powershell
+cd D:\HCMUS\KCPM\HW2\SHOP\backend
+node server.js
+```
+
+2. Kiểm tra trên máy tính:
+
+```powershell
+Invoke-WebRequest http://localhost:3000/api/products
+Test-NetConnection 10.0.243.137 -Port 3000
+```
+
+3. Chọn URL theo môi trường:
+
+- Chạy Expo Web trên chính máy tính: `http://localhost:3000/api`.
+- Chạy điện thoại thật cùng Wi‑Fi: `http://10.0.243.137:3000/api`.
+- Android Emulator mặc định: thường dùng `http://10.0.2.2:3000/api`.
+
+4. Nếu dùng điện thoại thật, bảo đảm điện thoại và máy tính cùng Wi‑Fi, tắt VPN nếu có và cho phép Node.js qua Windows Firewall trên Private network.
+
+Không nên giữ `192.168.10.13` vì đó là IP cũ. IP LAN có thể thay đổi sau khi đổi mạng hoặc khởi động router; về lâu dài nên đưa API URL vào biến môi trường như `EXPO_PUBLIC_API_URL` thay vì hard-code.
+
+Lượt này chỉ chẩn đoán, chưa sửa `App.js`, chưa cập nhật `environment.md` và không thêm AI-02. Sau khi bạn chọn đang chạy Expo Web, điện thoại thật hay emulator, URL mới có thể được sửa chính xác.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên kiểm tra bằng cách khởi động backend và gọi endpoint.
+- AI-02: Không thêm dòng vì chưa tạo hoặc sửa artifact trực tiếp cho bài nộp.
+
+---
+
+## S001-I014 — Sắp xếp và ghi nhận smoke evidence
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T10:53:13+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART015 — smoke evidence và `supporting/environment.md` |
+| AI-02 | Có — một dòng `ART015`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: HW2/SHOP/setup_guide.md
+
+## Active selection of the file:
+admin@eshop.com
+## Open tabs:
+- setup_guide.md: HW2/SHOP/setup_guide.md
+- README.md: HW2/SHOP/README.md
+- README.md: HW2/SHOP/frontend-web/README.md
+- README.md: HW2/SHOP/frontend-admin/README.md
+- environment.md: HW2/submission-src/supporting/environment.md
+
+## My request:
+tôi đã chụp trạng thái của các tính năng, 5 ảnh được đặt trong thư mục gốc với tên [categories-crud.png](HW2/categories-crud.png) [discount-coupon.png](HW2/discount-coupon.png) [forgot-password.png](HW2/forgot-password.png) [mobile-coupon.png](HW2/mobile-coupon.png) [reset-password.png](HW2/reset-password.png) bạn hãy thêm chúng vào thư mục eviden tương ứng và đổi tên file theo những gì đã thống nhất trong kế hoạch. Đọc qua từng ảnh để biết thông tin ngày giờ để trình bày vào báo cáo.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã sắp xếp đủ 5 ảnh vào đúng Pool và cập nhật [environment.md](D:/HCMUS/KCPM/HW2/submission-src/supporting/environment.md).
+
+Thời gian đọc trực tiếp từ đồng hồ trong ảnh, cùng ngày `09/10/2026`:
+
+- A-FR03: [forgot-password](D:/HCMUS/KCPM/HW2/submission-src/evidence/A/smoke/A-FR03-SMOKE-001-forgot-password.png) — 10:31 AM.
+- A-FR03: [reset-password](D:/HCMUS/KCPM/HW2/submission-src/evidence/A/smoke/A-FR03-SMOKE-002-reset-password.png) — 10:31 AM.
+- B-FR09: [web-coupon](D:/HCMUS/KCPM/HW2/submission-src/evidence/B/smoke/B-FR09-SMOKE-001-web-coupon.png) — 10:33 AM.
+- C-FR14: [category-admin](D:/HCMUS/KCPM/HW2/submission-src/evidence/C/smoke/C-FR14-SMOKE-001-category-admin.png) — 10:37 AM.
+- D-M09: [mobile-coupon](D:/HCMUS/KCPM/HW2/submission-src/evidence/D/smoke/D-M09-SMOKE-001-mobile-coupon.png) — 10:48 AM.
+
+Báo cáo ghi cả bốn feature ở mức `Accessible`, chưa gán `Pass/Fail`. Các quan sát cần kiểm tra tiếp:
+
+- Màn hình reset hiển thị OTP `7870` và nhãn OTP 4 số; cần đối chiếu requirement trước khi kết luận bug.
+- Ảnh Mobile là Expo Web với Chrome device emulation `iPhone 16 Pro Max`, viewport `440 × 956`, không phải thiết bị iOS thật.
+- Console trong ảnh Mobile có request login trả về `401`; cần tái hiện và điều tra riêng.
+- Ảnh C-FR14 chỉ chứng minh trang/danh sách truy cập được, chưa chứng minh các thao tác CRUD.
+
+AI-02 đã thêm đúng một dòng `ART015` ở trạng thái `PENDING HUMAN REVIEW`. Chưa tạo commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: tên và vị trí ảnh, thời gian đọc từ ảnh, cách mô tả Expo Web và các quan sát chưa được kết luận là bug.
+- AI-02: Đã thêm đúng một dòng `ART015` vì evidence và `environment.md` là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I015 — Điền thông tin báo cáo và chèn smoke evidence
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T11:08:32+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART016 — bản nháp báo cáo LaTeX, metadata cá nhân và form AI working |
+| AI-02 | Có — một dòng `ART016`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: HW2/submission-src/report/latex/main.tex
+
+## Open tabs:
+- main.tex: HW2/submission-src/report/latex/main.tex
+- setup_guide.md: HW2/SHOP/setup_guide.md
+- README.md: HW2/SHOP/README.md
+- README.md: HW2/SHOP/frontend-web/README.md
+- README.md: HW2/SHOP/frontend-admin/README.md
+
+## My request:
+Bạn vào thư mục [HW1](HW1/) lấy lại các thông tin môn học sinh viên giảng viên chép vào báo cáo [HW2](HW2/). Dựa vào [scope.md](HW2/submission-src/supporting/scope.md) điền đúng các feature mà tôi đảm nhận sau đó chèn các ảnh smoke lúc nãy vào phần đầu của mỗi pool luôn. Bạn cũng mô tả ngắn gọn về ảnh nếu cần. vì prompt này có tạo ra sản phẩm nộp nên bạn ghi vào log + AI02, nhớ điền thông tin của tôi vào các file nào còn trống. Tôi là sinh viên Nguyễn Phúc Hậu mã số sinh viên là 23120252
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã cập nhật bản nháp báo cáo và điền thông tin của bạn.
+
+Các thay đổi chính:
+
+- [Trang bìa](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/00_cover.tex) đã có Nguyễn Phúc Hậu, MSSV 23120252, lớp CQ2023/31 và năm học 2026–2027.
+- [Phần giới thiệu](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/01_introduction.tex) đã có email, môn Kiểm thử phần mềm, lớp và ba giảng viên lấy từ HW1; đồng thời tóm tắt phạm vi bốn feature.
+- Bốn chương đã được đặt đúng tên theo `scope.md` và chèn đủ năm ảnh smoke ở đầu Pool A, B, C, D, kèm thời gian, trạng thái `Accessible` và mô tả ngắn. Các quan sát OTP 4 số, Console `401`, giới hạn của ảnh CRUD và Expo Web vẫn được trình bày như điểm cần kiểm tra, chưa kết luận bug.
+- [scope.md](D:/HCMUS/KCPM/HW2/submission-src/supporting/scope.md) đã ghi người phụ trách là Nguyễn Phúc Hậu — MSSV 23120252.
+- [AI-02 working](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-02_AI_Audit_Report_Working.docx) đã được điền thông tin cá nhân và thêm đúng một dòng `ART016` ở trạng thái `PENDING HUMAN REVIEW`.
+- Đã tạo [AI-03 working](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-03_AI_Disclosure_Form_Working.docx), điền thông tin môn học, bài tập và sinh viên. `AI Use Category`, nội dung disclosure và chữ ký vẫn để trống để bạn tự xác nhận.
+
+Bản PDF 18 trang đã biên dịch thành công tại [HW02_Report_Draft.pdf](D:/HCMUS/KCPM/HW2/submission-src/report/latex/HW02_Report_Draft.pdf). `main.pdf` đang bị ứng dụng khác giữ khóa nên mình xuất bằng tên draft; nội dung LaTeX đã được kiểm tra trực quan, ảnh và caption hiển thị đúng.
+
+Prompt đã được ghi vào `S001-I015`. Chưa tạo commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: thông tin học phần/giảng viên, tên feature, nội dung caption, cách mô tả smoke evidence và metadata của AI-02/AI-03.
+- AI-02: Đã thêm đúng một dòng `ART016` vì báo cáo LaTeX và các form working là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I016 — Quyết định checkpoint commit sau smoke test
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T14:42:44+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chỉ tư vấn quy trình commit |
+| AI-02 | Không áp dụng — không tạo hoặc sửa artifact nội dung trực tiếp ngoài prompt log bắt buộc |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+bước này có nên commit không
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Có. Đây là một checkpoint hợp lý vì bạn đã hoàn thành một nhóm công việc rõ ràng: thiết lập môi trường, thu smoke evidence, xác nhận bốn feature có thể truy cập và khởi tạo nội dung báo cáo.
+
+Nên commit:
+
+- Năm ảnh trong `evidence/A-D/smoke/`.
+- `supporting/environment.md` và `supporting/scope.md`.
+- Các chương LaTeX đã cập nhật.
+- `AI-02_AI_Audit_Report_Working.docx`, `AI-03_AI_Disclosure_Form_Working.docx`, `ai/README.md` và `prompt_log.md`.
+
+Không nên commit lúc này:
+
+- `report/latex/main.synctex(busy)`.
+- `main.pdf` cũ và `HW02_Report_Draft.pdf`, vì báo cáo còn đang hoàn thiện; PDF cuối sẽ được tạo và commit ở bước đóng gói.
+- Bất kỳ file runtime nào trong repo `SHOP`.
+
+Trước khi commit, bạn chỉ cần xem nhanh PDF và xác nhận tên, MSSV, lớp, giảng viên và tên bốn feature. `ART016` có thể tiếp tục để `PENDING HUMAN REVIEW` trong checkpoint này, nhưng phải được review trước khi nộp bài.
+
+Commit message phù hợp:
+
+```text
+docs: add smoke evidence and initialize feature report
+```
+
+Sau commit này, bước tiếp theo là bắt đầu `A-FR03` — phân tích spec và xác lập test oracle. Mình chưa tạo commit vì bạn mới hỏi có nên commit hay không.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên quyết định thực hiện commit.
+- AI-02: Không thêm dòng vì đây là tư vấn quy trình, không tạo artifact nội dung trực tiếp cho bài nộp.

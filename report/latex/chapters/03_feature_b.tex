@@ -1,4 +1,15 @@
-\chapter{Feature B --- [Feature name]}
+\chapter{Pool B --- FR-09: Discount Coupon trên Web}
 
-% Spec and oracle -> Domain Testing -> BVA -> test cases -> human review ->
-% execution and evidence -> AI gaps -> bug references.
+\section{Smoke test ban đầu}
+
+Ảnh chụp ngày 09/10/2026 lúc 10:33 AM tại Web checkout cho thấy coupon
+\texttt{BIGBUY} được áp dụng trên UI, số tiền giảm là 50.000đ và thành tiền là
+29.950.000đ. Trạng thái hiện tại là \texttt{Accessible}; ảnh chưa thay thế test
+case có precondition, input, expected result và actual result được kiểm soát.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../../evidence/B/smoke/B-FR09-SMOKE-001-web-coupon.png}
+  \caption{B-FR09 --- Discount Coupon tại Web checkout.}
+  \label{fig:b-fr09-web-coupon-smoke}
+\end{figure}

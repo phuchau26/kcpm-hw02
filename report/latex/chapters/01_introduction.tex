@@ -1,5 +1,30 @@
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Giới thiệu}
+\addcontentsline{toc}{chapter}{Giới thiệu}
 
-% Briefly state the assignment scope, four selected features, SUT version,
-% environment, testing objectives, and report organization.
+\renewcommand{\arraystretch}{1.6}
+\begin{flushleft}
+  \begin{tabular}{@{}>{\bfseries\color{deepblue}}l@{\hspace{0.8cm}}p{0.65\textwidth}@{}}
+    Sinh viên thực hiện: & Nguyễn Phúc Hậu \\
+    Mã số sinh viên: & 23120252 \\
+    Email sinh viên: & \textit{23120252@student.hcmus.edu.vn} \\
+    Tên môn học: & Kiểm thử phần mềm \\
+    Mã lớp: & CQ2023/31 \\
+    Giảng viên lý thuyết: & Trần Thị Bích Hạnh \\
+    Giảng viên thực hành: & Trương Phước Lộc; Hồ Tuấn Thanh \\
+    Năm học: & 2026--2027 \\
+  \end{tabular}
+\end{flushleft}
+\renewcommand{\arraystretch}{1.2}
+
+\section*{Phạm vi bài làm}
+
+Báo cáo trình bày việc áp dụng \textit{Domain Testing} và
+\textit{Boundary Value Analysis} trên EShop tại commit
+\texttt{85af3ba875c88283615e22cb108f13e2fccaf0e9}. Phạm vi cá nhân gồm bốn
+feature: \texttt{A-FR03} quên mật khẩu và đặt lại mật khẩu trên Web,
+\texttt{B-FR09} Discount Coupon tại Web checkout, \texttt{C-FR14} quản lý
+danh mục trên Admin Web, và \texttt{D-M09} Discount Coupon tại Mobile checkout.
+
+Các ảnh ở đầu mỗi chương chỉ là \textit{smoke evidence}, dùng để xác nhận feature
+có thể truy cập trong môi trường kiểm thử. Chúng chưa phải bằng chứng
+\textit{Pass/Fail} cho test case chi tiết.
