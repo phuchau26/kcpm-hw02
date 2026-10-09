@@ -980,3 +980,62 @@ Sau commit này, bước tiếp theo là bắt đầu `A-FR03` — phân tích s
 
 - Trạng thái: Chờ sinh viên quyết định thực hiện commit.
 - AI-02: Không thêm dòng vì đây là tư vấn quy trình, không tạo artifact nội dung trực tiếp cho bài nộp.
+
+---
+
+## S001-I017 — Xác định bước tiếp theo sau smoke-test commit
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T14:49:10+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chỉ tư vấn bước tiếp theo |
+| AI-02 | Không áp dụng — chưa tạo hoặc sửa artifact trực tiếp cho bài nộp |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+bước tiếp theo là gì
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Bước tiếp theo là **A-FR03 — Step 1: phân tích đặc tả và xác lập test oracle**.
+
+Bạn nên tạo `features/A/01_spec_and_oracle.md` với bốn nhóm input:
+
+- Email yêu cầu đặt lại mật khẩu.
+- OTP.
+- Mật khẩu mới.
+- Xác nhận mật khẩu.
+
+Trong file này, mỗi quy tắc cần ghi rõ:
+
+| Nội dung | Cần xác định |
+|---|---|
+| Kiểu dữ liệu | String, số hay định dạng khác |
+| Miền hợp lệ | Giá trị nào được chấp nhận |
+| Miền không hợp lệ | Rỗng, sai định dạng, không tồn tại, hết hạn… |
+| Boundary | Độ dài tối thiểu/tối đa và các giá trị sát biên |
+| Quan hệ phụ thuộc | OTP gắn với email, hai mật khẩu phải khớp… |
+| Expected result | Chấp nhận, từ chối và thông báo tương ứng |
+| Nguồn | `SHOP/README.md`, `api_specification.md`, đề bài hoặc tài liệu chính thức |
+| Trạng thái | Đã xác nhận, giả định hoặc đang mâu thuẫn |
+
+Điểm cần xử lý đầu tiên là mâu thuẫn OTP: `scope.md` đang ghi OTP 6 chữ số nhưng UI smoke test hiển thị OTP 4 số. Chưa chọn implementation làm đáp án đúng; hãy ghi đây là **requirement conflict** và truy tìm nguồn chính thức trước khi lập expected result.
+
+Ở bước này chưa cần sinh test case. Đầu ra chỉ cần là đặc tả đã truy vết được nguồn và danh sách câu hỏi chưa rõ. Sau khi bạn review file này, commit phù hợp là:
+
+```text
+test(A-FR03): step 1 establish spec and oracle
+```
+
+Bạn có thể yêu cầu tiếp: **“Thực hiện A-FR03 Step 1, đọc README và API specification để tạo `01_spec_and_oracle.md`; không tự giải quyết các yêu cầu mâu thuẫn.”**
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên bắt đầu Step 1 của A-FR03.
+- AI-02: Không thêm dòng vì phản hồi chỉ hướng dẫn quy trình, chưa tạo artifact kiểm thử.
