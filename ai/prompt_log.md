@@ -1334,6 +1334,136 @@ Lưu ý: hiện thay đổi của spec, domain model, prompt log và AI-02 vẫn
 
 ---
 
+## S001-I025 — Commit Step 1–3 và tạo test case Step 4 cho A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:09:33.9870448+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART020 — `features/A/04_test_cases.md` |
+| AI-02 | Có — một dòng `ART020`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+bạn commit đi rồi mới thực hiện tạo file 04
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn tất đúng thứ tự: commit Step 1–3 trước, sau đó mới tạo Step 4.
+
+Các commit đã tạo:
+
+- `ff0b089` — `test(A-FR03): refine step 1 oracle from project source`
+- `439577c` — `test(A-FR03): step 2 model input domains`
+- `978e433` — `test(A-FR03): step 3 derive boundary cases`
+
+Các PDF và file Synctex tạm không được đưa vào commit.
+
+Đã tạo [04_test_cases.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/04_test_cases.md), gồm 38 test case:
+
+- Email và phát hành OTP.
+- OTP format/value/binding/lifecycle.
+- BVA cho OTP length và password policy.
+- Confirm password và kiểm tra password không lưu plaintext.
+- UI conformance, Tab order và traceability.
+- Fixture token 6 chữ số để cô lập Step 2 khỏi lỗi SUT đang sinh OTP 4 số.
+
+Đã kiểm tra:
+
+- 38/38 test ID liên tục và không trùng.
+- Bao phủ toàn bộ invalid partition.
+- Có đầy đủ `A-R01`–`A-R14` và `A-B01`–`A-B10`.
+- Password test data đúng length và composition.
+- Không có lỗi whitespace trong file mới.
+
+File đang ở `PENDING HUMAN REVIEW`; chưa thực thi và chưa gán Pass/Fail. Prompt được ghi thành `S001-I025`, còn AI-02 có đúng một dòng `ART020` ở trạng thái pending. Step 4 cùng hai file AI đang để chưa commit để bạn review trước checkpoint tiếp theo.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: test data/fixture, expected result, coverage, traceability và khả năng thực thi.
+- AI-02: Đã thêm đúng một dòng `ART020` vì test case design là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I026 — Báo trạng thái A-FR03 sau thiết kế test case
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:17:58.7219263+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — báo trạng thái và đề xuất bước tiếp theo |
+| AI-02 | Không — không tạo artifact trực tiếp mới |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- prompt_log.md: submission-src/ai/prompt_log.md
+- 04_test_cases.md: submission-src/features/A/04_test_cases.md
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+bước tiếp theo làm gì, đã xong feature này chưa
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Chưa xong toàn bộ feature `A-FR03`; hiện đã hoàn thành **giai đoạn phân tích và thiết kế test**.
+
+Tiến độ theo workflow 7 bước:
+
+- Step 1 — Spec và oracle: xong, đã commit.
+- Step 2 — Domain model: xong, đã commit.
+- Step 3 — BVA: xong, đã commit.
+- Step 4 — Test case và review: xong nội dung, **chưa commit**.
+- Step 5 — Thực thi và evidence: chưa làm.
+- Step 6 — Bug report và AI gap: chưa làm.
+- Step 7 — Hoàn thiện báo cáo và traceability: chưa làm.
+
+Như vậy, nếu tính bảy bước ngang nhau thì feature đang ở khoảng **57% (4/7)**. Đây là tiến độ công việc, không phải phần trăm điểm.
+
+Bước tiếp theo ngay lúc này là **commit Step 4** với message:
+
+`test(A-FR03): step 4 review and finalize test cases`
+
+Các file phù hợp cho checkpoint này:
+
+- `features/A/04_test_cases.md`
+- `ai/AI-02_AI_Audit_Report_Working.docx`
+- `ai/prompt_log.md`
+
+Sau commit mới sang Step 5: thực thi 38 test case, chụp evidence có Test ID, ghi actual result và tạo `features/A/05_execution_results.md`. Hiện thống kê là **38 designed, 0 executed, 0 passed, 0 failed**; trong đó `A-TC-014` đã được nhận diện là chưa thể chạy nếu chưa có expiry fixture hoặc lifetime chính thức.
+
+Feature chỉ được xem là hoàn tất sau Step 7, khi kết quả thực thi, bug/AI gap, báo cáo và traceability đều đã khóa.
+````
+
+### Human review
+
+- Trạng thái: Không áp dụng — chỉ báo tiến độ và workflow.
+- AI-02: Không thêm dòng.
+
+---
+
 ## S001-I023 — Tạo Boundary Value Analysis cho A-FR03
 
 | Trường thông tin | Giá trị |
