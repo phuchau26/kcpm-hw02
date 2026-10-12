@@ -1039,3 +1039,407 @@ Bạn có thể yêu cầu tiếp: **“Thực hiện A-FR03 Step 1, đọc READ
 
 - Trạng thái: Chờ sinh viên bắt đầu Step 1 của A-FR03.
 - AI-02: Không thêm dòng vì phản hồi chỉ hướng dẫn quy trình, chưa tạo artifact kiểm thử.
+
+---
+
+## S001-I018 — Tạo và commit đặc tả/test oracle A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T15:21:00+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART017 — `features/A/01_spec_and_oracle.md` |
+| AI-02 | Có — một dòng `ART017`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+tạo file đó và commit theo skill
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo và commit [01_spec_and_oracle.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/01_spec_and_oracle.md).
+
+File đã ghi:
+
+- Thứ tự ưu tiên nguồn làm test oracle.
+- Bốn nhóm input: email, OTP, mật khẩu mới và xác nhận mật khẩu.
+- Chín business rule cùng expected result và mức chắc chắn.
+- API contract của hai endpoint.
+- Các boundary candidate để dùng ở bước BVA sau này.
+- Bảy discrepancy quan sát từ source/UI, gồm OTP 6 số so với 4 số, thiếu `confirmPassword`, password regex sai, chưa có OTP expiry và lưu mật khẩu plaintext.
+- Bảy câu hỏi chưa có requirement rõ ràng và human review gate.
+
+Đã tạo commit:
+
+```text
+d944dac test(A-FR03): step 1 establish spec and oracle
+```
+
+Kiểm tra đã thực hiện:
+
+- `git diff --cached --check`: đạt, không còn lỗi whitespace.
+- AI-02 có đúng một dòng `ART017`, trạng thái `PENDING HUMAN REVIEW`.
+- Chỉ commit ba file: đặc tả A-FR03, AI-02 working và prompt log đã có trước commit.
+- Ba file build PDF/Synctex vẫn không được commit.
+
+Lượt hiện tại đã được ghi thành `S001-I018` sau khi có commit hash, nên `prompt_log.md` hiện có một thay đổi chưa commit; thay đổi này sẽ đi cùng commit của bước kế tiếp. Trước Step 2, bạn cần review các rule và đánh dấu checklist ở cuối file.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: hierarchy nguồn, rule/oracle, các discrepancy và câu hỏi chưa rõ trước khi dùng cho Domain Testing.
+- AI-02: Đã thêm đúng một dòng `ART017` vì file spec/oracle là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I019 — Giải thích mục đích file spec và oracle
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T17:11:11+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chỉ giải thích artifact đã tạo |
+| AI-02 | Không áp dụng — không tạo hoặc sửa artifact nội dung mới ngoài prompt log bắt buộc |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 01_spec_and_oracle.md: HW2/submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+tạo file đó để làm gì vậy
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+File `01_spec_and_oracle.md` là **nền móng để thiết kế test**, chưa phải danh sách test case.
+
+Nó giải quyết bốn việc:
+
+1. **Chốt hệ thống phải làm gì**
+   Ghi requirement và expected result từ README/API specification. Đây chính là test oracle để sau này quyết định một test là `Pass` hay `Fail`.
+
+2. **Tách requirement khỏi implementation hiện tại**
+   Ví dụ requirement yêu cầu OTP 6 số nhưng chương trình đang sinh 4 số. Nếu không lập oracle trước, ta có thể nhầm rằng “chương trình đang chạy như vậy” nghĩa là hành vi đúng.
+
+3. **Làm đầu vào cho các bước kế tiếp**
+
+   - Step 2: chia valid/invalid domain.
+   - Step 3: chọn boundary bằng BVA.
+   - Step 4: tạo test case cụ thể.
+   - Step 5: chạy test và so actual result với oracle.
+   - Báo cáo cuối: truy vết từ requirement → domain → boundary → test case → kết quả/bug.
+
+4. **Ghi rõ phần chưa biết thay vì tự suy đoán**
+   Chẳng hạn thời gian hết hạn OTP, độ dài tối đa của mật khẩu và response lỗi chưa được đặc tả. Các điểm này được giữ thành câu hỏi cần xác nhận.
+
+Vì vậy, file này giúp test case sau đó có căn cứ và giải thích được vì sao chọn từng miền/biên. Việc bạn cần làm trước mắt là đọc các rule `A-R01` đến `A-R09` và checklist cuối file. Nếu đồng ý với nguồn và cách diễn giải, mới chuyển sang tạo `02_domain_model.md`.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên review Step 1 trước khi tạo domain model.
+- AI-02: Không thêm dòng vì phản hồi chỉ giải thích mục đích của artifact đã có.
+
+---
+
+## S001-I020 — Đánh giá độ tin cậy của spec A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T17:14:08+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tương tác chỉ đánh giá độ tin cậy của artifact đã có |
+| AI-02 | Không áp dụng — không tạo hoặc sửa artifact nội dung mới ngoài prompt log bắt buộc |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 01_spec_and_oracle.md: HW2/submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+vậy bạn làm cách nào để chắc rằng file spec bạn đưa ra là đúng hoàn toàn theo nghiệp vụ của dự án này
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Không thể khẳng định file spec **đúng hoàn toàn** với tài liệu hiện có. Nó đang là working specification có truy vết nguồn và được đánh dấu `PENDING HUMAN REVIEW`, không phải đặc tả đã được business owner phê duyệt.
+
+Mình kiểm soát độ đúng bằng bốn lớp:
+
+1. **Requirement chính thức trước**: các rule về OTP 6 số, mật khẩu, xác nhận mật khẩu, OTP gắn với email và dùng một lần đều dẫn về dòng cụ thể trong `SHOP/README.md`.
+2. **Đối chiếu API contract**: `api_specification.md` được dùng để xác nhận request/response, nhưng không tự bổ sung các rule mà tài liệu không nói.
+3. **Không lấy source làm đáp án đúng**: Backend/UI chỉ giúp phát hiện khác biệt như OTP 4 số hoặc thiếu `confirmPassword`.
+4. **Đánh dấu mức chắc chắn**: rule nào là requirement rõ ràng, rule nào là suy luận và rule nào còn thiếu đều được ghi riêng.
+
+Hiện vẫn chưa thể xác nhận hoàn toàn các điểm sau:
+
+- OTP hết hạn sau bao lâu và xử lý đúng tại thời điểm hết hạn thế nào.
+- Yêu cầu OTP mới có vô hiệu hóa OTP cũ hay không.
+- Giới hạn độ dài tối đa của email và mật khẩu.
+- Status code, nội dung thông báo lỗi và điều hướng sau khi reset thành công.
+- `confirmPassword` phải được kiểm tra ở client, backend hay cả hai.
+- FR-03 kế thừa quy tắc định dạng email nào.
+
+Muốn nâng file này thành spec đáng tin cậy để làm oracle chính thức, cần:
+
+1. Đối chiếu thêm Moodle, slide, bảng mô tả feature hoặc tài liệu do giảng viên cung cấp.
+2. Gửi các câu hỏi ở mục 9 cho giảng viên/TA hoặc người đóng vai trò business owner.
+3. Ghi câu trả lời và nguồn xác nhận vào file, không chỉ sửa kết luận.
+4. Bạn review từng rule `A-R01`–`A-R09`; rule chưa đủ nguồn phải tiếp tục mang nhãn assumption/unresolved.
+5. Chỉ sau đó mới đổi `PENDING HUMAN REVIEW` và dùng rule làm expected result cho test case.
+
+Việc chạy thử hệ thống chỉ xác nhận **actual behavior**, không chứng minh **business requirement**. Vì vậy câu trả lời trung thực là: phần có dẫn nguồn đang có độ tin cậy cao; phần còn thiếu nguồn chưa thể được gọi là đúng hoàn toàn. Nếu chưa thể hỏi giảng viên, ta vẫn tiếp tục được nhưng các test phụ thuộc vào điểm chưa rõ phải ghi `Assumption` hoặc `Blocked`, không tự đặt expected result.
+````
+
+### Human review
+
+- Trạng thái: Chờ nguồn chính thức hoặc xác nhận của sinh viên/giảng viên cho các câu hỏi mở.
+- AI-02: Không thêm dòng vì phản hồi chỉ đánh giá độ tin cậy của artifact đã có.
+
+---
+
+## S001-I021 — Tạo domain model cho A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-09T17:50:56+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART018 — `features/A/02_domain_model.md` |
+| AI-02 | Có — một dòng `ART018`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 01_spec_and_oracle.md: HW2/submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+bạn hãy dựa vào file spec đã được tôi review và triển khai phần domain model cho tính năng ở pool A
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [02_domain_model.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/02_domain_model.md) cho `A-FR03`.
+
+Domain model gồm:
+
+- Email syntax và email membership.
+- OTP format, value, quan hệ OTP–email và lifecycle.
+- Password length cùng bốn nhóm ký tự bắt buộc.
+- Quan hệ mật khẩu–xác nhận mật khẩu.
+- Composite predicate cho Bước 1 và Bước 2.
+- State model của OTP: chưa phát hành, active, expired và consumed.
+- Các conformance domain của UI/output.
+- Nominal baseline để cô lập một invalid characteristic khi thiết kế test.
+- Traceability đầy đủ từ `A-R01` đến `A-R14`.
+
+File cố ý chưa làm hai việc thuộc bước sau:
+
+- Chưa chọn bộ giá trị ngay dưới/tại/ngay trên boundary — dành cho Step 3 BVA.
+- Chưa chuyển partition thành test case — dành cho Step 4.
+
+Đã kiểm tra:
+
+- Có đủ 13 phần tài liệu.
+- Không thiếu rule nào từ `A-R01`–`A-R14` trong traceability.
+- `STEP1_VALID` và `STEP2_VALID` đã được biểu diễn rõ.
+- `git diff --check` riêng cho file mới không có lỗi.
+
+AI-02 đã thêm đúng một dòng `ART018` ở trạng thái `PENDING HUMAN REVIEW`; prompt được ghi thành `S001-I021`. Chưa tạo commit. Trước khi làm BVA, bạn cần kiểm tra checklist tại mục 13 và xác nhận các partition không chồng lấn.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: tính loại trừ/đầy đủ của partition, composite predicates, nominal baseline và traceability.
+- AI-02: Đã thêm đúng một dòng `ART018` vì domain model là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I022 — Đánh giá giai đoạn và tiến độ sau hai ngày
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T20:42:03.2091395+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — chỉ đánh giá trạng thái hiện tại |
+| AI-02 | Không — không tạo artifact trực tiếp cho bài nộp |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/02_domain_model.md
+
+## Open tabs:
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+tôi đang quay lại sau 2 ngày, cho biết giai đoạn hiện tại và phần trăm đã làm được
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Hiện tại bạn đang ở **giai đoạn phân tích domain của Pool A (A-FR03 — Forgot/Reset Password)**, cụ thể là cuối **Step 2**, chưa chuyển sang thiết kế test case.
+
+- **Step 1 — Spec & oracle:** đã hoàn thành và đã review theo source của dự án.
+- **Step 2 — Domain model:** đã soạn xong nhưng còn `PENDING HUMAN REVIEW` và chưa commit.
+- **Step 3 — Boundary Value Analysis (BVA):** chưa làm.
+- Pool B, C, D mới có smoke evidence; chưa bắt đầu phân tích domain hay thiết kế test.
+
+Có hai cách nhìn tiến độ:
+
+- **Riêng quy trình kiểm thử 4 feature:** khoảng **5%**. Kế hoạch có 28 bước feature (4 pool × 7 bước); hiện hoàn thành 1 bước và Step 2 của Pool A mới ở mức bản nháp, tương đương khoảng 1,5/28. Nếu chỉ tính bước đã review hoàn toàn thì là **3,6%**.
+- **Toàn bộ bài nộp, gồm cả phần chuẩn bị:** khoảng **20%**. Workspace, Git, scope, environment, smoke evidence, khung báo cáo, AI-02/AI-03 và prompt log đã có; tuy nhiên BVA, test case, thực thi test, bug/AI gap, phần báo cáo nội dung, demo và đóng gói cuối vẫn chưa hoàn thành.
+
+Đây là **ước lượng theo artifact hiện có**, không phải phần trăm điểm chính thức của rubric.
+
+Bước tiếp theo đúng kế hoạch là:
+
+1. Review checklist ở mục cuối của `02_domain_model.md`.
+2. Nếu các partition, predicate và traceability đều đúng, chuyển trạng thái sang `REVIEWED` rồi commit Step 2.
+3. Tạo `features/A/03_boundary_value_analysis.md` để chọn các giá trị ngay dưới, tại và ngay trên từng boundary.
+
+Lưu ý: hiện thay đổi của spec, domain model, prompt log và AI-02 vẫn chưa được commit; các file PDF tạm cũng đang untracked. Chưa nên bắt đầu BVA trước khi chốt domain model.
+````
+
+### Human review
+
+- Trạng thái: Không áp dụng — phản hồi tư vấn tiến độ, không tạo artifact bài nộp.
+- AI-02: Không thêm dòng.
+
+---
+
+## S001-I023 — Tạo Boundary Value Analysis cho A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T20:53:00.1137768+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | ART019 — `features/A/03_boundary_value_analysis.md` |
+| AI-02 | Có — một dòng `ART019`, trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+Hãy tiến hành tạo file BVA cho tính năng ở pool A dựa vào 2 file trước đó và những BR bạn đã tìm hiểu
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [03_boundary_value_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/03_boundary_value_analysis.md) cho Pool A.
+
+File gồm:
+
+- 10 boundary ID `A-B01`–`A-B10`.
+- Bộ giá trị `B-1/B/B+1` cho OTP length `5/6/7` và password length `7/8/9`.
+- Boundary `0/1/2` cho số chữ hoa, chữ thường, chữ số và allowed special.
+- Relational boundary cho password–confirm.
+- Phân loại rõ OTP expiry, email length và password max length là chưa thể định lượng hoặc không được SRS quy định.
+- Traceability giải thích đủ `A-R01`–`A-R14` và quy tắc chuyển dữ liệu BVA sang Step 4.
+
+Mình đã kiểm tra tự động length và số nhóm ký tự của toàn bộ password candidate; tất cả đều khớp bảng. File không tự đặt OTP lifetime, max length hay exact error message.
+
+Trạng thái hiện tại là `PENDING HUMAN REVIEW`. Prompt đã được ghi thành `S001-I023`; AI-02 có đúng một dòng mới `ART019` cùng trạng thái. Chưa commit và chưa tạo test case. Bạn cần kiểm tra checklist ở mục 12 trước khi chuyển sang Step 4.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: nguồn boundary, dữ liệu cô lập từng characteristic, relational boundary và traceability.
+- AI-02: Đã thêm đúng một dòng `ART019` vì BVA là artifact trực tiếp của bài nộp.
+
+---
+
+## S001-I024 — Xác nhận checkpoint commit sau BVA
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:03:11.1528426+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | Không có — tư vấn workflow và Git |
+| AI-02 | Không — không tạo artifact trực tiếp mới |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+bước tiếp theo làm gì, commit được chưa
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã đủ điều kiện commit và **nên commit trước khi sang Step 4**.
+
+Tuy nhiên, working tree hiện chứa thay đổi của nhiều bước nên không nên gom thành một commit. Theo quy ước của skill commit, nên tạo lần lượt:
+
+1. `test(A-FR03): refine step 1 oracle from project source`
+   - `features/A/01_spec_and_oracle.md`
+2. `test(A-FR03): step 2 model input domains`
+   - `features/A/02_domain_model.md`
+3. `test(A-FR03): step 3 derive boundary cases`
+   - `features/A/03_boundary_value_analysis.md`
+   - `ai/AI-02_AI_Audit_Report_Working.docx`
+   - `ai/prompt_log.md`
+
+Không đưa các file build tạm sau vào commit:
+
+- `report/latex/HW02_Report_Draft.pdf`
+- `report/latex/main.pdf`
+- `report/latex/main.synctex(busy)`
+
+Bước tiếp theo sau checkpoint là **Step 4 — thiết kế và review test case**, tạo file:
+
+`features/A/04_test_cases.md`
+
+File đó sẽ chuyển các partition và boundary đã duyệt thành test case có ID, precondition, input, procedure, expected result và traceability. Chưa ghi actual result ở Step 4; actual result và evidence thuộc Step 5.
+
+Mình chưa thực hiện commit vì bạn mới hỏi mức độ sẵn sàng, chưa yêu cầu commit trực tiếp.
+````
+
+### Human review
+
+- Trạng thái: Không áp dụng — tư vấn checkpoint và bước tiếp theo.
+- AI-02: Không thêm dòng.
