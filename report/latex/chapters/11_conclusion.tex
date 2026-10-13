@@ -1,3 +1,16 @@
 \chapter{Conclusion}
 
-% Summarize coverage, important findings, limitations, and lessons learned.
+\section{Kết luận tại checkpoint Pool A}
+
+Workflow kiểm thử A-FR03 đã hoàn thành về mặt kỹ thuật từ oracle, Domain Testing,
+BVA, 38 test case đến automation, execution evidence, bug/gap analysis và
+traceability. Kết quả giữ nguyên: 9 case được thực thi, một PASS, tám FAIL và 29
+BLOCKED. Tám defect đã được xác nhận và nhóm theo root cause.
+
+Kết quả này không chứng minh feature hoạt động đúng. Luồng reset password chính
+chưa thể kiểm chứng end-to-end theo SRS do thiếu confirm password; OTP expiry còn
+thiếu rule định lượng và implementation state. Residual risk vì vậy vẫn cao.
+Regression toàn bộ 29 case bị chặn là điều kiện cần sau khi hai blocker được xử
+lý. Kết luận tổng thể cho bài HW02 sẽ chỉ được đưa ra sau khi Pool B, C và D có
+artifact và evidence tương đương; báo cáo hiện không suy diễn kết quả cho các
+pool đó.

@@ -1573,3 +1573,380 @@ Mình chưa thực hiện commit vì bạn mới hỏi mức độ sẵn sàng, 
 
 - Trạng thái: Không áp dụng — tư vấn checkpoint và bước tiếp theo.
 - AI-02: Không thêm dòng.
+
+---
+
+## S001-I027 — Triển khai và thực thi Step 5 cho A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:35:42.1737651+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | `ART021` |
+| AI-02 | Có — tạo artifact trực tiếp cho bài nộp; trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- prompt_log.md: submission-src/ai/prompt_log.md
+- 04_test_cases.md: submission-src/features/A/04_test_cases.md
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+- 02_domain_model.md: submission-src/features/A/02_domain_model.md
+- 01_spec_and_oracle.md: submission-src/features/A/01_spec_and_oracle.md
+
+## My request:
+Hãy triển khai toàn bộ Step 5 cho A-FR03. Tạo Playwright automation trong
+submission-src/automation/A-FR03, không sửa source SHOP. Tạo fixture SQLite,
+chạy tuần tự toàn bộ 38 test case trong 04\_test\_cases.md, tự khởi động backend
+và frontend, lưu screenshot/trace vào evidence/A/execution, xuất results.json
+và tạo features/A/05\_execution\_results.md. Case không thể chạy phải ghi BLOCKED
+và giải thích, không thay đổi expected result để ép test pass. Cập nhật prompt
+log và AI-02 theo skill. Chưa commit sau khi chạy để tôi review kết quả.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn tất toàn bộ Step 5 cho `A-FR03` và **chưa commit**.
+
+Kết quả chạy tuần tự 38 test case:
+
+- `PASS`: 1 — `A-TC-002`
+- `FAIL`: 8 — `A-TC-001`, `A-TC-003`, `A-TC-004`, `A-TC-034`–`A-TC-038`
+- `BLOCKED`: 29 — `A-TC-005`–`A-TC-033`
+- `NOT RUN`: 0
+
+Blocker chính là UI Bước 2 không có trường `confirmPassword`, nên 29 case không thể thiết lập đúng precondition/procedure đã review mà không sửa SUT. Riêng `A-TC-014` còn thiếu quy tắc thời hạn OTP và trạng thái expiry trong schema. Tôi không đổi expected result và không gọi API để thay thế luồng Web end-to-end.
+
+Các artifact chính:
+
+- [05_execution_results.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/05_execution_results.md)
+- [results.json](D:/HCMUS/KCPM/HW2/submission-src/evidence/A/execution/results.json)
+- [runner.mjs](D:/HCMUS/KCPM/HW2/submission-src/automation/A-FR03/runner.mjs)
+- [README automation](D:/HCMUS/KCPM/HW2/submission-src/automation/A-FR03/README.md)
+- [thư mục evidence](D:/HCMUS/KCPM/HW2/submission-src/evidence/A/execution)
+
+Đã xác minh đủ 38 ID duy nhất, mọi đường dẫn evidence đều tồn tại, trace ZIP hợp lệ với 158 mục, cleanup đã khôi phục password và xóa reset token, backend/frontend do runner mở đã dừng. Không sửa source SHOP; quá trình khởi động backend của SUT có tái tạo file SQLite runtime, sau đó fixture đã khôi phục dữ liệu seed liên quan.
+
+`prompt_log.md` đã thêm `S001-I027`; AI-02 đã thêm đúng một dòng `ART021` với trạng thái `PENDING HUMAN REVIEW`. Bước tiếp theo là bạn review checklist ở cuối `05_execution_results.md`, đặc biệt là phân loại 29 case `BLOCKED`, trước khi chuyển sang Step 6.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: automation, actual result, screenshot/trace, phân loại `PASS`/`FAIL`/`BLOCKED`, blocker dùng chung và cleanup fixture.
+- AI-02: Đã thêm đúng một dòng `ART021` cho toàn bộ artifact Step 5 của A-FR03.
+
+---
+
+## S001-I028 — Review Step 5 và triển khai Step 6 cho A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:43:58.4274342+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | `ART022` |
+| AI-02 | Có — tạo/thay đổi artifact trực tiếp cho bài nộp; trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- runner.mjs: submission-src/automation/A-FR03/runner.mjs
+- database.mjs: submission-src/automation/A-FR03/fixtures/database.mjs
+- prompt_log.md: submission-src/ai/prompt_log.md
+- 04_test_cases.md: submission-src/features/A/04_test_cases.md
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+
+## My request:
+Hãy triển khai toàn bộ Step 6 cho feature A-FR03 dựa trên các tài liệu đã review và kết quả thực thi hiện tại:
+
+- features/A/01\_spec\_and\_oracle.md
+- features/A/02\_domain\_model.md
+- features/A/03\_boundary\_value\_analysis.md
+- features/A/04\_test\_cases.md
+- features/A/05\_execution\_results.md
+- evidence/A/execution/results.json
+- toàn bộ screenshot và trace trong evidence/A/execution
+- source code liên quan trong SHOP
+
+Yêu cầu:
+
+1. Trước tiên kiểm tra tính nhất quán giữa expected result, actual result và evidence của Step 5. Không thay đổi expected result để hợp thức hóa hành vi hiện tại của SUT.
+
+2. Chuyển trạng thái Step 5 thành REVIEWED nếu kết quả và evidence nhất quán. Nếu phát hiện sai lệch, hãy báo rõ và chỉ sửa tài liệu/kết quả bị sai sau khi có căn cứ.
+
+3. Tạo tài liệu bug report cho A-FR03 theo đúng cấu trúc và quy ước trong kế hoạch. Không mặc định mỗi test FAIL là một bug riêng:
+
+   - Nhóm các test case có cùng root cause thành một defect.
+   - Mỗi defect phải có ID, tiêu đề, test case liên quan, requirement liên quan, môi trường, precondition, bước tái hiện, expected result, actual result, severity, priority, evidence và trạng thái.
+   - Phân biệt rõ defect của SUT với hạn chế của test environment hoặc thiếu requirement.
+   - Không ghi các case BLOCKED thành bug nếu chưa có bằng chứng về defect.
+   - Dẫn đúng đường dẫn screenshot, trace và results.json.
+
+4. Tạo tài liệu AI gap analysis cho A-FR03:
+
+   - So sánh đặc tả/oracle đã review với hành vi thực tế của SUT.
+   - Phân tích các khoảng cách giữa requirement, UI, backend, database và testability.
+   - Phân biệt confirmed defect, requirement gap, implementation gap, testability gap và blocked condition.
+   - Trình bày ảnh hưởng của từng gap đến các test case.
+   - Không tự đặt thêm business rule chưa có căn cứ.
+   - Đề xuất cách xử lý nhưng không sửa source SHOP.
+
+5. Kiểm tra source SHOP ở chế độ read-only để xác định root cause có căn cứ cho từng defect. Ghi rõ file và đoạn logic liên quan nếu xác định được, nhưng không chỉnh sửa source code.
+
+6. Cập nhật traceability để liên kết:
+   requirement → boundary/partition → test case → execution result → defect/gap → evidence.
+
+7. Cập nhật phần tương ứng của báo cáo LaTeX nếu Step 6 theo kế hoạch yêu cầu. Không thay đổi template hoặc các phần ngoài phạm vi Pool A.
+
+8. Cập nhật prompt\_log.md và thêm đúng một dòng vào AI-02 theo skill vì thao tác này tạo artifact trực tiếp cho bài nộp. Giữ trạng thái các artifact mới là PENDING HUMAN REVIEW.
+
+9. Không commit sau khi hoàn thành để tôi review.
+
+Cuối cùng, hãy báo:
+
+- Danh sách file đã tạo hoặc sửa.
+- Số defect được xác nhận và test case liên quan.
+- Số requirement/implementation/testability gap.
+- Những nội dung vẫn còn BLOCKED hoặc cần tôi xác nhận.
+- Checklist cụ thể để tôi review Step 6.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn tất Step 6 cho `A-FR03` và **chưa commit**. Trong Step 6 tôi chỉ đọc source SHOP, không chỉnh sửa file nào trong đó.
+
+Kết quả chính:
+
+- 8 confirmed defect từ 8 test case FAIL; các observation cùng root cause đã được gom lại.
+- 1 requirement gap: SRS thiếu duration và quy tắc inclusive/exclusive của OTP expiry.
+- 4 implementation gap bổ sung: sai password regex, thiếu expiry state/check, lưu password plaintext và backend không kiểm tra password policy.
+- 1 testability gap: thiếu `confirmPassword`, làm `A-TC-005`–`A-TC-033` không thể chạy đúng procedure Web.
+- 2 blocked condition: thiếu confirm control; riêng `A-TC-014` còn thiếu expiry rule/state/fixture.
+
+Các file đã tạo hoặc sửa:
+
+- [05_execution_results.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/05_execution_results.md) — đã chuyển thành `REVIEWED — EVIDENCE/SOURCE CROSS-CHECKED`.
+- [A-FR03_bug_report.md](D:/HCMUS/KCPM/HW2/submission-src/bugs/A-FR03_bug_report.md) — 8 defect đầy đủ field, source root cause và evidence.
+- [06_ai_gap_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/06_ai_gap_analysis.md) — gap analysis và traceability `requirement → boundary/partition → test → result → defect/gap → evidence`.
+- [06_ai_gap_analysis.tex](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/06_ai_gap_analysis.tex) và [07_bug_report.tex](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/07_bug_report.tex) — phần báo cáo Pool A.
+- `prompt_log.md` đã thêm `S001-I028`; AI-02 đã thêm đúng một dòng `ART022` ở trạng thái `PENDING HUMAN REVIEW`.
+
+Ánh xạ defect nổi bật: `A-BUG-001` ↔ `A-TC-001`; `A-BUG-002` ↔ `003/035`; `A-BUG-003` ↔ `004/036`; `A-BUG-004` ↔ `034`; `A-BUG-005` ↔ `035`; `A-BUG-006` ↔ `035/038`; `A-BUG-007` và `008` ↔ `037`. Các case `BLOCKED` không bị biến thành defect hoặc FAIL.
+
+Đã kiểm tra đủ 8 Bug ID duy nhất, đủ field bắt buộc, đủ ánh xạ cho tám case FAIL và đủ `A-R01`–`A-R14`. Báo cáo XeLaTeX biên dịch thành công 18 trang; `main.pdf` chỉ là build kiểm tra và chưa được commit.
+
+Checklist bạn cần review:
+
+- Xác nhận cách nhóm 8 root cause và severity/priority.
+- Mở evidence/trace, ưu tiên hai defect Major: `A-BUG-001` và `A-BUG-006`.
+- Xác nhận 4 implementation gap chỉ là static finding, chưa phải execution FAIL.
+- Xác nhận 29 case vẫn `BLOCKED` và không đổi expected result.
+- Xác nhận traceability và requirement gap OTP expiry.
+- Sau khi đồng ý, đổi `ART022` sang verdict phù hợp rồi commit Step 5–6 trước khi sang Step 7.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: defect grouping, severity/priority, static implementation gap, blocked classification, traceability và nội dung hai chapter LaTeX.
+- AI-02: Đã thêm đúng một dòng `ART022` cho artifact logic Step 6.
+
+---
+
+## S001-I029 — Hoàn thiện Step 7 và chốt kỹ thuật A-FR03
+
+| Trường thông tin | Giá trị |
+|---|---|
+| Ngày giờ | 2026-10-12T21:51:19.7242164+07:00 |
+| Công cụ AI | OpenAI Codex |
+| Model / mức reasoning | `gpt-5.6-sol` / `medium` |
+| Artifact ID | `ART023` |
+| AI-02 | Có — tạo/thay đổi artifact trực tiếp cho bài nộp; trạng thái `PENDING HUMAN REVIEW` |
+
+### Prompt của người dùng — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- runner.mjs: submission-src/automation/A-FR03/runner.mjs
+- database.mjs: submission-src/automation/A-FR03/fixtures/database.mjs
+- prompt_log.md: submission-src/ai/prompt_log.md
+- 04_test_cases.md: submission-src/features/A/04_test_cases.md
+- 03_boundary_value_analysis.md: submission-src/features/A/03_boundary_value_analysis.md
+
+## My request:
+Hãy triển khai toàn bộ Step 7 và chốt nội dung kỹ thuật của feature A-FR03 dựa trên các artifact hiện có:
+
+- features/A/01\_spec\_and\_oracle.md
+- features/A/02\_domain\_model.md
+- features/A/03\_boundary\_value\_analysis.md
+- features/A/04\_test\_cases.md
+- features/A/05\_execution\_results.md
+- features/A/06\_ai\_gap\_analysis.md
+- bugs/A-FR03\_bug\_report.md
+- evidence/A/execution/results.json
+- toàn bộ screenshot, trace và service log trong evidence/A/execution
+- automation/A-FR03
+- supporting/scope.md
+- supporting/environment.md
+- report/latex
+
+Yêu cầu:
+
+1. Kiểm tra tính nhất quán cuối cùng giữa:
+   requirement/oracle → partition/boundary → test case → execution result → defect/gap → evidence.
+
+2. Không thay đổi expected result, actual result hoặc trạng thái PASS/FAIL/BLOCKED để làm kết quả đẹp hơn. Giữ nguyên thống kê đã xác nhận:
+
+   - Designed: 38
+   - Executed: 9
+   - Passed: 1
+   - Failed: 8
+   - Blocked: 29
+   - Not Run: 0
+
+3. Kiểm tra tài liệu Step 6:
+
+   - 8 confirmed defect đã được nhóm theo root cause.
+   - 1 requirement gap.
+   - 4 implementation gap bổ sung.
+   - 1 testability gap.
+   - 2 blocked condition.
+     Nếu phát hiện sai lệch, báo rõ và chỉ sửa khi có bằng chứng từ requirement, source hoặc evidence.
+
+4. Tạo hoặc cập nhật traceability matrix tổng thể cho Pool A. Ma trận phải liên kết đầy đủ:
+   requirement ID → partition ID → boundary ID → test case ID → execution status → defect/gap ID → evidence path.
+
+5. Ma trận phải bao phủ:
+
+   - `A-R01`–`A-R14`
+   - `A-B01`–`A-B10`
+   - `A-TC-001`–`A-TC-038`
+   - `A-BUG-001`–`A-BUG-008`
+   - các requirement, implementation và testability gap của Step 6.
+
+6. Tạo `features/A/07_feature_closure.md`, gồm:
+
+   - Phạm vi feature.
+   - Baseline và môi trường.
+   - Các kỹ thuật Domain Testing/BVA đã sử dụng.
+   - Thống kê test cuối cùng.
+   - Danh sách defect và gap.
+   - Danh sách case BLOCKED và điều kiện để chạy lại.
+   - Coverage summary.
+   - Residual risk.
+   - Những nội dung không được kiểm chứng.
+   - Danh sách artifact/evidence.
+   - Kết luận mức độ hoàn thành feature.
+   - Checklist human sign-off.
+
+7. Không tuyên bố feature hoạt động đúng hoặc test coverage đạt 100% khi còn 29 case BLOCKED. Kết luận phù hợp phải phân biệt:
+
+   - Hoàn thành workflow kiểm thử theo phạm vi hiện tại.
+   - Chưa xác nhận đầy đủ chất lượng SUT do các blocked condition.
+   - Cần regression sau khi SUT bổ sung confirm password và OTP expiry.
+
+8. Hoàn thiện chương Pool A trong báo cáo LaTeX:
+
+   - Đặc tả và oracle chính.
+   - Domain model và boundary quan trọng.
+   - Thiết kế 38 test case.
+   - Phương pháp automation và SQLite fixture.
+   - Thống kê execution.
+   - Các defect chính.
+   - AI gap analysis.
+   - Traceability và residual risk.
+   - Dẫn các screenshot evidence phù hợp.
+     Không sửa nội dung Pool B, C hoặc D và không thay đổi template chung ngoài phần cần thiết.
+
+9. Cập nhật phần Test Summary/Self-assessment và Conclusion chỉ với dữ liệu Pool A đã có thật. Không suy diễn kết quả cho các Pool chưa thực hiện.
+
+10. Kiểm tra mọi đường dẫn evidence và artifact. Không đưa `node_modules`, database runtime, file Synctex hoặc build tạm vào danh sách file cần commit.
+
+11. Render báo cáo bằng XeLaTeX và kiểm tra:
+
+    - Không có lỗi biên dịch.
+    - Bảng/ảnh không tràn trang nghiêm trọng.
+    - Không có placeholder còn sót trong phần Pool A.
+    - Các caption và đường dẫn evidence đúng.
+      File PDF chỉ dùng để review, chưa commit nếu quy ước repository không yêu cầu.
+
+12. Không sửa source SHOP và không chạy lại test nếu dữ liệu Step 5 vẫn nhất quán.
+
+13. Cập nhật prompt\_log.md và thêm đúng một dòng AI-02 cho toàn bộ artifact logic của Step 7 theo skill. Artifact mới giữ trạng thái `PENDING HUMAN REVIEW`.
+    Không tự đổi verdict của `ART021` hoặc `ART022`; việc chuyển chúng thành `VALID`, `INVALID` hoặc `INCOMPLETE` cần quyết định rõ ràng của tôi.
+
+14. Không commit sau khi hoàn thành để tôi review.
+
+Cuối cùng hãy báo:
+
+- Danh sách file đã tạo hoặc sửa.
+- Trạng thái coverage và traceability.
+- Kết luận chính xác feature A đã hoàn thành ở mức nào.
+- Residual risk và những nội dung vẫn chưa kiểm chứng.
+- Kết quả render báo cáo.
+- Danh sách file nên commit sau khi tôi review.
+- Checklist human sign-off cuối cùng.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn tất Step 7 về mặt kỹ thuật và **chưa commit**. Feature A hiện ở trạng thái `TECHNICALLY COMPLETE — PENDING HUMAN SIGN-OFF`, không phải “SUT đã Pass”.
+
+Các file chính đã tạo hoặc sửa:
+
+- [07_traceability_matrix.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/07_traceability_matrix.md)
+- [07_feature_closure.md](D:/HCMUS/KCPM/HW2/submission-src/features/A/07_feature_closure.md)
+- [02_feature_a.tex](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/02_feature_a.tex)
+- [10_test_summary_self_assessment.tex](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/10_test_summary_self_assessment.tex)
+- [11_conclusion.tex](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/11_conclusion.tex)
+- Các artifact Step 5–6 đang chờ commit: automation, evidence, `05_execution_results.md`, `06_ai_gap_analysis.md`, bug report và hai chapter AI gap/Bug Report.
+- `prompt_log.md` đã thêm `S001-I029`; AI-02 có đúng một dòng mới `ART023` ở trạng thái `PENDING HUMAN REVIEW`. `ART021` và `ART022` không bị đổi verdict.
+
+Coverage và traceability đã kiểm tra:
+
+- Đúng 38/38 Test ID duy nhất; không có status lệch `results.json`.
+- Bao phủ thiết kế `14/14` rule `A-R01`–`A-R14`.
+- Ghi đủ trạng thái `A-B01`–`A-B10`; `A-B09/10` không tạo BVA case vì SRS không quy định boundary.
+- Truy vết đủ `A-BUG-001`–`A-BUG-008` và toàn bộ gap Step 6.
+- Execution coverage chỉ `9/38 = 23.68%`: `1 PASS / 8 FAIL / 29 BLOCKED / 0 NOT RUN`.
+
+Residual risk vẫn **cao**. Chưa kiểm chứng end-to-end reset nominal, OTP format/value/binding/lifecycle, password boundaries, confirm equality, one-time use và password storage. `A-TC-014` còn thiếu OTP lifetime cùng expiry state/fixture. Cần regression đủ 29 case sau khi bổ sung confirm password và OTP expiry.
+
+Báo cáo XeLaTeX render thành công [main.pdf](D:/HCMUS/KCPM/HW2/submission-src/report/latex/main.pdf), 20 trang. Không có lỗi hoặc overfull box; chỉ còn một cảnh báo underfull nhỏ trong bảng domain, không gây tràn trang. Tôi đã kiểm tra trực quan bốn trang Pool A; ảnh, bảng và caption hiển thị đúng. PDF và Synctex là build review, không đưa vào commit.
+
+Sau khi bạn review, các nhóm file nên commit là:
+
+1. Step 5: `automation/A-FR03/`, `evidence/A/execution/`, `features/A/05_execution_results.md`.
+2. Step 6: `bugs/A-FR03_bug_report.md`, `features/A/06_ai_gap_analysis.md`, chapter `06_ai_gap_analysis.tex` và `07_bug_report.tex`.
+3. Step 7: hai file `features/A/07_*`, chapter `02_feature_a.tex`, `10_test_summary_self_assessment.tex`, `11_conclusion.tex`, cùng `ai/prompt_log.md` và working AI-02.
+
+Không commit `report/latex/main.pdf`, `HW02_Report_Draft.pdf`, `main.synctex(busy)`, `node_modules` hay `SHOP/backend/database.sqlite`.
+
+Checklist human sign-off cuối:
+
+- Xác nhận thống kê `38/9/1/8/29/0` và 8 defect.
+- Kiểm tra ma trận đủ 38 case, 14 rule, 10 boundary và mọi evidence path.
+- Xác nhận residual risk cùng các nội dung chưa kiểm chứng.
+- Review nội dung và bố cục PDF, đặc biệt bốn trang Pool A.
+- Quyết định verdict cho `ART021`, `ART022`, `ART023`.
+- Sau khi chấp nhận, đổi closure sang `HUMAN APPROVED` rồi commit ba checkpoint Step 5–7.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: traceability, coverage wording, residual risk, report render, closure conclusion và phạm vi file commit.
+- AI-02: Đã thêm đúng một dòng `ART023` cho artifact logic Step 7; không đổi `ART021`/`ART022`.

@@ -1,4 +1,32 @@
 \chapter{Test Summary and Self-Assessment}
 
-% Report designed, executed, passed, failed, not-run, and blocked test counts;
-% bug count; demo links; and the 25/25/25/15/10 self-assessment table.
+\section{Kết quả hiện có của Pool A}
+
+Tại thời điểm chốt A-FR03, chỉ Pool A có execution result chi tiết. Không cộng
+smoke evidence hoặc nội dung chưa thực hiện của Pool B, C, D vào số liệu này.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lrrrrrrr}
+    \toprule
+    Phạm vi & Designed & Executed & Pass & Fail & Blocked & Not Run & Bug \\
+    \midrule
+    A-FR03 & 38 & 9 & 1 & 8 & 29 & 0 & 8 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Test summary đã kiểm chứng của Pool A.}
+\end{table}
+
+\section{Tự đánh giá tại checkpoint A-FR03}
+
+\begin{itemize}
+  \item Oracle, domain model, BVA và thiết kế test đã có traceability đầy đủ ở
+        mức thiết kế cho 14 rule.
+  \item Automation lưu machine-readable result, screenshot, trace và service log;
+        fixture có cleanup được xác nhận.
+  \item Defect/gap được tách theo bằng chứng; case bị chặn không bị ghi thành FAIL.
+  \item Hạn chế lớn nhất là execution coverage chỉ $23.68\%$ do thiếu confirm
+        password và expiry capability.
+  \item Điểm tự đánh giá tổng bài chưa được tính vì Pool B, C và D chưa có kết
+        quả chi tiết; việc gán điểm ở đây sẽ tạo số liệu không có căn cứ.
+\end{itemize}
