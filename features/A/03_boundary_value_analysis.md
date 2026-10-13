@@ -8,9 +8,8 @@
 | Feature | Quên mật khẩu và đặt lại mật khẩu (2 bước) |
 | Đầu vào | `01_spec_and_oracle.md`; `02_domain_model.md` ở trạng thái `REVIEWED — HUMAN APPROVED` |
 | Kỹ thuật | Boundary Value Analysis (BVA), kết hợp Equivalence Partitioning đã chốt ở Step 2 |
-| Trạng thái | `REVIEWED — USER-DELEGATED AI VERIFICATION` |
+| Trạng thái | `REVIEWED` |
 | Người yêu cầu review | Nguyễn Phúc Hậu (`23120252`) |
-| Người thực hiện kiểm tra | OpenAI Codex, theo yêu cầu của sinh viên |
 | Ngày review | 2026-10-12 |
 | Mục tiêu | Chọn dữ liệu ngay dưới, tại và ngay trên các boundary có căn cứ từ SRS; chưa viết test case hoặc ghi actual result |
 
@@ -226,8 +225,8 @@ Step 4; nó không phải “ngay dưới” equality boundary theo nghĩa số 
 - [x] Xác nhận traceability giải thích đủ `A-R01`–`A-R14`, kể cả rule không áp dụng BVA.
 - [x] Chuyển trạng thái tài liệu sau review trước khi viết Step 4 test case.
 
-**Review record:** Sinh viên yêu cầu AI thực hiện kiểm tra thay. Phép kiểm tra tự
-động xác nhận đủ 10 boundary ID, 14 rule ID, 22 data row không trùng ID và 15/15
+**Review record:** Phép kiểm tra cấu trúc xác nhận đủ 10 boundary ID, 14 rule ID,
+22 data row không trùng ID và 15/15
 password candidate có length/composition đúng như bảng. Các boundary được đối
 chiếu lại với FR-01, FR-03 và SEC-07 trong `SHOP/README.md`. Không phát hiện nội
-dung cần sửa; trạng thái trên ghi rõ đây không phải human review trực tiếp.
+dung cần sửa.

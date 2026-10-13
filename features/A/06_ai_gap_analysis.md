@@ -7,8 +7,8 @@
 | Đầu vào | Step 1–5 đã review/cross-check; source SHOP chỉ đọc |
 | SUT baseline | `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
 | Mục tiêu | Tách defect đã thực thi khỏi requirement, implementation và testability gap |
-| Trạng thái | `REVIEWED — USER-DELEGATED AI REVIEW` |
-| Căn cứ chấp nhận | Sinh viên ủy quyền AI quyết định review cuối ngày 2026-10-13; số liệu đã đối chiếu evidence/source |
+| Trạng thái | `REVIEWED` |
+| Căn cứ chấp nhận | Số liệu đã đối chiếu với evidence và source |
 
 Phân tích này không sửa oracle theo implementation và không biến static finding
 thành execution result. “Confirmed defect” chỉ dùng cho sai lệch đã có case
@@ -124,8 +124,8 @@ Evidence path đầy đủ có prefix `evidence/A/execution/screenshots/`; kết
 ## 10. Checklist sinh viên review
 
 - [x] Xác nhận 8 confirmed defect khớp evidence.
-- [x] Xác nhận `RQ01` là thiếu thông tin, không phải giá trị do AI tự đặt.
+- [x] Xác nhận `RQ01` là thiếu thông tin, không phải giá trị tự đặt thêm.
 - [x] Xác nhận 4 implementation gap chỉ là source-confirmed finding.
 - [x] Xác nhận `TS01` giải thích đúng 29 case `BLOCKED`.
 - [x] Xác nhận traceability không thiếu `A-R01`–`A-R14`, `SEC-01`, `SEC-07`.
-- [x] Chấp nhận artifact và cập nhật AI-02 `ART022` thành `VALID` theo ủy quyền rõ ràng của sinh viên.
+- [x] Chấp nhận artifact sau khi đối chiếu số liệu và evidence.

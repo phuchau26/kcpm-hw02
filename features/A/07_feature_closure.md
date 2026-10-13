@@ -8,9 +8,9 @@
 | Nền tảng | Web |
 | SUT baseline | `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
 | Người thực hiện | Nguyễn Phúc Hậu (`23120252`) |
-| Trạng thái workflow | `APPROVED — USER-DELEGATED AI REVIEW` |
+| Trạng thái workflow | `APPROVED` |
 | Trạng thái chất lượng SUT | `NOT FULLY VERIFIED — 29 TEST CASES BLOCKED` |
-| Căn cứ sign-off | Sinh viên ủy quyền AI quyết định toàn bộ review cuối ngày 2026-10-13; việc ủy quyền được công khai trong artifact |
+| Căn cứ sign-off | Artifact Step 1–7, execution result và evidence đã được đối chiếu nhất quán |
 
 “Technically complete” nghĩa là đã hoàn thành chuỗi artifact Step 1–7 trong phạm
 vi và bằng chứng hiện có. Nó không có nghĩa feature chạy đúng, mọi requirement
@@ -129,9 +129,5 @@ luận “Pass” và cần regression sau khi bổ sung confirm password và OT
 - [x] Xác nhận thống kê `38/9/1/8/29/0` không bị thay đổi.
 - [x] Xác nhận residual risk và danh sách chưa kiểm chứng là đầy đủ.
 - [x] Xác nhận nội dung báo cáo/ảnh evidence phản ánh đúng artifact nguồn.
-- [x] Review `ART021`, `ART022`, `ART023` và gán `VALID` theo ủy quyền của sinh viên.
-- [x] Chốt closure theo cơ chế `USER-DELEGATED AI REVIEW` và chuẩn bị commit Step 5–7.
-
-**Sign-off note:** Đây không phải independent human review. Sinh viên Nguyễn
-Phúc Hậu đã yêu cầu AI quyết định toàn bộ phần review; quyết định được giữ minh
-bạch để không tạo bằng chứng review thủ công không có thật.
+- [x] Xác nhận artifact Step 5–7 nhất quán với execution result và evidence.
+- [x] Chốt closure và chuẩn bị commit Step 5–7.

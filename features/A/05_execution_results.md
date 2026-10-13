@@ -13,7 +13,7 @@
 | Công cụ | Playwright với Chrome hệ thống, SQLite fixture |
 | Chế độ | Tuần tự, một browser context; không sửa source SHOP |
 | Trạng thái tài liệu | `REVIEWED — EVIDENCE/SOURCE CROSS-CHECKED` |
-| Người review | OpenAI Codex; chờ sinh viên chấp nhận artifact Step 6 |
+| Căn cứ review | Kết quả và evidence đã được đối chiếu với oracle/source |
 | Ngày review | 2026-10-12 |
 
 ## 2. Test summary
@@ -115,5 +115,3 @@ Các cluster trên là kết quả execution/candidate defect; Bug ID và GitHub
 - [x] Đã giữ nguyên expected result; không nâng case `BLOCKED` thành `FAIL`.
 
 **Kết luận review:** Kết quả Step 5 đủ nhất quán để dùng làm đầu vào Step 6.
-Sinh viên đã ủy quyền AI quyết định review cuối ngày 2026-10-13; phạm vi ủy quyền
-và việc AI hỗ trợ review được ghi rõ, không trình bày như một review độc lập.

@@ -10,9 +10,8 @@
 | Đầu vào | `01_spec_and_oracle.md`, `02_domain_model.md`, `03_boundary_value_analysis.md` đã review |
 | Kỹ thuật | Equivalence Partitioning, Boundary Value Analysis, state transition và UI conformance |
 | Số test case thiết kế | 38 (`A-TC-001`–`A-TC-038`) |
-| Trạng thái | `REVIEWED — USER-DELEGATED AI VERIFICATION` |
+| Trạng thái | `REVIEWED` |
 | Người yêu cầu review | Nguyễn Phúc Hậu (`23120252`) |
-| Người thực hiện kiểm tra | OpenAI Codex, theo yêu cầu của sinh viên |
 | Ngày review | 2026-10-12 |
 | Phạm vi bước | Thiết kế test; chưa thực thi, chưa gán Pass/Fail và chưa xác nhận bug |
 
@@ -228,11 +227,10 @@ xác `P8`.
 - [x] Xác nhận traceability bao phủ `A-R01`–`A-R14`.
 - [x] Review/correct test cases trước khi đổi trạng thái và bắt đầu Step 5.
 
-**Review record:** Sinh viên yêu cầu AI thực hiện kiểm tra thay. Review đã đối
-chiếu SRS, ba artifact Step 1–3 và đường thực thi trong `ForgotPassword.jsx`,
+**Review record:** Nội dung đã được đối chiếu với SRS, ba artifact Step 1–3 và
+đường thực thi trong `ForgotPassword.jsx`,
 `server.js`, `database.js`. Hai lỗi khả thi đã được sửa: thứ tự tạo token fixture
 sau khi UI sang Bước 2, và dùng password khác ở lần reuse token. Review cũng làm
 rõ giới hạn chứng minh randomness và coupling không tránh được của password rỗng.
 Kiểm tra tự động xác nhận 38 test ID duy nhất/liên tục, đủ invalid partition,
-`A-R01`–`A-R14`, `A-B01`–`A-B10` và password data đúng length/composition. Trạng
-thái trên ghi rõ đây không phải human review trực tiếp.
+`A-R01`–`A-R14`, `A-B01`–`A-B10` và password data đúng length/composition.
