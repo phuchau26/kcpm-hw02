@@ -1,0 +1,1189 @@
+{
+  "schemaVersion": 1,
+  "feature": "B-FR09",
+  "platform": "Web checkout",
+  "baseline": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "startedAt": "2026-10-13T21:30:34+07:00",
+  "endedAt": "2026-10-13T21:31:16+07:00",
+  "command": "npm test",
+  "environment": {
+    "os": "win32 x64",
+    "node": "v22.15.1",
+    "browser": "System Chromium channel: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "webUrl": "http://127.0.0.1:5173",
+    "apiUrl": "http://127.0.0.1:3000",
+    "timezone": "Asia/Saigon (UTC+07:00)",
+    "database": "isolated SQLite runtime fixture"
+  },
+  "conventions": {
+    "attempted": "PASS + FAIL + BLOCKED",
+    "executed": "PASS + FAIL"
+  },
+  "executionOrder": [
+    "B-TC-035",
+    "B-TC-036",
+    "B-TC-037",
+    "B-TC-038",
+    "B-TC-039",
+    "B-TC-001",
+    "B-TC-002",
+    "B-TC-003",
+    "B-TC-004",
+    "B-TC-009",
+    "B-TC-013",
+    "B-TC-014",
+    "B-TC-015",
+    "B-TC-016",
+    "B-TC-017",
+    "B-TC-018",
+    "B-TC-019",
+    "B-TC-020",
+    "B-TC-021",
+    "B-TC-022",
+    "B-TC-023",
+    "B-TC-024",
+    "B-TC-025",
+    "B-TC-026",
+    "B-TC-027",
+    "B-TC-028",
+    "B-TC-029",
+    "B-TC-030",
+    "B-TC-031",
+    "B-TC-040",
+    "B-TC-041",
+    "B-TC-010",
+    "B-TC-011",
+    "B-TC-012",
+    "B-TC-005",
+    "B-TC-006",
+    "B-TC-007",
+    "B-TC-008",
+    "B-TC-032",
+    "B-TC-033",
+    "B-TC-034"
+  ],
+  "summary": {
+    "designed": 41,
+    "attempted": 41,
+    "executed": 31,
+    "passed": 17,
+    "failed": 14,
+    "blocked": 10,
+    "notRun": 0
+  },
+  "fixtureChecks": [
+    {
+      "id": "B-PC-01",
+      "status": "PASS",
+      "actual": {
+        "duplicateRejected": true
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-02",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-03",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-04",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-05",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-06",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-07",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-08",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    },
+    {
+      "id": "B-PC-09",
+      "status": "PASS",
+      "actual": {
+        "acceptedByFixture": false
+      },
+      "timestamp": "2026-10-13T21:30:34+07:00"
+    }
+  ],
+  "results": [
+    {
+      "id": "B-TC-001",
+      "title": "CP10, T400, usage 0, JWT U1",
+      "coverage": "CA-V1, EX-V1, TH-V1, AU-V1, UL-V1, CT-V1, DA-V1, FA-V1, B-R11, B-R12, B-R14",
+      "expected": "Accept; discount `40,000 ₫`; final `360,000 ₫`; UI hiển thị hai giá trị",
+      "status": "FAIL",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        }
+      },
+      "reason": "Percent discount/final khác công thức SRS.",
+      "executionOrder": 6,
+      "timestamp": "2026-10-13T21:30:41+07:00",
+      "durationMs": 1025,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-001.png",
+        "evidence/B/execution/traces/B-TC-001.zip"
+      ]
+    },
+    {
+      "id": "B-TC-002",
+      "title": "CF50, T600, usage 0, JWT U1",
+      "coverage": "CT-V2, DA-V2, FA-V1, B-R11, B-R13, B-R14",
+      "expected": "Accept; discount `50,000 ₫`; final `550,000 ₫`",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 2,
+            "discount_amount": 50000,
+            "final_amount": 550000,
+            "message": "Áp dụng thành công! Giảm 50,000 ₫"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 7,
+      "timestamp": "2026-10-13T21:30:42+07:00",
+      "durationMs": 955,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-002.png",
+        "evidence/B/execution/traces/B-TC-002.zip"
+      ]
+    },
+    {
+      "id": "B-TC-003",
+      "title": "Code NOTEXIST; các state khác nominal",
+      "coverage": "CA-I1, EL-I1, B-R02",
+      "expected": "Reject; không tạo coupon discount; tổng không đổi bởi code này",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 404,
+          "body": {
+            "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 8,
+      "timestamp": "2026-10-13T21:30:43+07:00",
+      "durationMs": 895,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-003.png",
+        "evidence/B/execution/traces/B-TC-003.zip"
+      ]
+    },
+    {
+      "id": "B-TC-004",
+      "title": "COFF; các state khác nominal",
+      "coverage": "CA-I2, EL-I1, B-R02",
+      "expected": "Reject; không tạo coupon discount",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 404,
+          "body": {
+            "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 9,
+      "timestamp": "2026-10-13T21:30:44+07:00",
+      "durationMs": 891,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-004.png",
+        "evidence/B/execution/traces/B-TC-004.zip"
+      ]
+    },
+    {
+      "id": "B-TC-005",
+      "title": "Code \"\"",
+      "coverage": "CODE-U1, B-GAP-R07",
+      "expected": "Không có business verdict cho thao tác apply-empty; ghi actual và không công nhận discount không gắn coupon active",
+      "status": "BLOCKED",
+      "actual": {
+        "disabled": true,
+        "response": null
+      },
+      "reason": "SRS chưa quy định business verdict cho empty/whitespace và UI không cho submit.",
+      "executionOrder": 35,
+      "timestamp": "2026-10-13T21:31:10+07:00",
+      "durationMs": 756,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-005.png",
+        "evidence/B/execution/traces/B-TC-005.zip"
+      ]
+    },
+    {
+      "id": "B-TC-006",
+      "title": "Code \"   \"",
+      "coverage": "CODE-U2, B-GAP-R01, B-GAP-R07",
+      "expected": "Trim/empty response chưa được quy định; chỉ ghi actual, không đổi thành Pass/Fail business rule",
+      "status": "BLOCKED",
+      "actual": {
+        "disabled": true,
+        "response": null
+      },
+      "reason": "SRS chưa quy định business verdict cho empty/whitespace và UI không cho submit.",
+      "executionOrder": 36,
+      "timestamp": "2026-10-13T21:31:11+07:00",
+      "durationMs": 717,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-006.png",
+        "evidence/B/execution/traces/B-TC-006.zip"
+      ]
+    },
+    {
+      "id": "B-TC-007",
+      "title": "save10",
+      "coverage": "CODE-U3, B-GAP-R01",
+      "expected": "Case-folding chưa được quy định; ghi actual, không dùng UI uppercase behavior làm oracle",
+      "status": "BLOCKED",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        }
+      },
+      "reason": "SRS chưa quy định case-folding/trim; actual được ghi nhận nhưng không có oracle để Pass/Fail normalization.",
+      "executionOrder": 37,
+      "timestamp": "2026-10-13T21:31:12+07:00",
+      "durationMs": 901,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-007.png",
+        "evidence/B/execution/traces/B-TC-007.zip"
+      ]
+    },
+    {
+      "id": "B-TC-008",
+      "title": " SAVE10 ",
+      "coverage": "CODE-U3, B-GAP-R01",
+      "expected": "Surrounding-whitespace normalization chưa được quy định; ghi actual only",
+      "status": "BLOCKED",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        }
+      },
+      "reason": "SRS chưa quy định case-folding/trim; actual được ghi nhận nhưng không có oracle để Pass/Fail normalization.",
+      "executionOrder": 38,
+      "timestamp": "2026-10-13T21:31:13+07:00",
+      "durationMs": 911,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-008.png",
+        "evidence/B/execution/traces/B-TC-008.zip"
+      ]
+    },
+    {
+      "id": "B-TC-009",
+      "title": "CEXP, thời điểm hiện tại rõ ràng sau expiry",
+      "coverage": "EX-I1, B-R04",
+      "expected": "Reject vì hết hạn; không discount",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Mã giảm giá đã hết hạn"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 10,
+      "timestamp": "2026-10-13T21:30:45+07:00",
+      "durationMs": 879,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-009.png",
+        "evidence/B/execution/traces/B-TC-009.zip"
+      ]
+    },
+    {
+      "id": "B-TC-010",
+      "title": "now = E-δ",
+      "coverage": "B-B03-BEFORE, EX-V1, B-R03",
+      "expected": "Coupon còn hạn; có thể accept khi C1/C3/C4/C5 valid",
+      "status": "BLOCKED",
+      "actual": {
+        "controlledClock": false,
+        "page": "http://127.0.0.1:5173/checkout"
+      },
+      "reason": "SUT không có clock injection và requirement chưa chốt timezone/granularity; không thể đánh giá E−δ/E/E+δ tin cậy.",
+      "executionOrder": 32,
+      "timestamp": "2026-10-13T21:31:08+07:00",
+      "durationMs": 669,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-010.png",
+        "evidence/B/execution/traces/B-TC-010.zip"
+      ]
+    },
+    {
+      "id": "B-TC-011",
+      "title": "now = E",
+      "coverage": "B-B03-ON, EX-I1, B-R04",
+      "expected": "Reject vì điều kiện yêu cầu current time phải trước expiry",
+      "status": "BLOCKED",
+      "actual": {
+        "controlledClock": false,
+        "page": "http://127.0.0.1:5173/checkout"
+      },
+      "reason": "SUT không có clock injection và requirement chưa chốt timezone/granularity; không thể đánh giá E−δ/E/E+δ tin cậy.",
+      "executionOrder": 33,
+      "timestamp": "2026-10-13T21:31:09+07:00",
+      "durationMs": 648,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-011.png",
+        "evidence/B/execution/traces/B-TC-011.zip"
+      ]
+    },
+    {
+      "id": "B-TC-012",
+      "title": "now = E+δ",
+      "coverage": "B-B03-AFTER, EX-I1, B-R04",
+      "expected": "Reject vì hết hạn",
+      "status": "BLOCKED",
+      "actual": {
+        "controlledClock": false,
+        "page": "http://127.0.0.1:5173/checkout"
+      },
+      "reason": "SUT không có clock injection và requirement chưa chốt timezone/granularity; không thể đánh giá E−δ/E/E+δ tin cậy.",
+      "executionOrder": 34,
+      "timestamp": "2026-10-13T21:31:09+07:00",
+      "durationMs": 699,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-012.png",
+        "evidence/B/execution/traces/B-TC-012.zip"
+      ]
+    },
+    {
+      "id": "B-TC-013",
+      "title": "299,999 ₫",
+      "coverage": "B-B01-LOW, TH-I1, B-R06",
+      "expected": "Reject vì dưới minimum `300,000 ₫`",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 11,
+      "timestamp": "2026-10-13T21:30:47+07:00",
+      "durationMs": 877,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-013.png",
+        "evidence/B/execution/traces/B-TC-013.zip"
+      ]
+    },
+    {
+      "id": "B-TC-014",
+      "title": "300,000 ₫",
+      "coverage": "B-B01-ON, TH-V1, B-R05, B-R12, B-R14",
+      "expected": "Threshold hợp lệ; accept; discount `30,000 ₫`; final `270,000 ₫`",
+      "status": "FAIL",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+          }
+        }
+      },
+      "reason": "Tại M phải hợp lệ và đúng công thức.",
+      "executionOrder": 12,
+      "timestamp": "2026-10-13T21:30:48+07:00",
+      "durationMs": 897,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-014.png",
+        "evidence/B/execution/traces/B-TC-014.zip"
+      ]
+    },
+    {
+      "id": "B-TC-015",
+      "title": "300,001 ₫",
+      "coverage": "B-B01-HIGH, TH-V1, DA-U1, B-R05, B-GAP-R02",
+      "expected": "Threshold hợp lệ và coupon được accept; không assert integer rounding của discount/final trong case này",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -2700009,
+            "final_amount": 3000010,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 13,
+      "timestamp": "2026-10-13T21:30:49+07:00",
+      "durationMs": 927,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-015.png",
+        "evidence/B/execution/traces/B-TC-015.zip"
+      ]
+    },
+    {
+      "id": "B-TC-016",
+      "title": "Cart thật 400,000 ₫; thử sửa UI/body xuống 299,999 ₫",
+      "coverage": "TH-I2, EL-I6, B-R15",
+      "expected": "UI không cho sửa trực tiếp; Backend vẫn dùng `400,000 ₫`, discount `40,000 ₫`, final `360,000 ₫`",
+      "status": "FAIL",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Đơn hàng chưa đủ giá trị tối thiểu 300,000 ₫ để áp dụng mã này"
+          }
+        },
+        "editableInput": true,
+        "authoritativeCartTotal": 400000
+      },
+      "reason": "UI cho sửa total và Backend dùng total đã sửa thay vì recompute cart.",
+      "executionOrder": 14,
+      "timestamp": "2026-10-13T21:30:50+07:00",
+      "durationMs": 1212,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-016.png",
+        "evidence/B/execution/traces/B-TC-016.zip"
+      ]
+    },
+    {
+      "id": "B-TC-017",
+      "title": "Cart thật 299,999 ₫; body giả 400,000 ₫",
+      "coverage": "TH-I2, EL-I6, B-R06, B-R15",
+      "expected": "Backend recompute `299,999 ₫` và reject; giá trị client không bypass threshold",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        },
+        "authoritativeCartTotal": 299999,
+        "forgedTotal": 400000
+      },
+      "reason": "Backend tin total_amount client và cho bypass threshold.",
+      "executionOrder": 15,
+      "timestamp": "2026-10-13T21:30:51+07:00",
+      "durationMs": 359,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-017.png",
+        "evidence/B/execution/traces/B-TC-017.zip"
+      ]
+    },
+    {
+      "id": "B-TC-018",
+      "title": "Không Authorization; coupon/total/usage nominal",
+      "coverage": "AU-I1, EL-I4, B-R08",
+      "expected": "Reject; không áp dụng coupon",
+      "status": "FAIL",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 2,
+          "discount_amount": 50000,
+          "final_amount": 550000,
+          "message": "Áp dụng thành công! Giảm 50,000 ₫"
+        }
+      },
+      "reason": "Apply-coupon chấp nhận request không có/không hợp lệ/hết hạn auth.",
+      "executionOrder": 16,
+      "timestamp": "2026-10-13T21:30:52+07:00",
+      "durationMs": 389,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-018.png",
+        "evidence/B/execution/traces/B-TC-018.zip"
+      ]
+    },
+    {
+      "id": "B-TC-019",
+      "title": "JWT sai chữ ký",
+      "coverage": "AU-I2, EL-I4, B-R08",
+      "expected": "Reject; không áp dụng coupon",
+      "status": "FAIL",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 2,
+          "discount_amount": 50000,
+          "final_amount": 550000,
+          "message": "Áp dụng thành công! Giảm 50,000 ₫"
+        }
+      },
+      "reason": "Apply-coupon chấp nhận request không có/không hợp lệ/hết hạn auth.",
+      "executionOrder": 17,
+      "timestamp": "2026-10-13T21:30:52+07:00",
+      "durationMs": 406,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-019.png",
+        "evidence/B/execution/traces/B-TC-019.zip"
+      ]
+    },
+    {
+      "id": "B-TC-020",
+      "title": "JWT đã hết hạn",
+      "coverage": "AU-I2, EL-I4, B-R08",
+      "expected": "Reject; không áp dụng coupon",
+      "status": "FAIL",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 2,
+          "discount_amount": 50000,
+          "final_amount": 550000,
+          "message": "Áp dụng thành công! Giảm 50,000 ₫"
+        }
+      },
+      "reason": "Apply-coupon chấp nhận request không có/không hợp lệ/hết hạn auth.",
+      "executionOrder": 18,
+      "timestamp": "2026-10-13T21:30:53+07:00",
+      "durationMs": 403,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-020.png",
+        "evidence/B/execution/traces/B-TC-020.zip"
+      ]
+    },
+    {
+      "id": "B-TC-021",
+      "title": "Token U1; U1 đã dùng CP10 1/1; body giả user_id = U2 chưa dùng",
+      "coverage": "AU-I3, UL-I1, EL-I6, B-R07, B-R10",
+      "expected": "Identity lấy từ JWT `U1`; reject vì `U1` đã đạt limit",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        },
+        "tokenUser": 1,
+        "bodyUser": 2
+      },
+      "reason": "Backend dùng user_id từ body thay vì identity trong JWT.",
+      "executionOrder": 19,
+      "timestamp": "2026-10-13T21:30:53+07:00",
+      "durationMs": 414,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-021.png",
+        "evidence/B/execution/traces/B-TC-021.zip"
+      ]
+    },
+    {
+      "id": "B-TC-022",
+      "title": "Chưa đăng nhập, truy cập trực tiếp /checkout",
+      "coverage": "AU-I1, B-R08; FR-08",
+      "expected": "Không cho người chưa đăng nhập tiến hành checkout hoặc áp dụng coupon",
+      "status": "FAIL",
+      "actual": {
+        "pageAccessible": true,
+        "apply": {
+          "disabled": false,
+          "response": {
+            "status": 400,
+            "body": {
+              "error": "Đơn hàng chưa đủ giá trị tối thiểu 500,000 ₫ để áp dụng mã này"
+            }
+          }
+        }
+      },
+      "reason": "Người chưa đăng nhập truy cập checkout và áp dụng coupon được.",
+      "executionOrder": 20,
+      "timestamp": "2026-10-13T21:30:54+07:00",
+      "durationMs": 1078,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-022.png",
+        "evidence/B/execution/traces/B-TC-022.zip"
+      ]
+    },
+    {
+      "id": "B-TC-023",
+      "title": "CP10; 0/1",
+      "coverage": "B-B02-L1-LOW, UL-V1, B-R09",
+      "expected": "Còn lượt; accept nếu C1–C4 valid",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -5400000,
+            "final_amount": 6000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        },
+        "usageCount": 0
+      },
+      "reason": "",
+      "executionOrder": 21,
+      "timestamp": "2026-10-13T21:30:55+07:00",
+      "durationMs": 919,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-023.png",
+        "evidence/B/execution/traces/B-TC-023.zip"
+      ]
+    },
+    {
+      "id": "B-TC-024",
+      "title": "CP10; 1/1",
+      "coverage": "B-B02-L1-ON, UL-I1, B-R10",
+      "expected": "Reject vì đạt limit",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)"
+          }
+        },
+        "usageCount": 1
+      },
+      "reason": "",
+      "executionOrder": 22,
+      "timestamp": "2026-10-13T21:30:56+07:00",
+      "durationMs": 911,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-024.png",
+        "evidence/B/execution/traces/B-TC-024.zip"
+      ]
+    },
+    {
+      "id": "B-TC-025",
+      "title": "CP10; 2/1",
+      "coverage": "B-B02-L1-HIGH, UL-I1, B-R10",
+      "expected": "Reject vì vượt limit",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Bạn đã sử dụng mã này 1 lần (đã đạt giới hạn)"
+          }
+        },
+        "usageCount": 2
+      },
+      "reason": "",
+      "executionOrder": 23,
+      "timestamp": "2026-10-13T21:30:57+07:00",
+      "durationMs": 947,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-025.png",
+        "evidence/B/execution/traces/B-TC-025.zip"
+      ]
+    },
+    {
+      "id": "B-TC-026",
+      "title": "CL2; 1/2",
+      "coverage": "B-B02-L2-LOW, UL-V1, B-R09",
+      "expected": "Còn đúng một lượt; accept nếu C1–C4 valid",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 3,
+            "discount_amount": 100000,
+            "final_amount": 500000,
+            "message": "Áp dụng thành công! Giảm 100,000 ₫"
+          }
+        },
+        "usageCount": 1
+      },
+      "reason": "",
+      "executionOrder": 24,
+      "timestamp": "2026-10-13T21:30:59+07:00",
+      "durationMs": 870,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-026.png",
+        "evidence/B/execution/traces/B-TC-026.zip"
+      ]
+    },
+    {
+      "id": "B-TC-027",
+      "title": "CL2; 2/2",
+      "coverage": "B-B02-L2-ON, UL-I1, B-R10",
+      "expected": "Reject vì đạt limit",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)"
+          }
+        },
+        "usageCount": 2
+      },
+      "reason": "",
+      "executionOrder": 25,
+      "timestamp": "2026-10-13T21:31:00+07:00",
+      "durationMs": 907,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-027.png",
+        "evidence/B/execution/traces/B-TC-027.zip"
+      ]
+    },
+    {
+      "id": "B-TC-028",
+      "title": "CL2; 3/2",
+      "coverage": "B-B02-L2-HIGH, UL-I1, B-R10",
+      "expected": "Reject vì vượt limit",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Bạn đã sử dụng mã này 2 lần (đã đạt giới hạn)"
+          }
+        },
+        "usageCount": 3
+      },
+      "reason": "",
+      "executionOrder": 26,
+      "timestamp": "2026-10-13T21:31:01+07:00",
+      "durationMs": 1472,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-028.png",
+        "evidence/B/execution/traces/B-TC-028.zip"
+      ]
+    },
+    {
+      "id": "B-TC-029",
+      "title": "U1 có usage 1 cho CF50, usage 0 cho CP10; apply CP10",
+      "coverage": "UL-I2, UL-V1, B-R09, B-R10",
+      "expected": "Chỉ đếm đúng cặp user–coupon; `CP10` vẫn eligible",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 1,
+            "discount_amount": -3600000,
+            "final_amount": 4000000,
+            "message": "Áp dụng thành công! Giảm 10%"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 27,
+      "timestamp": "2026-10-13T21:31:02+07:00",
+      "durationMs": 937,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-029.png",
+        "evidence/B/execution/traces/B-TC-029.zip"
+      ]
+    },
+    {
+      "id": "B-TC-030",
+      "title": "CPC1, value 1%; total 400,000 ₫",
+      "coverage": "B-B04-ABOVE, DV-V1, DA-V1, FA-V1, B-R12, B-R14",
+      "expected": "Accept; discount `4,000 ₫`; final `396,000 ₫`",
+      "status": "FAIL",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 8,
+            "discount_amount": 0,
+            "final_amount": 400000,
+            "message": "Áp dụng thành công! Giảm 1%"
+          }
+        }
+      },
+      "reason": "Percent lower-bound formula sai.",
+      "executionOrder": 28,
+      "timestamp": "2026-10-13T21:31:03+07:00",
+      "durationMs": 883,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-030.png",
+        "evidence/B/execution/traces/B-TC-030.zip"
+      ]
+    },
+    {
+      "id": "B-TC-031",
+      "title": "CFC1, value 1 ₫; total 600,000 ₫",
+      "coverage": "B-B04-ABOVE, DV-V1, DA-V2, FA-V1, B-R13, B-R14",
+      "expected": "Accept; discount `1 ₫`; final `599,999 ₫`",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 9,
+            "discount_amount": 1,
+            "final_amount": 599999,
+            "message": "Áp dụng thành công! Giảm 1 ₫"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 29,
+      "timestamp": "2026-10-13T21:31:04+07:00",
+      "durationMs": 903,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-031.png",
+        "evidence/B/execution/traces/B-TC-031.zip"
+      ]
+    },
+    {
+      "id": "B-TC-032",
+      "title": "Percent coupon tạo fractional VND",
+      "coverage": "DA-U1, B-GAP-R02",
+      "expected": "Formula toán học áp dụng, nhưng integer rounding verdict chưa xác định; ghi actual, không gán Pass/Fail rounding",
+      "status": "BLOCKED",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 20,
+          "discount_amount": -900009,
+          "final_amount": 1000010,
+          "message": "Áp dụng thành công! Giảm 10%"
+        }
+      },
+      "reason": "SRS không quy định integer rounding cho fractional VND; actual được ghi nhưng không có rounding oracle.",
+      "executionOrder": 39,
+      "timestamp": "2026-10-13T21:31:14+07:00",
+      "durationMs": 397,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-032.png",
+        "evidence/B/execution/traces/B-TC-032.zip"
+      ]
+    },
+    {
+      "id": "B-TC-033",
+      "title": "Percent value 101, các state khác valid",
+      "coverage": "DV-U1, B-B07, B-GAP-R03",
+      "expected": "Maximum/cap/reject chưa được quy định; không dùng behavior hiện tại làm oracle",
+      "status": "BLOCKED",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 21,
+          "discount_amount": -40000000,
+          "final_amount": 40400000,
+          "message": "Áp dụng thành công! Giảm 101%"
+        }
+      },
+      "reason": "SRS không quy định percent maximum/cap/reject.",
+      "executionOrder": 40,
+      "timestamp": "2026-10-13T21:31:15+07:00",
+      "durationMs": 407,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-033.png",
+        "evidence/B/execution/traces/B-TC-033.zip"
+      ]
+    },
+    {
+      "id": "B-TC-034",
+      "title": "Fixed discount lớn hơn trusted total",
+      "coverage": "FA-U1, B-B07, B-GAP-R03",
+      "expected": "Cap/floor/negative-final behavior chưa được quy định; ghi actual only",
+      "status": "BLOCKED",
+      "actual": {
+        "status": 200,
+        "body": {
+          "success": true,
+          "coupon_id": 22,
+          "discount_amount": 700000,
+          "final_amount": -100000,
+          "message": "Áp dụng thành công! Giảm 700,000 ₫"
+        }
+      },
+      "reason": "SRS không quy định cap/floor khi fixed discount lớn hơn total.",
+      "executionOrder": 41,
+      "timestamp": "2026-10-13T21:31:15+07:00",
+      "durationMs": 387,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-034.png",
+        "evidence/B/execution/traces/B-TC-034.zip"
+      ]
+    },
+    {
+      "id": "B-TC-035",
+      "title": "Format total, discount và final",
+      "coverage": "UI-MONEY-V1/I1, B-R16",
+      "expected": "Mọi giá trị tiền dùng separator hàng nghìn và ký hiệu `₫`",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 2,
+            "discount_amount": 50000,
+            "final_amount": 550000,
+            "message": "Áp dụng thành công! Giảm 50,000 ₫"
+          }
+        },
+        "requiredValues": [
+          "600.000 ₫",
+          "50.000 ₫",
+          "550.000 ₫"
+        ],
+        "visibleText": "Xác Nhận Đơn Hàng\nSản phẩm:\nFixture product x 1 — 600.000 ₫\nTổng tiền thanh toán (VND):\nMã Giảm Giá\nÁp dụng\n\n✅ Áp dụng thành công! Giảm 50,000 ₫\n\nTiết kiệm: 50.000 ₫\n\nThành tiền: 550.000 ₫\n\nTổng thanh toán: 550.000 ₫\nXác Nhận Thanh Toán"
+      },
+      "reason": "",
+      "executionOrder": 1,
+      "timestamp": "2026-10-13T21:30:36+07:00",
+      "durationMs": 992,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-035.png",
+        "evidence/B/execution/traces/B-TC-035.zip"
+      ]
+    },
+    {
+      "id": "B-TC-036",
+      "title": "Heading và breadcrumb",
+      "coverage": "UI-H1, UI-BREAD, B-R17",
+      "expected": "Checkout có đúng một `<h1>` mô tả trang và có breadcrumb",
+      "status": "FAIL",
+      "actual": {
+        "h1Count": 0,
+        "breadcrumbCount": 0
+      },
+      "reason": "Checkout thiếu đúng một h1 và/hoặc breadcrumb.",
+      "executionOrder": 2,
+      "timestamp": "2026-10-13T21:30:37+07:00",
+      "durationMs": 729,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-036.png",
+        "evidence/B/execution/traces/B-TC-036.zip"
+      ]
+    },
+    {
+      "id": "B-TC-037",
+      "title": "Màu nút “Áp dụng” và checkout",
+      "coverage": "UI-COLOR, B-R18",
+      "expected": "Các positive action dùng màu xanh dương",
+      "status": "FAIL",
+      "actual": {
+        "apply": "rgb(249, 115, 22)",
+        "checkout": "rgb(22, 163, 74)"
+      },
+      "reason": "Positive action không dùng màu xanh dương.",
+      "executionOrder": 3,
+      "timestamp": "2026-10-13T21:30:38+07:00",
+      "durationMs": 699,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-037.png",
+        "evidence/B/execution/traces/B-TC-037.zip"
+      ]
+    },
+    {
+      "id": "B-TC-038",
+      "title": "Tab order",
+      "coverage": "UI-TAB, B-R18",
+      "expected": "Focus đi trên-xuống, trái-phải và tới mọi control tương tác",
+      "status": "PASS",
+      "actual": {
+        "sequence": [
+          "A:EShop:",
+          "A:Giỏ hàng:",
+          "A:Chào, Test User:",
+          "BUTTON:Thoát:",
+          "INPUT::",
+          "INPUT::Nhập mã giảm giá...",
+          "BUTTON:Áp dụng:",
+          "BUTTON:Xác Nhận Thanh Toán:",
+          "BODY:EShopGiỏ hàngChào, Test UserThoátXác Nhận Đơn HàngSản phẩm:Fixture product x 1 — 600.000 ₫Tổng tiền thanh toán (VND):Mã Giảm GiáÁp dụngTổng thanh toán: 600.000 ₫Xác Nhận Thanh Toán© 2026 EShop SUT. Dành cho mục đích kiểm thử.:",
+          "A:EShop:",
+          "A:Giỏ hàng:",
+          "A:Chào, Test User:"
+        ]
+      },
+      "reason": "",
+      "executionOrder": 4,
+      "timestamp": "2026-10-13T21:30:39+07:00",
+      "durationMs": 977,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-038.png",
+        "evidence/B/execution/traces/B-TC-038.zip"
+      ]
+    },
+    {
+      "id": "B-TC-039",
+      "title": "Gây lỗi bằng NOTEXIST",
+      "coverage": "UI-ERROR, B-R19",
+      "expected": "Error hiển thị trong trang phía trên action apply/submit liên quan",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 404,
+          "body": {
+            "error": "Mã giảm giá không tồn tại hoặc đã bị vô hiệu hóa"
+          }
+        },
+        "positions": {
+          "buttonTop": 388,
+          "errorTop": 438
+        }
+      },
+      "reason": "Error hiển thị dưới action Áp dụng thay vì phía trên.",
+      "executionOrder": 5,
+      "timestamp": "2026-10-13T21:30:40+07:00",
+      "durationMs": 879,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-039.png",
+        "evidence/B/execution/traces/B-TC-039.zip"
+      ]
+    },
+    {
+      "id": "B-TC-040",
+      "title": "CMIN0, total 100 ₫, usage 0",
+      "coverage": "B-B05-ON, DV-V1, B-R05, B-R13, B-R14",
+      "expected": "Minimum config 0 hợp lệ; accept; fixed discount `1 ₫`; final `99 ₫`",
+      "status": "PASS",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 200,
+          "body": {
+            "success": true,
+            "coupon_id": 6,
+            "discount_amount": 1,
+            "final_amount": 99,
+            "message": "Áp dụng thành công! Giảm 1 ₫"
+          }
+        }
+      },
+      "reason": "",
+      "executionOrder": 30,
+      "timestamp": "2026-10-13T21:31:06+07:00",
+      "durationMs": 932,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-040.png",
+        "evidence/B/execution/traces/B-TC-040.zip"
+      ]
+    },
+    {
+      "id": "B-TC-041",
+      "title": "CMIN1, trusted total 1 ₫, usage 0",
+      "coverage": "B-B05-HIGH, TH-V1, B-R05, B-R13, B-R14",
+      "expected": "Config 1 hợp lệ và total bằng minimum; accept; discount `1 ₫`; final `0 ₫`",
+      "status": "FAIL",
+      "actual": {
+        "disabled": false,
+        "response": {
+          "status": 400,
+          "body": {
+            "error": "Đơn hàng chưa đủ giá trị tối thiểu 1 ₫ để áp dụng mã này"
+          }
+        }
+      },
+      "reason": "Lower-bound minimum/equality behavior khác oracle.",
+      "executionOrder": 31,
+      "timestamp": "2026-10-13T21:31:07+07:00",
+      "durationMs": 900,
+      "evidence": [
+        "evidence/B/execution/screenshots/B-TC-041.png",
+        "evidence/B/execution/traces/B-TC-041.zip"
+      ]
+    }
+  ]
+}

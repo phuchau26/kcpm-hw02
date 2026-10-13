@@ -44,9 +44,14 @@ __pycache__/
 *.out
 *.run.xml
 *.synctex.gz
+*.synctex*
 *.toc
 *.xdv
 _minted-*/
+
+# Local LaTeX review renders (submission archive is produced separately)
+report/latex/HW02_Report_Draft.pdf
+report/latex/main.pdf
 
 # Temporary and backup files
 *.bak
