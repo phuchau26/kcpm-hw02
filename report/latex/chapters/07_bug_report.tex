@@ -1,4 +1,31 @@
 \chapter{Bug Report}
 
-% Summarize verified defects and link each entry to its Markdown report,
-% GitHub issue, reproduction evidence, and screenshot.
+\section{Pool A --- A-FR03}
+
+Tám defect được xác nhận từ tám test case thất bại và được nhóm theo root cause;
+không tạo một bug riêng cho mỗi observation hoặc mỗi case bị chặn.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.16\textwidth}p{0.49\textwidth}p{0.12\textwidth}p{0.12\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    A-BUG-001 & OTP chỉ có 4 chữ số & Major & High \\
+    A-BUG-002 & Email sai format vẫn gọi API & Minor & High \\
+    A-BUG-003 & Lỗi dùng alert thay vì inline & Minor & Medium \\
+    A-BUG-004 & Thiếu Step Indicator và quay lại login & Minor & Medium \\
+    A-BUG-005 & Label bắt buộc thiếu dấu sao & Minor & Low \\
+    A-BUG-006 & Thiếu trường xác nhận mật khẩu & Major & High \\
+    A-BUG-007 & Không có thẻ \texttt{h1} & Minor & Low \\
+    A-BUG-008 & Nút reset dùng sai màu & Minor & Low \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tổng hợp defect của A-FR03 sau Step 5.}
+\end{table}
+
+Chi tiết bước tái hiện, expected/actual result, source root cause và evidence
+được lưu trong \path{bugs/A-FR03_bug_report.md}. Tám bug đã được xác nhận theo
+cơ chế sinh viên ủy quyền AI review; 29 case \texttt{BLOCKED} không được đếm
+thành defect mới.

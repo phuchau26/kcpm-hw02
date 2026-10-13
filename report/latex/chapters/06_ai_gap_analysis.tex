@@ -1,4 +1,18 @@
 \chapter{AI Gap Analysis}
 
-% Compare original AI outputs with the reviewed test suite and discovered bugs.
-% Record omissions, corrections, supporting sources, and plausible causes.
+\section{Pool A --- A-FR03}
+
+Việc đối chiếu đặc tả đã review, kết quả thực thi và source xác định tám defect
+đã có evidence. Ngoài ra còn một requirement gap về duration và quy tắc biên
+của OTP expiry, bốn implementation gap bổ sung được xác nhận bằng static source
+review, và một testability gap do Bước 2 không có trường xác nhận mật khẩu.
+
+Testability gap này làm 29 test case từ \texttt{A-TC-005} đến
+\texttt{A-TC-033} không thể thực hiện đúng procedure Web. Các case vẫn được giữ
+ở trạng thái \texttt{BLOCKED}; kết quả mong đợi không bị thay đổi theo hành vi
+của SUT. Riêng \texttt{A-TC-014} còn thiếu OTP lifetime chính thức và expiry
+state trong schema.
+
+Chi tiết phân loại và traceability requirement--boundary--test--result--gap nằm
+trong \path{features/A/06_ai_gap_analysis.md}. Nội dung đã được review theo cơ
+chế sinh viên ủy quyền AI quyết định.
