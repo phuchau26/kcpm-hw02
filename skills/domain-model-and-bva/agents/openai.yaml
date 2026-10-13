@@ -1,0 +1,4 @@
+interface:
+  display_name: "Domain Model and BVA"
+  short_description: "Model input domains and boundary values"
+  default_prompt: "Use $domain-model-and-bva to derive a domain model and boundary analysis from the reviewed specification."

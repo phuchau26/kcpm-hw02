@@ -1,0 +1,4 @@
+interface:
+  display_name: "Domain Testing Feature Workflow"
+  short_description: "Coordinate feature-level domain testing stages"
+  default_prompt: "Use $domain-testing-feature-workflow to identify and complete the next valid testing step for this feature."

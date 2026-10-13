@@ -1,0 +1,4 @@
+interface:
+  display_name: "Playwright Domain Test Runner"
+  short_description: "Automate domain tests with auditable evidence"
+  default_prompt: "Use $playwright-domain-test-runner to automate the approved test cases and collect reproducible evidence."
