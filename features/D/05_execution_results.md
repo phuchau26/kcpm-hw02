@@ -4,7 +4,7 @@
 
 | Trường | Giá trị |
 |---|---|
-| Trạng thái | `PENDING HUMAN REVIEW — NATIVE iOS SUPPLEMENT` |
+| Trạng thái | `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED` |
 | Người review | Nguyễn Phúc Hậu (`23120252`) |
 | Thời điểm xác nhận | 2026-10-15 20:06:05 +07:00 |
 | Test design | `features/D/04_test_cases.md` — `REVIEWED` |

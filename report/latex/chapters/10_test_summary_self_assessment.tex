@@ -24,7 +24,12 @@ mới không double-count năm Backend defect của B được tái hiện trên
   \label{tab:overall-test-summary}
 \end{table}
 
-Quy ước \texttt{Executed = PASS + FAIL}. Execution coverage tổng là
+Theo quy ước báo cáo của bài làm, \texttt{PASS} nghĩa là actual result khớp
+oracle, \texttt{FAIL} là sai khác có thể tái hiện, \texttt{BLOCKED} là thiếu
+oracle/điều kiện thực thi, và \texttt{NOT RUN} là chưa thực hiện. Cách ghi nhận
+giữ riêng trạng thái thực thi với kết luận defect và bám yêu cầu nộp kết quả của
+đề HW02 \cite{hw02_assignment_2026}. Quy ước \texttt{Executed = PASS + FAIL}.
+Execution coverage tổng là
 \(97/177=54.80\%\); PASS trong case có verdict là \(55/97=56.70\%\). Tám mươi
 case BLOCKED chiếm \(45.20\%\) tổng thiết kế, nên các tỷ lệ trên không chứng
 minh chất lượng SUT đạt yêu cầu.
@@ -52,8 +57,12 @@ minh chất lượng SUT đạt yêu cầu.
 \end{table}
 
 Mức 80/100 phản ánh việc workflow và traceability đã hoàn tất cùng evidence bổ
-sung trên iOS thật, đồng thời trừ điểm cho 80 case BLOCKED, 42 FAIL, native
-coverage chưa đầy đủ và chưa có demo video công khai cho Agent Skills.
+sung trên iOS thật và demo video đã được cung cấp, đồng thời trừ điểm cho 80
+case BLOCKED, 42 FAIL và native coverage chưa đầy đủ.
+
+Demo video ``KTPM - CQ2023/31 Demo AI skill đã dùng trong bài tập tuần 2'' được
+công bố tại \url{https://youtu.be/i2ECLTh1AEU}; metadata đi kèm nằm trong
+\path{demo/README.md}.
 
 \begin{itemize}
   \item Cả bốn Pool đã có chuỗi artifact từ oracle, Domain Testing/BVA, test
@@ -67,8 +76,8 @@ coverage chưa đầy đủ và chưa có demo video công khai cho Agent Skills
   \item D có thêm 9 screenshot trên thiết bị iOS thật, chứng minh kết nối LAN và
         một số trạng thái UI/keyboard. Android, accessibility, orientation và
         native automation chưa được kiểm chứng.
-  \item Tổng 42 FAIL và 80 BLOCKED cho thấy residual risk còn cao; cần sửa lỗi,
-        chốt requirement gap và regression trước khi nộp kết luận chất lượng.
+  \item Tổng 42 FAIL và 80 BLOCKED cho thấy residual risk còn cao; việc sửa lỗi,
+        chốt requirement gap và regression là điều kiện để chấp nhận chất lượng.
   \item Step 7 của D đã được sign-off ở mức workflow; điều này không đồng nghĩa
         SUT pass hoặc coverage 100\%.
 \end{itemize}

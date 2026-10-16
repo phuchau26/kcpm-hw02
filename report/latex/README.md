@@ -11,4 +11,4 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-Replace all bracketed placeholders and comments with verified HW02 content before submission.
+The report sources contain the verified HW02 content and are compiled together with the bibliography and appendices.

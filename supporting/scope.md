@@ -11,7 +11,7 @@
 | Thư mục SUT | `SHOP/` |
 | Nhánh SUT | `main` |
 | Commit SUT | `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
-| Nguồn phân công | Sinh viên xác nhận theo phân công của nhóm |
+| Nguồn phân công | Sinh viên xác nhận trực tiếp theo phân công của nhóm tại interaction `S001-I003` trong `ai/prompt_log.md` |
 
 ## 2. Các feature được phân công
 
@@ -23,7 +23,7 @@ feature sau, mỗi pool một feature.
 | A | `A-FR03` | FR-03 — Quên mật khẩu và đặt lại mật khẩu gồm hai bước | Web | Sinh viên đã xác nhận |
 | B | `B-FR09` | FR-09 — Discount Coupon | Web checkout | Sinh viên đã xác nhận |
 | C | `C-FR14` | FR-14 — Quản lý danh mục | Admin Web | Sinh viên đã xác nhận |
-| D | `D-M09` | Mobile Feature 9 — Discount Coupon được kiểm thử trên ứng dụng Mobile | React Native / Expo Mobile | Sinh viên đã xác nhận; vẫn cần bằng chứng tên feature chính thức từ bảng phân công hoặc Moodle |
+| D | `D-M09` | Mobile Feature 9 — Discount Coupon được kiểm thử trên ứng dụng Mobile | React Native / Expo Mobile | Đã xác nhận theo phân công nhóm; nguồn lưu tại `ai/prompt_log.md`, interaction `S001-I003` |
 
 `B-FR09` và `D-M09` sử dụng cùng nhóm quy tắc nghiệp vụ của coupon nhưng được
 thực hiện trên hai nền tảng khác nhau. Hai phạm vi này được xem là hai phần phân
@@ -101,7 +101,10 @@ lại đã được kiểm thử.
 - Đề bài PDF không liệt kê chi tiết từng feature của Pool D.
 - `README.md` của SUT nhóm các chức năng Mobile dưới FR-20 và không nêu coupon trong danh sách tóm tắt.
 - `frontend-mobile/App.js` có trạng thái coupon, thao tác áp dụng, request đến `/apply-coupon`, phần hiển thị lỗi/kết quả và thành tiền sau giảm. Điều này chứng minh có đường thực thi trong implementation nhưng source code không thể tự làm test oracle cho expected result.
-- Tên “Mobile Feature 9 — Discount Coupon” được xác định theo phân công nhóm và đường thực thi hiện có trong Mobile client.
+- Tên “Mobile Feature 9 — Discount Coupon” được sinh viên xác nhận trực tiếp
+  theo phân công nhóm tại `ai/prompt_log.md`, interaction `S001-I003`, đồng thời
+  có đường thực thi tương ứng trong Mobile client. Không có ảnh Moodle được cung
+  cấp, nên báo cáo không tuyên bố sở hữu một bằng chứng Moodle độc lập.
 
 **Không bao gồm, trừ khi cần làm điều kiện tiên quyết**
 
@@ -119,16 +122,15 @@ lại đã được kiểm thử.
 | `SHOP/setup_guide.md` | Cách chuẩn bị môi trường và điều kiện chạy Web/Mobile |
 | `SHOP/frontend-mobile/App.js` | Khảo sát implementation và xác định đường kiểm thử; không dùng làm test oracle duy nhất |
 | Slide bài giảng | Phương pháp, thuật ngữ và quy tắc chọn test case cho Domain Testing và Boundary Value Analysis |
-| Bảng phân công/Moodle/xác nhận giảng viên | Tên chính thức của Mobile feature và bằng chứng không trùng phân công |
+| Xác nhận phân công nhóm của sinh viên (`ai/prompt_log.md`, `S001-I003`) | Căn cứ tên Mobile Feature 9 và phạm vi cá nhân; không thay thế oracle nghiệp vụ |
 
-Nếu hai nguồn chính thức mâu thuẫn, phải ghi xung đột vào `assumptions.md` và làm
-rõ trước khi đặt expected result chính thức.
+Các mâu thuẫn giữa nguồn chính thức được ghi nhận như requirement gap; expected
+result chỉ dựa trên rule có căn cứ.
 
 ## 5. Nội dung chung nằm trong phạm vi
 
 - Domain Testing và Boundary Value Analysis cho cả bốn phạm vi feature/nền tảng.
 - Giải thích phương pháp theo từng bước và traceability từ quy tắc đến domain, boundary và test case.
-- Kiểm tra tính chính xác của mọi nội dung trước khi nộp.
 - Trạng thái thực thi và evidence thật đối với các test case đã chạy.
 - Gap analysis và ghi nhận trung thực test case ở trạng thái `Not Run` hoặc `Blocked`.
 - Bug đã được kiểm chứng phải có trong báo cáo Markdown và GitHub Issues của nhóm, kèm screenshot.

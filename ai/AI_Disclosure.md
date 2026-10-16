@@ -15,6 +15,10 @@ SRS, API contract, source, `results.json`, screenshot, trace và service log.
 Các test không đủ oracle hoặc điều kiện thực thi được giữ là BLOCKED; expected
 result không bị thay đổi để hợp thức hóa hành vi của SUT.
 
-AI không thay đổi source `SHOP`, không tạo evidence giả và không thay thế quyết
-định cuối cùng của sinh viên. Các hạn chế còn lại, đặc biệt native Android/iOS
-chưa được kiểm chứng, được công bố trong feature closure và Conclusion.
+AI đã hỗ trợ thay đổi phần cấu hình Mobile trong source `SHOP`: nâng Expo SDK
+từ baseline 54 lên 57 và chuyển API endpoint sang cấu hình phù hợp mạng LAN để
+chạy bổ sung trên thiết bị iOS thật. Các thay đổi này diễn ra sau lần thực thi
+canonical bằng Expo Web; vì vậy chúng không được dùng để sửa hoặc thay thế các
+verdict PASS/FAIL/BLOCKED của baseline. Chín ảnh iOS thật chỉ là evidence bổ
+sung. AI không tạo evidence giả và không thay thế quyết định cuối cùng của sinh
+viên; Android, native automation và native accessibility vẫn chưa được kiểm chứng.

@@ -252,7 +252,7 @@ state vì các miền đó không có ordered numeric boundary được oracle x
 | `D-R15` | `D-B01` với trusted total và trust-negative `D-TH-I2` từ Step 2 |
 | `D-R16` | `D-TR-03`, `D-TR-04`, success/error UI |
 | `D-R17`–`D-R20` | `D-EP-22`–`25` |
-| `D-GAP-R01` | Scope condition, không tạo data boundary |
+| `D-GAP-R01` | Provenance phạm vi đã xác nhận tại `S001-I003`; không tạo data boundary |
 | `D-GAP-R02` | `D-EP-04`–`08`, `D-PC-01`–`05` |
 | `D-GAP-R03`, `D-GAP-R04` | `D-TR-01`–`08` |
 | `D-GAP-R05` | `D-EP-16`–`20`; không assert exact status/text |

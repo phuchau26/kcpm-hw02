@@ -105,11 +105,11 @@ Supporting check `B-PC-01`–`B-PC-09` chỉ bảo vệ fixture/data integrity, 
 - `B-IG-01`, `B-IG-02` là source risk, không phải confirmed defect bổ sung.
 - `B-TG-01` và `B-BC-01`–`B-BC-03` giải thích đúng 10 case BLOCKED.
 
-## 6. Kiểm tra tính toàn vẹn
+## 6. Kết quả kiểm tra tính toàn vẹn
 
-- [ ] Có đúng 41 Test ID, từ `B-TC-001` đến `B-TC-041`.
-- [ ] Bao phủ `B-R01`–`B-R19` ở mức thiết kế.
-- [ ] Truy vết đủ `B-B01`–`B-B08` và `B-PC-01`–`B-PC-09`.
-- [ ] Truy vết đủ `B-BUG-001`–`B-BUG-009`, `B-GAP-R01`–`B-GAP-R07`.
-- [ ] Giữ nguyên `17 PASS / 14 FAIL / 10 BLOCKED / 0 NOT RUN`.
-- [ ] Không coi source risk hoặc case BLOCKED là confirmed defect.
+- Có đúng 41 Test ID, từ `B-TC-001` đến `B-TC-041`.
+- Bao phủ `B-R01`–`B-R19` ở mức thiết kế.
+- Truy vết đủ `B-B01`–`B-B08` và `B-PC-01`–`B-PC-09`.
+- Truy vết đủ `B-BUG-001`–`B-BUG-009`, `B-GAP-R01`–`B-GAP-R07`.
+- Thống kê giữ nguyên `17 PASS / 14 FAIL / 10 BLOCKED / 0 NOT RUN`.
+- Source risk và case BLOCKED không được tính là confirmed defect.

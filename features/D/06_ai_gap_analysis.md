@@ -15,7 +15,7 @@
 | Mobile-specific/environment gap | 2 (`D-MG-01`, `D-MG-02`) |
 | Testability gap | 2 (`D-TG-01`, `D-TG-02`) |
 | Blocked condition | 6 nhóm, ảnh hưởng đúng 20 case |
-| Trạng thái | `PENDING HUMAN REVIEW — NATIVE iOS SUPPLEMENT` |
+| Trạng thái | `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED` |
 | Người review | Nguyễn Phúc Hậu (`23120252`) |
 | Thời điểm xác nhận | 2026-10-15 20:06:05 +07:00 |
 
@@ -55,7 +55,7 @@ Chi tiết reproduction, severity, priority và evidence nằm tại
 
 | Gap | Nội dung chưa quy định | Case ảnh hưởng | Kết luận Step 6 |
 |---|---|---|---|
-| `D-GAP-R01` | Bằng chứng chính thức rằng Mobile Feature 9 là Discount Coupon | Toàn feature | Scope condition; chưa làm thay đổi oracle FR-09 |
+| `D-GAP-R01` | Nguồn phân công ngoài lời xác nhận trực tiếp của sinh viên/nhóm chưa được đính kèm | Toàn feature | Scope đã được xác nhận tại `prompt_log.md`, interaction `S001-I003`; đây là giới hạn provenance, không làm thay đổi oracle FR-09 |
 | `D-GAP-R02` | Case sensitivity, trim, uppercase, code length/charset | `003`–`006` | Observation có thật; không verdict normalization |
 | `D-GAP-R03` | Disabled/loading/double-tap/timeout trong lúc apply | `003`, `004`, `036` | Không gọi behavior hiện tại là đúng requirement |
 | `D-GAP-R04` | Reset result/error khi sửa code | `037`–`039` | Actual reset được ghi; không PASS/FAIL |

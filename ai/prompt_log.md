@@ -3452,3 +3452,350 @@ Working tree hiện sạch đối với file được theo dõi; chỉ còn các
 
 - Trạng thái: Không áp dụng; thao tác Git theo yêu cầu trực tiếp.
 - AI-02: Không áp dụng.
+
+## S001-I056 — Hoàn thiện README bắt buộc
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 10:16:42 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART044` |
+| AI-02 | Có — `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/07_feature_closure.md
+
+## Open tabs:
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/B/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/C/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/D/07_feature_closure.md
+- README.md: SHOP/README.md
+
+## My request:
+3. Hoàn thiện README bắt buộc
+   [README hiện tại](D:/HCMUS/KCPM/HW2/submission-src/README.md) mới chỉ mô tả cấu trúc. Theo đề, README phải có:
+
+- Bảng self-assessment.
+- Test summary của bốn feature.
+- Designed, Executed, PASS, FAIL, Not Executed/BLOCKED.
+- Số bug.
+- Demo video.
+- Link report và tài liệu quan trọng.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thiện [README.md](D:/HCMUS/KCPM/HW2/submission-src/README.md) với:
+
+- Bảng self-assessment `80/100`.
+- Test summary của bốn feature và tổng số liệu: 177 Designed, 97 Executed, 55 PASS, 42 FAIL, 80 BLOCKED, 0 NOT RUN.
+- 24 bug mới, không đếm trùng 5 lỗi Backend mà Pool D dẫn chiếu từ Pool B.
+- Liên kết đến báo cáo Markdown/PDF, tài liệu từng feature, bug report, evidence hỗ trợ và hồ sơ AI.
+- Mô tả cấu trúc repository và nguyên tắc đóng gói.
+
+Mục duy nhất chưa thể chốt là demo video: repository hiện không có video hoặc URL thật, nên README ghi rõ `CHƯA CUNG CẤP` thay vì tạo link giả. Bạn cần gửi URL có quyền truy cập cho giảng viên trước khi nộp; tôi có thể cập nhật ngay khi có link.
+
+Đã kiểm tra toàn bộ link nội bộ trong README đều trỏ tới file hiện có. Lưu ý `report/latex/main.pdf` đang bị `.gitignore` bỏ qua, vì vậy cần chủ động đưa PDF này vào gói ZIP cuối.
+
+Tương tác đã được ghi tại `S001-I056`; AI-02 có artifact `ART044` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: bảng số liệu, self-assessment, liên kết tài liệu và nội dung Demo video.
+- AI-02: `ART044` — `PENDING HUMAN REVIEW`.
+
+## S001-I057 — Hoàn thiện biểu mẫu AI-03
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 10:23:56 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART045` |
+| AI-02 | Có — `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/07_feature_closure.md
+
+## Open tabs:
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/B/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/C/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/D/07_feature_closure.md
+- README.md: SHOP/README.md
+
+## My request:
+4. Hoàn thiện AI-03
+   [AI-03](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-03_AI_Disclosure_Form_Working.docx) gần như còn trống:
+
+- Chưa chọn AI Use Category.
+- Chưa tick stage sử dụng AI.
+- Chưa điền công cụ, prompt chính, phần AI đóng góp và cách kiểm chứng.
+- Còn 22 vùng gạch trống.
+- Chưa có chữ ký/ngày chốt cuối.
+  Đây là biểu mẫu disclosure bắt buộc.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thiện [AI-03_AI_Disclosure_Form_Working.docx](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-03_AI_Disclosure_Form_Working.docx):
+
+- Chọn `Category 4 — AI-assisted task completion with human evaluation` theo mức sử dụng thực tế.
+- Tick các stage: brainstorming, outlining, drafting, feedback, revision, coding, data analysis và các công việc hỗ trợ khác; không tick visual design.
+- Điền OpenAI Codex, model, reasoning effort, ba prompt tiêu biểu nguyên văn và tham chiếu tới full prompt log.
+- Mô tả đầy đủ phần AI đóng góp, gồm Domain/BVA, test case, automation, execution, defect/gap, traceability, báo cáo, Agent Skills và cấu hình Mobile/Expo.
+- Điền cách kiểm chứng bằng SRS, source, API contract, schema, `results.json`, screenshot, trace, service log, Git history và PDF render.
+- Điền citation, ngày chốt `2026-10-16` và xóa toàn bộ 22 vùng gạch trống; kiểm tra còn `0` placeholder dạng gạch dưới.
+
+Tôi không ký thay phần Statement of Honesty. Ô chữ ký hiện ghi `PENDING — student must sign after final review`; bạn cần mở file, đọc lại disclosure và tự ký trước khi nộp.
+
+Lưu ý: đề HW02 ghi AI Policy là `Open` nhưng không ánh xạ trực tiếp sang số Category 1–5. Category 4 được chọn theo cách sử dụng thực tế và căn cứ kế hoạch hiện có; nếu Moodle/giảng viên công bố category khác thì phải ưu tiên thông báo đó.
+
+Đã kiểm tra DOCX mở và đọc được bằng `python-docx`, các trường course/student vẫn nguyên vẹn. Tương tác được ghi tại `S001-I057`; AI-02 có artifact `ART045` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: Category 4, phạm vi AI đóng góp, ba prompt tiêu biểu, phương pháp verification và chữ ký cá nhân.
+- AI-02: `ART045` — `PENDING HUMAN REVIEW`.
+
+## S001-I058 — Chốt AI-02 và bổ sung nguồn reasoning
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 14:15:00 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không tạo ID mới — hoàn thiện chính audit artifact hiện có |
+| AI-02 | Không thêm dòng mới để tránh audit tự tham chiếu và tự mở lại trạng thái `PENDING` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/07_feature_closure.md
+
+## Open tabs:
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/B/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/C/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/D/07_feature_closure.md
+- README.md: SHOP/README.md
+
+## My request:
+5. Chốt AI-02
+   [AI-02](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-02_AI_Audit_Report_Working.docx) còn:
+
+- ART043 ở trạng thái PENDING HUMAN REVIEW.
+- Sample row của template chưa được xóa.
+- Reasoning của các artifact thực tế hầu như không dẫn section ISTQB/course slide/RFC, trong khi template yêu cầu nguồn cho cột này.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã chốt [AI-02_AI_Audit_Report_Working.docx](D:/HCMUS/KCPM/HW2/submission-src/ai/AI-02_AI_Audit_Report_Working.docx):
+
+- Xóa hoàn toàn 2 sample row của template.
+- Bổ sung nguồn reasoning cho đủ 33 artifact, chủ yếu từ ISTQB CTFL v4.0.1 §1.4.1, §1.4.4, §4.2.1, §4.2.2, §4.2.4, §5.3, §5.5, §6.1 và các mục tương ứng của đề HW02.
+- Chuyển `ART043` sang `VALID` sau khi đối chiếu 9 ảnh iOS, mapping exact/modified/observation, baseline deviation và thống kê chuẩn.
+- Chốt thống kê AI-02: 33 artifact, 31 `VALID` (93,94%), 0 `INVALID`, 2 `INCOMPLETE` (6,06%), 0 `PENDING`.
+- `ART044` là `INCOMPLETE` vì README chưa có YouTube demo URL.
+- `ART045` là `INCOMPLETE` vì AI-03 cần xác nhận numeric category và chữ ký của bạn.
+- Điền Conclusion 134 từ, thay Mandatory Disclosure mẫu bằng nội dung đúng với lịch sử sử dụng AI, hoàn thiện metadata xác nhận và ngày `2026-10-16`.
+
+Đã đồng bộ thống kê vào [AI_Audit_Report.md](D:/HCMUS/KCPM/HW2/submission-src/ai/AI_Audit_Report.md), [main_report.md](D:/HCMUS/KCPM/HW2/submission-src/report/main_report.md) và chương LaTeX AI Audit. Full Prompt Log PDF và báo cáo chính đã được render lại sau khi thêm `S001-I058`.
+
+Tôi không ký thay bạn. Ô chữ ký AI-02 vẫn ghi `PENDING — student must sign after final review`; đây là thao tác cá nhân cuối cùng. Tương tác `S001-I058` chỉ được ghi vào prompt log, không tạo thêm Artifact ID trong AI-02 vì audit chính lần chốt AI-02 sẽ tạo vòng lặp tự tham chiếu và làm xuất hiện một dòng `PENDING` mới.
+
+Nhóm file tạm `ai/raw/*.txt` xuất hiện từ một tiến trình khác trong lúc làm việc và không được tôi sửa hoặc xóa. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: AI-02 không còn verdict `PENDING`; còn hai artifact `INCOMPLETE` được ghi rõ điều kiện hoàn tất.
+- Cần sinh viên thực hiện: thêm YouTube demo URL, xác nhận Category 4 và tự ký AI-02/AI-03.
+- AI-02: Không thêm dòng artifact mới vì đây là thao tác closure của chính biểu mẫu audit.
+
+## S001-I059 — Sửa lỗi nội dung, đồng bộ native evidence và bổ sung citation
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 14:22:13 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART046` |
+| AI-02 | Có — `PENDING HUMAN REVIEW`; `ART043` giữ `VALID` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/07_feature_closure.md
+
+## Open tabs:
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/B/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/C/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/D/07_feature_closure.md
+- README.md: SHOP/README.md
+
+## My request:
+Các lỗi nội dung cần sửa
+
+- [AI Disclosure (line 18)](D:/HCMUS/KCPM/HW2/submission-src/ai/AI_Disclosure.md:18) ghi “AI không thay đổi source SHOP”, nhưng AI đã hỗ trợ nâng Expo SDK và sửa API endpoint. Cần khai báo chính xác rằng source thay đổi phục vụ cấu hình native, còn canonical execution dùng baseline cũ.
+- [Phụ lục Disclosure (line 13)](D:/HCMUS/KCPM/HW2/submission-src/report/latex/appendix/disclosure.tex:13) vẫn ghi Pool D chưa có native evidence, trái với 9 ảnh iOS thật.
+- [Bug Report LaTeX (line 121)](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/07_bug_report.tex:121) bị mất dấu \ trước bốn lệnh texttt, nên PDF hiện hiển thị extttB-BUG-001.
+- [AI Gap Analysis LaTeX (line 18)](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/06_ai_gap_analysis.tex:18) và [Bug Report LaTeX (line 30)](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/07_bug_report.tex:30) còn câu “sinh viên ủy quyền AI quyết định/review”. Nên thay bằng mô tả đối chiếu evidence và xác nhận của sinh viên.
+- Pool D và ART043 vẫn còn trạng thái PENDING HUMAN REVIEW.
+- Các checklist traceability của Pool B, C, D vẫn chưa tick dù các kiểm tra tương ứng đã hoàn thành.
+- [environment.md (line 141)](D:/HCMUS/KCPM/HW2/submission-src/supporting/environment.md:141) còn checklist “trước khi thực thi” chưa hoàn tất dù execution đã xong.
+- [scope.md (line 27)](D:/HCMUS/KCPM/HW2/submission-src/supporting/scope.md:27) vẫn ghi thiếu bằng chứng chính thức rằng Mobile Feature 9 là Discount Coupon. Nên thêm ảnh hoặc nguồn phân công từ Moodle/nhóm.
+- references.bib đang trống và toàn báo cáo không có citation ISTQB/course material. Với mục tiêu 85+, nên dẫn nguồn cho EP, BVA và cách phân loại test result.
+- [AI Critique](D:/HCMUS/KCPM/HW2/submission-src/ai/AI_Critique.md) đạt 294 từ, đúng giới hạn 200–300, nhưng nội dung vẫn nói theo bối cảnh chưa có native evidence; nên cập nhật mà vẫn giữ dưới 300 từ.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã sửa xong toàn bộ nhóm lỗi nội dung.
+
+- AI Disclosure và phụ lục LaTeX đã khai báo đúng việc nâng Expo SDK/sửa API endpoint cho native supplement; canonical verdict vẫn thuộc baseline Expo Web cũ.
+- Pool D đã chuyển sang `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED`; 9 ảnh iOS vẫn chỉ là evidence bổ sung, không được mô tả thành native automation/full coverage.
+- `ART043` được kiểm tra trong AI-02 và vẫn là `VALID`.
+- Đã sửa đủ bốn lệnh `\texttt`, bỏ cách diễn đạt “ủy quyền AI quyết định/review”, và thay bằng đối chiếu requirement/source/evidence cùng xác nhận của sinh viên.
+- Checklist traceability B/C/D và checklist môi trường đã được chốt; không bịa phiên bản Chrome còn thiếu.
+- Scope Pool D dẫn đúng xác nhận phân công nhóm tại `prompt_log.md`, interaction `S001-I003`; không dựng ảnh Moodle không tồn tại.
+- Đã thêm bibliography và citation cho EP/BVA cùng quy ước báo cáo kết quả, dựa trên [ISTQB CTFL v4.0.1 chính thức](https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf) và đề HW02.
+- AI Critique đã cập nhật 9 ảnh iOS thật và còn 288 từ, đúng giới hạn 200–300.
+
+Kiểm tra cuối: XeLaTeX + BibTeX render thành công [main.pdf](D:/HCMUS/KCPM/HW2/submission-src/report/latex/main.pdf) 108 trang; không còn citation undefined, lỗi LaTeX hay checklist chưa tick trong các file được nêu. `git diff --check` sạch.
+
+Theo skill ghi nhận AI, lượt sửa artifact này tạo `ART046` ở trạng thái `PENDING HUMAN REVIEW`; sau khi bạn xem PDF và nội dung sửa, cần đổi nó sang verdict cuối. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: disclosure về source change/native supplement, scope provenance, citation/bibliography, trạng thái Pool D và bản PDF 108 trang.
+- AI-02: `ART046` — `PENDING HUMAN REVIEW`; `ART043` — `VALID`.
+
+## S001-I060 — Bổ sung demo video vào gói nộp
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 15:09:35 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART044` — cập nhật artifact hiện có |
+| AI-02 | Có — chuyển từ `INCOMPLETE` sang `VALID` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/skills/domain-model-and-bva/SKILL.md
+
+## Open tabs:
+- SKILL.md: submission-src/skills/domain-model-and-bva/SKILL.md
+- execution-contract.md: submission-src/skills/playwright-domain-test-runner/references/execution-contract.md
+- SKILL.md: submission-src/skills/playwright-domain-test-runner/SKILL.md
+- scope.md: submission-src/supporting/scope.md
+- environment.md: submission-src/supporting/environment.md
+
+## My request:
+tôi đã quay xong video, bạn hãy tạo file và gắn link này vào phần nộp bài: [https://youtu.be/i2ECLTh1AEU](https://youtu.be/i2ECLTh1AEU)
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã thêm demo video vào gói nộp:
+
+- Tạo [demo/README.md](D:/HCMUS/KCPM/HW2/submission-src/demo/README.md) chứa thông tin sinh viên và link YouTube.
+- Gắn link trực tiếp vào [README.md](D:/HCMUS/KCPM/HW2/submission-src/README.md), báo cáo Markdown và phần Self-assessment trong LaTeX.
+- Xóa các câu nói rằng chưa có demo video.
+- Chuyển `ART044` từ `INCOMPLETE` sang `VALID`. AI-02 hiện có 32 `VALID`, 1 `INCOMPLETE` (`ART045`) và 1 `PENDING` (`ART046`).
+- Ghi tương tác `S001-I060`, tái tạo Full AI Prompt Log PDF và render lại báo cáo thành công, không có lỗi LaTeX/citation.
+
+Công cụ kiểm tra web không đọc được metadata/quyền riêng tư của video. Trước khi nộp, bạn nên mở [video](https://youtu.be/i2ECLTh1AEU) bằng cửa sổ ẩn danh để chắc rằng giảng viên xem được mà không cần đăng nhập hoặc xin quyền.
+
+Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `VALID` cho điều kiện thiếu YouTube demo URL của `ART044`.
+- Cần sinh viên tự kiểm tra: quyền xem video bằng cửa sổ ẩn danh.
+- AI-02: cập nhật dòng `ART044`, không tạo Artifact ID mới.
+
+## S001-I061 — Đồng bộ tiêu đề video demo
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 15:11:21 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART044` — cập nhật artifact hiện có |
+| AI-02 | Có — giữ `VALID` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/skills/domain-model-and-bva/SKILL.md
+
+## Open tabs:
+- SKILL.md: submission-src/skills/domain-model-and-bva/SKILL.md
+- execution-contract.md: submission-src/skills/playwright-domain-test-runner/references/execution-contract.md
+- SKILL.md: submission-src/skills/playwright-domain-test-runner/SKILL.md
+- scope.md: submission-src/supporting/scope.md
+- environment.md: submission-src/supporting/environment.md
+
+## My request:
+tiêu đề của video là \
+**KTPM - CQ2023/31 Demo AI skill đã dùng trong bài tập tuần 2**
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã đồng bộ tiêu đề **“KTPM - CQ2023/31 Demo AI skill đã dùng trong bài tập tuần 2”** vào:
+
+- [demo/README.md](D:/HCMUS/KCPM/HW2/submission-src/demo/README.md)
+- [README.md](D:/HCMUS/KCPM/HW2/submission-src/README.md)
+- [report/main_report.md](D:/HCMUS/KCPM/HW2/submission-src/report/main_report.md)
+- Chương Test Summary/Self-assessment của báo cáo LaTeX
+
+`ART044` vẫn giữ `VALID`; không tạo Artifact ID mới. Prompt log và PDF báo cáo đã được cập nhật, render không có lỗi LaTeX/citation. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `VALID`.
+- AI-02: cập nhật chính dòng `ART044`; không tạo dòng mới.

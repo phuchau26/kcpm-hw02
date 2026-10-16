@@ -26,9 +26,10 @@ không tạo một bug riêng cho mỗi observation hoặc mỗi case bị chặ
 \end{table}
 
 Chi tiết bước tái hiện, expected/actual result, source root cause và evidence
-được lưu trong \path{bugs/A-FR03_bug_report.md}. Tám bug đã được xác nhận theo
-cơ chế sinh viên ủy quyền AI review; 29 case \texttt{BLOCKED} không được đếm
-thành defect mới.
+được lưu trong \path{bugs/A-FR03_bug_report.md}. Tám bug được xác nhận sau khi
+đối chiếu requirement, source, actual result và evidence; sinh viên đã kiểm tra
+kết quả phân nhóm. Hai mươi chín case \texttt{BLOCKED} không được đếm thành
+defect mới.
 
 \section{Pool B --- B-FR09}
 
@@ -118,6 +119,6 @@ Chi tiết reproduction, source root cause và evidence nằm trong
 thành defect; tổng defect mới của Pool D là hai, tránh double-count năm lỗi
 Backend đã tính ở Pool B.
 
-Ảnh iOS thật bổ sung corroborate 	exttt{B-BUG-001}. Quan sát mất mạng ở
-	exttt{D-TC-042} được giữ là implementation gap 	exttt{D-IG-04}, không chuyển
-case 	exttt{BLOCKED} thành defect vì chưa có network-message oracle.
+Ảnh iOS thật bổ sung củng cố \texttt{B-BUG-001}. Quan sát mất mạng ở
+\texttt{D-TC-042} được giữ là implementation gap \texttt{D-IG-04}, không chuyển
+case \texttt{BLOCKED} thành defect vì chưa có network-message oracle.

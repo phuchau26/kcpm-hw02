@@ -116,11 +116,11 @@ coverage 100%: các composite có Update vẫn phụ thuộc requirement gap.
 - `C-TG-01` đã được runtime adapter giảm thiểu, không tạo BLOCKED ở lần chạy này.
 - `C-BC-01`–`C-BC-06` cộng đúng `4+4+5+5+2+1=21` case BLOCKED.
 
-## 6. Kiểm tra tính toàn vẹn
+## 6. Kết quả kiểm tra tính toàn vẹn
 
-- [ ] Có đúng 48 Test ID, từ `C-TC-001` đến `C-TC-048`.
-- [ ] Bao phủ `C-R01`–`C-R21` ở mức thiết kế.
-- [ ] Truy vết đủ `C-B01`–`C-B08`.
-- [ ] Truy vết đủ `C-BUG-001`–`C-BUG-005` và `C-GAP-R01`–`C-GAP-R09`.
-- [ ] Giữ nguyên `18 PASS / 9 FAIL / 21 BLOCKED / 0 NOT RUN`.
-- [ ] Không coi source finding hoặc case BLOCKED là confirmed defect.
+- Có đúng 48 Test ID, từ `C-TC-001` đến `C-TC-048`.
+- Bao phủ `C-R01`–`C-R21` ở mức thiết kế.
+- Truy vết đủ `C-B01`–`C-B08`.
+- Truy vết đủ `C-BUG-001`–`C-BUG-005` và `C-GAP-R01`–`C-GAP-R09`.
+- Thống kê giữ nguyên `18 PASS / 9 FAIL / 21 BLOCKED / 0 NOT RUN`.
+- Source finding và case BLOCKED không được tính là confirmed defect.

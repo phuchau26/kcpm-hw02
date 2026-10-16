@@ -115,13 +115,13 @@ trực tiếp từ đồng hồ hệ điều hành xuất hiện trong ảnh.
 Native supplement gồm 9 ảnh tại `evidence/D/native-ios/screenshots/`, liên quan
 `D-TC-001`, `002`, `003`, `008`, `009`, `010`, `012`, `022` và `042`.
 
-### Quan sát cần đối chiếu ở bước phân tích đặc tả
+### Quan sát từ smoke evidence
 
-- Ảnh reset password hiển thị OTP `7870` và nhãn “Mã OTP (4 số)”. Cần đối chiếu với
-  requirement/oracle của FR-03 trước khi kết luận đây là sai lệch hay bug.
+- Ảnh reset password hiển thị OTP `7870` và nhãn “Mã OTP (4 số)”. Sai lệch này
+  được đối chiếu với requirement/oracle và ghi nhận trong Pool A.
 - Ảnh Mobile có dòng Console `POST http://localhost:3000/api/login 401 (Unauthorized)`
-  trong khi UI checkout vẫn hiển thị `Test User` và coupon được áp dụng. Cần tái hiện,
-  tách request liên quan và kiểm tra log trước khi kết luận.
+  trong khi UI checkout vẫn hiển thị `Test User` và coupon được áp dụng. Request
+  này chưa được cô lập nên không được dùng làm defect evidence.
 - Ảnh quản lý danh mục chỉ chứng minh trang truy cập được và dữ liệu hiển thị; chưa
   chứng minh các thao tác CRUD hoạt động.
 - Hai ảnh coupon thể hiện một trạng thái áp dụng thành công trên UI, nhưng chưa thay
@@ -136,13 +136,19 @@ Native supplement gồm 9 ảnh tại `evidence/D/native-ios/screenshots/`, liê
 - Xác nhận của sinh viên rằng cả bốn nền tảng đã từng khởi chạy thành công.
 - Năm screenshot smoke test gốc do sinh viên chụp ngày 2026-10-09.
 
-## 10. Việc cần cập nhật trước khi thực thi test case
+## 10. Kết quả xác nhận môi trường
 
-- [ ] Ghi trình duyệt và phiên bản thực tế.
-- [x] Ghi URL/port nhìn thấy của Web, Admin Web, Expo Web và Backend API.
-- [x] Ghi môi trường Mobile thực tế là Expo Web với Chrome device emulation.
-- [ ] Ghi test account bằng định danh không nhạy cảm; không lưu mật khẩu.
-- [ ] Ghi trạng thái reset/seed test data.
-- [x] Mở đúng bốn feature và lưu smoke evidence riêng cho từng pool.
-- [x] Ghi `Accessible`; chưa đánh Pass/Fail cho test case chưa thiết kế.
-- [ ] Đối chiếu requirement của OTP và điều tra request `401` quan sát trong Console.
+- Client thực thi là Playwright Chromium cho automation và Chrome cho smoke
+  test. Phiên bản Chrome của smoke test không được lưu và được công bố là giới
+  hạn metadata.
+- URL/port thực tế của Web, Admin Web, Expo Web và Backend API đã được ghi nhận.
+- Baseline Mobile là Expo Web với Chrome device emulation; native supplement sử
+  dụng một thiết bị iOS thật.
+- Test account chỉ được ghi bằng định danh không nhạy cảm; mật khẩu không nằm
+  trong repository.
+- Automation dùng SQLite fixture cô lập và reset/seed theo runner của từng pool;
+  smoke test dùng dữ liệu runtime có sẵn.
+- Bốn feature có smoke evidence riêng và trạng thái `Accessible` được tách khỏi
+  verdict của test case.
+- OTP đã được đối chiếu với oracle/source trong Pool A. Request `401` ở smoke
+  Console không được dùng làm defect vì chưa cô lập được request liên quan.

@@ -8,18 +8,18 @@ vi loading đều có thể bị biến thành expected result nếu prompt khô
 phân biệt business rule, observed behavior và requirement gap. AI cũng từng tạo
 checklist và ghi chú quá dài, khiến nội dung kỹ thuật bị lẫn với hướng dẫn review.
 
-AI không tự phát hiện đầy đủ giới hạn của môi trường thực thi. Pool D chạy trên
-Expo Web với Mobile viewport, nhưng kết quả đó không chứng minh hành vi native
-Android/iOS, soft keyboard, accessibility hoặc kết nối thiết bị thật. Chỉ sau
-khi đối chiếu source, runtime và evidence, phạm vi này mới được ghi đúng thành
-testability gap và blocked condition. Tương tự, một test FAIL không luôn tương
-ứng với một bug; nhiều case có thể cùng xuất phát từ một root cause ở Backend.
+AI không tự phát hiện đầy đủ giới hạn của môi trường thực thi. Baseline Pool D
+chạy trên Expo Web với Mobile viewport; sau đó chín ảnh từ một thiết bị iOS thật
+đã bổ sung quan sát về luồng coupon, soft keyboard và lỗi kết nối. Tuy nhiên ảnh
+thủ công không thay thế native automation, không bao phủ Android, rotation hay
+screen reader, và không được dùng để sửa verdict canonical. Chỉ khi đối chiếu
+source, runtime và evidence, phạm vi này mới được phân loại đúng thành coverage
+giới hạn, testability gap và blocked condition. Tương tự, một test FAIL không
+luôn tương ứng với một bug; nhiều case có thể cùng một root cause ở Backend.
 
-Nguyên nhân của các hạn chế trên là AI tối ưu theo thông tin trong prompt và có
-xu hướng hoàn thiện khoảng trống bằng giả định hợp lý. Vì vậy, chất lượng cộng
-tác phụ thuộc trực tiếp vào việc cung cấp hierarchy nguồn, yêu cầu traceability
-và cấm sửa oracle để phù hợp SUT. Bài học quan trọng nhất của tôi là dùng AI để
-mở rộng và kiểm tra phân tích, không giao cho AI quyền quyết định sự thật. Mọi
-rule, verdict và defect phải quay lại SRS, source và evidence có thể tái hiện.
+AI tối ưu theo thông tin trong prompt nên có xu hướng lấp khoảng trống bằng giả
+định hợp lý. Vì vậy, tôi phải quy định hierarchy nguồn, traceability và cấm sửa
+oracle theo SUT. Tôi dùng AI để mở rộng, kiểm tra phân tích; mọi rule, verdict và
+defect vẫn phải quay lại SRS, source và evidence có thể tái hiện.
 
-\textit{Word count: 294.}
+\textit{Word count: 288.}

@@ -6,7 +6,7 @@
 |---|---|
 | Mã phạm vi | `D-M09` |
 | Feature | Mobile Feature 9 — Discount Coupon |
-| Đầu vào | `01_spec_and_oracle.md` ở trạng thái `REVIEWED — 2 OPEN CONDITIONS` |
+| Đầu vào | `01_spec_and_oracle.md` ở trạng thái `REVIEWED — 1 OPEN BUSINESS CONDITION; SCOPE CONFIRMED` |
 | SUT baseline | Commit `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
 | Kỹ thuật | Domain modeling và Equivalence Partitioning; chưa khóa boundary value |
 | Trạng thái | `REVIEWED` |
@@ -324,7 +324,7 @@ design coverage, không phải execution coverage.
 
 | Gap ID | Domain/partition ảnh hưởng | Quyết định mô hình |
 |---|---|---|
-| `D-GAP-R01` | Scope D-M09 | Giữ open condition; không ảnh hưởng phép tính/eligibility model |
+| `D-GAP-R01` | Provenance phạm vi D-M09 | Đã có xác nhận trực tiếp tại `S001-I003`; không ảnh hưởng phép tính/eligibility model |
 | `D-GAP-R02` | `D-DM-01`, `02`; `D-CD-U1`–`U3` | Không phân loại normalize/dispatch thành PASS/FAIL |
 | `D-GAP-R03` | `D-DM-17`; `D-AS-0`–`2`; `D-UI-U1` | State test là probe nếu chưa có rule bổ sung |
 | `D-GAP-R04` | `D-DM-21`; `D-UI-U2` | Edit/reset transition unresolved |

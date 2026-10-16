@@ -12,7 +12,7 @@
 | Thống kê nguồn | 50 designed; 19 PASS; 11 FAIL; 20 BLOCKED; 0 NOT RUN |
 | Root-cause group | 7 nhóm: 5 defect Backend đã có canonical record ở Pool B và 2 defect riêng của Mobile |
 | Defect mới của Pool D | 2 (`D-BUG-001`, `D-BUG-002`) |
-| Trạng thái tài liệu | `PENDING HUMAN REVIEW — NATIVE iOS SUPPLEMENT` |
+| Trạng thái tài liệu | `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED` |
 | Người review | Nguyễn Phúc Hậu (`23120252`) |
 | Thời điểm xác nhận | 2026-10-15 20:06:05 +07:00 |
 

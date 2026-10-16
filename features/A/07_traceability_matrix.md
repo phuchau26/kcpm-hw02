@@ -118,11 +118,11 @@ còn lại bị chặn.
 | `A-GAP-TS01` | `A-TC-005`–`033`; shared blocker evidence |
 | `A-BLOCK-02` | `A-TC-014`; requirement/schema/fixture expiry |
 
-## 6. Kiểm tra tính toàn vẹn
+## 6. Kết quả kiểm tra tính toàn vẹn
 
-- [x] Có đúng 38 Test ID, từ `A-TC-001` đến `A-TC-038`.
-- [x] Bao phủ `A-R01`–`A-R14` ở mức thiết kế.
-- [x] Ghi rõ trạng thái `A-B01`–`A-B10`, kể cả hai boundary không được SRS quy định.
-- [x] Truy vết đủ `A-BUG-001`–`A-BUG-008`.
-- [x] Không đổi `PASS/FAIL/BLOCKED` từ `results.json`.
-- [x] Không coi static finding là execution FAIL.
+- Có đúng 38 Test ID, từ `A-TC-001` đến `A-TC-038`.
+- Bao phủ `A-R01`–`A-R14` ở mức thiết kế.
+- Ghi rõ trạng thái `A-B01`–`A-B10`, kể cả hai boundary không được SRS quy định.
+- Truy vết đủ `A-BUG-001`–`A-BUG-008`.
+- `PASS/FAIL/BLOCKED` khớp `results.json`.
+- Static finding không được tính là execution FAIL.

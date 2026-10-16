@@ -9,7 +9,7 @@
 | Nền tảng được phân công | React Native / Expo Mobile checkout |
 | SUT baseline | Commit `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
 | Kỹ thuật dự kiến | `Domain Testing`, sau đó `Boundary Value Analysis` |
-| Trạng thái tài liệu | `REVIEWED — 2 OPEN CONDITIONS` |
+| Trạng thái tài liệu | `REVIEWED — 1 OPEN BUSINESS CONDITION; SCOPE CONFIRMED` |
 | Thời điểm review | 2026-10-14 16:25:57 +07:00 |
 | Phạm vi bước | Chốt business rule, input, precondition, test oracle, hành vi Mobile quan sát được và requirement gap; chưa thiết kế hoặc thực thi test case |
 
@@ -156,14 +156,14 @@ FR-09/API contract xác nhận mới được dùng để đưa ra verdict nghi�
 | `D-R17` | Hiển thị tiền | Dùng ký hiệu `₫` và phân cách hàng nghìn nhất quán | FR-21 | `CONFIRMED` |
 | `D-R18` | Ngôn ngữ giao diện | Nội dung UI dùng tiếng Việt, trừ thuật ngữ kỹ thuật chuẩn | FR-21 | `CONFIRMED` |
 | `D-R19` | Nút hành động tích cực | Dùng màu xanh dương | FR-21 | `CONFIRMED`; áp dụng cho Mobile theo wording chung |
-| `D-R20` | Validation coupon thất bại | Lỗi xuất hiện phía trên nút action/submit liên quan | FR-22 | `CONFIRMED`; ánh xạ native form cần human review |
+| `D-R20` | Validation coupon thất bại | Lỗi xuất hiện phía trên nút action/submit liên quan | FR-22 | `CONFIRMED`; ánh xạ native form chưa có oracle riêng |
 
 Không tạo rule xác nhận cho disabled khi code rỗng, loading indicator, chống double
 tap, `trim/uppercase`, hay reset result khi edit vì SRS chưa mô tả các behavior đó.
 
 ## 8. API contract và điểm không khớp tài liệu
 
-| Hạng mục | Contract/oracle | Điểm cần lưu ý cho Mobile |
+| Hạng mục | Contract/oracle | Đặc thù Mobile |
 |---|---|---|
 | Endpoint | `POST /api/apply-coupon` | Mobile gọi đúng endpoint này |
 | Request body | API spec nêu `code`, `total_amount`, `user_id` | Không nêu Authorization header dù SRS yêu cầu JWT hợp lệ |
@@ -203,7 +203,7 @@ Pool D chỉ xác nhận defect khi có execution/evidence riêng trên nền t�
 
 | Gap ID | Nội dung chưa được quy định | Ảnh hưởng đến bước sau |
 |---|---|---|
-| `D-GAP-R01` | Chưa có bằng chứng chính thức rằng “Mobile Feature 9” là Discount Coupon | Giữ scope pending; cần bảng phân công/Moodle/xác nhận giảng viên |
+| `D-GAP-R01` | Nguồn ngoài lời xác nhận trực tiếp của sinh viên/nhóm chưa được đính kèm | Scope đã được xác nhận tại `ai/prompt_log.md`, interaction `S001-I003`; ghi giới hạn provenance, không dùng làm oracle nghiệp vụ |
 | `D-GAP-R02` | Case sensitivity, trim, uppercase, code length/charset | Không dùng behavior `trim().toUpperCase()` làm oracle; thiết kế exploratory partition riêng |
 | `D-GAP-R03` | Disabled/loading/double-tap và timeout trong lúc apply | Chỉ mô hình hóa state/probe, chưa PASS/FAIL nếu không có oracle bổ sung |
 | `D-GAP-R04` | Khi sửa code có bắt buộc xóa result/error cũ hay không | Không đặt expected reset chỉ từ source |

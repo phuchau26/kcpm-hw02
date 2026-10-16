@@ -248,7 +248,7 @@ Các case `016`–`018` dùng `D-C10`, state khác nominal.
 
 | Gap | Test case | Hạn chế oracle |
 |---|---|---|
-| `D-GAP-R01` | Toàn suite | Cần bằng chứng phân công; không ảnh hưởng expected nghiệp vụ đã có nguồn |
+| `D-GAP-R01` | Toàn suite | Phạm vi được xác nhận tại `S001-I003`; không ảnh hưởng expected nghiệp vụ đã có nguồn |
 | `D-GAP-R02` | `D-TC-003`–`006` | Không assert normalization/dispatch |
 | `D-GAP-R03` | `D-TC-003`, `004`, `036` | Không assert disabled/loading/double tap |
 | `D-GAP-R04` | `D-TC-037`–`039` | Không assert reset-on-edit |

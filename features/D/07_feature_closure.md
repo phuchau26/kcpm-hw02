@@ -9,7 +9,7 @@
 | Người thực hiện | Nguyễn Phúc Hậu (`23120252`) |
 | Trạng thái workflow | `APPROVED` |
 | Trạng thái chất lượng SUT | `NOT ACCEPTED — 11 FAIL, 20 BLOCKED; LIMITED PHYSICAL iOS SUPPLEMENT` |
-| Trạng thái artifact | `PENDING HUMAN REVIEW — NATIVE iOS SUPPLEMENT` |
+| Trạng thái artifact | `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED` |
 
 “Technically complete” chỉ có nghĩa chuỗi artifact Step 1–7 đã được tạo và truy
 vết trong phạm vi hiện tại. Nó không có nghĩa Mobile feature hoạt động đúng,

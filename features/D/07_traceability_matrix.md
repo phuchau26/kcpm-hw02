@@ -9,7 +9,7 @@
 | Runtime evidence | Chuẩn: Expo Web/Chromium `440 × 956`; bổ sung: thiết bị iOS thật qua Expo Go/Expo SDK 57 |
 | Chuỗi truy vết | Requirement → partition/state → boundary → test case → result → defect/gap → Mobile evidence |
 | Nguồn result | `evidence/D/execution/results.json` |
-| Trạng thái | `PENDING HUMAN REVIEW — NATIVE iOS SUPPLEMENT` |
+| Trạng thái | `REVIEWED — NATIVE iOS SUPPLEMENT VERIFIED` |
 
 Ký hiệu `—` nghĩa là boundary hoặc defect/gap không áp dụng. Mọi evidence ngắn
 trong bảng có prefix `evidence/D/execution/`; mỗi case có screenshot và
@@ -121,11 +121,11 @@ và không làm thay đổi `PASS/FAIL/BLOCKED`.
 - `D-MG-01/02`, `D-TG-01/02` và `D-BC-01`–`06` giải thích platform/testability
   cùng đúng 20 BLOCKED.
 
-## 6. Kiểm tra tính toàn vẹn
+## 6. Kết quả kiểm tra tính toàn vẹn
 
-- [ ] Có đúng 50 Test ID, từ `D-TC-001` đến `D-TC-050`.
-- [ ] Bao phủ `D-R01`–`D-R20` ở mức thiết kế.
-- [ ] Truy vết đủ `D-B01`–`D-B06`.
-- [ ] Ánh xạ đủ 11 FAIL vào 7 root-cause group, không double-count Backend defect.
-- [ ] Giữ nguyên `19 PASS / 11 FAIL / 20 BLOCKED / 0 NOT RUN`.
-- [ ] Chỉ dùng 9 ảnh iOS làm evidence bổ sung; không tuyên bố full native coverage.
+- Có đúng 50 Test ID, từ `D-TC-001` đến `D-TC-050`.
+- Bao phủ `D-R01`–`D-R20` ở mức thiết kế.
+- Truy vết đủ `D-B01`–`D-B06`.
+- Mười một FAIL được ánh xạ vào 7 root-cause group, không double-count Backend defect.
+- Thống kê giữ nguyên `19 PASS / 11 FAIL / 20 BLOCKED / 0 NOT RUN`.
+- Chín ảnh iOS chỉ được dùng làm evidence bổ sung, không phải full native coverage.

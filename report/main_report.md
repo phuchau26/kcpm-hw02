@@ -9,7 +9,7 @@
 ## 1. Phạm vi và phương pháp
 
 Bài làm áp dụng Domain Testing, Equivalence Partitioning và Boundary Value
-Analysis cho bốn phạm vi:
+Analysis theo ISTQB CTFL v4.0.1, mục 4.2.1–4.2.2, cho bốn phạm vi:
 
 | Pool | Feature | Nền tảng |
 |---|---|---|
@@ -20,8 +20,11 @@ Analysis cho bốn phạm vi:
 
 Mỗi feature đi qua cùng một chuỗi: xác lập oracle → Domain Model → EP/BVA → test
 case → automation/execution → defect/gap analysis → traceability và closure.
-Source `SHOP` được kiểm tra read-only. Test automation dùng Playwright và SQLite
-fixture cô lập; expected result không được sửa theo hành vi hiện tại của SUT.
+Source `SHOP` tại baseline canonical được kiểm tra read-only trong lúc phân tích
+và thực thi. Sau đó cấu hình Mobile được nâng Expo SDK và đổi API endpoint để
+thu evidence iOS bổ sung; thay đổi này không sửa các verdict baseline. Test
+automation dùng Playwright và SQLite fixture cô lập; expected result không được
+sửa theo hành vi hiện tại của SUT.
 
 ## 2. Pool A — A-FR03
 
@@ -130,9 +133,11 @@ dùng để thay đổi PASS/FAIL/BLOCKED của baseline.
 - Biểu mẫu audit: `ai/AI-02_AI_Audit_Report_Working.docx`.
 - Biểu mẫu disclosure: `ai/AI-03_AI_Disclosure_Form_Working.docx`.
 
-AI-02 có 30 artifact `VALID` và `ART043` đang `PENDING HUMAN REVIEW` cho lượt
-bổ sung evidence iOS. Verdict đánh giá độ đúng của artifact so với nguồn và
-evidence, không phải verdict chất lượng SUT.
+AI-02 có 34 artifact: 32 `VALID`, 0 `INVALID`, 1 `INCOMPLETE` và 1 `PENDING`.
+`ART044` đã chuyển thành `VALID` sau khi bổ sung YouTube demo URL. Artifact chưa
+hoàn chỉnh còn lại là AI-03 chưa có chữ ký cá nhân; chi tiết verdict nằm trong
+AI-02. Verdict đánh giá artifact so với nguồn và evidence, không phải verdict
+chất lượng SUT.
 
 ## 9. Self-assessment
 
@@ -145,8 +150,12 @@ evidence, không phải verdict chất lượng SUT.
 | Agent Skills | 10 | 6 |
 | **Tổng** | **100** | **80** |
 
-Điểm tự đánh giá bị giới hạn bởi 80 case BLOCKED, 42 FAIL, native evidence mới
-chỉ giới hạn ở 9 ảnh iOS và chưa có demo video công khai cho Agent Skills.
+Điểm tự đánh giá bị giới hạn bởi 80 case BLOCKED, 42 FAIL và native evidence mới
+chỉ giới hạn ở 9 ảnh iOS.
+
+Demo video: [KTPM - CQ2023/31 Demo AI skill đã dùng trong bài tập tuần
+2](https://youtu.be/i2ECLTh1AEU). Thông tin liên kết được lưu tại
+`demo/README.md`.
 
 ## 10. Kết luận
 
@@ -155,3 +164,11 @@ feature nào được tuyên bố hoạt động đúng toàn bộ. Cần sửa 
 requirement gap và chạy regression. Pool D đã có evidence trên một thiết bị iOS,
 nhưng vẫn cần native test có kiểm soát trên iOS/Android và accessibility trước khi
 đưa ra kết luận về chất lượng Mobile.
+
+## 11. Tài liệu tham khảo
+
+- International Software Testing Qualifications Board, *Certified Tester
+  Foundation Level Syllabus v4.0.1*, 2024, mục 4.2.1–4.2.2:
+  <https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf>.
+- HCMUS Software Testing Course, *HW02 — Domain Testing Assignment*, 2026:
+  `references/assignment/HW02_Domain_Testing_Assignment_En.pdf`.

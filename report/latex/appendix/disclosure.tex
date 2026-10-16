@@ -7,11 +7,14 @@ medium, để hỗ trợ đọc cấu trúc dự án, xây dựng Domain Model, 
 Partitioning/BVA, soạn test case, tạo Playwright automation, tổng hợp execution
 result, phân tích defect/gap, lập traceability matrix và chuẩn bị báo cáo.
 
-AI không được dùng để sửa source \texttt{SHOP}, tạo evidence giả, thay đổi
-expected result theo hành vi SUT hoặc chuyển case BLOCKED thành PASS. Các kết
-quả thực thi đến từ fixture, service log, screenshot, trace và
-\texttt{results.json} trong repository. Pool D chỉ có evidence Expo Web với
-Mobile viewport; chưa có bằng chứng native Android/iOS.
+AI đã hỗ trợ thay đổi cấu hình Mobile trong source \texttt{SHOP}: nâng Expo SDK
+từ baseline 54 lên 57 và chuyển API endpoint sang cấu hình phù hợp mạng LAN để
+chạy bổ sung trên thiết bị iOS thật. Thay đổi này diễn ra sau lần thực thi
+canonical bằng Expo Web và không được dùng để sửa các verdict
+\texttt{PASS/FAIL/BLOCKED}. Chín ảnh iOS thật là evidence bổ sung; chúng không
+thay thế native automation hoặc chứng minh coverage Android. AI không tạo
+evidence giả, thay đổi expected result theo hành vi SUT hoặc chuyển case
+\texttt{BLOCKED} thành \texttt{PASS}.
 
 \section{Review và trách nhiệm}
 
