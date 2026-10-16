@@ -6,6 +6,7 @@
 |---|---|
 | Thời điểm ghi nhận ban đầu | 2026-10-09T10:22:29+07:00 |
 | Thời điểm cập nhật smoke evidence | 2026-10-09, từ 10:31 đến 10:48 theo đồng hồ hiển thị trong ảnh |
+| Thời điểm cập nhật native iOS evidence | 2026-10-16, khoảng 09:25–09:29 theo đồng hồ trong ảnh |
 | Múi giờ | Asia/Saigon (`UTC+07:00`) |
 | Phạm vi tài liệu | Cấu hình, khả năng khởi chạy và khả năng truy cập ban đầu vào các feature của SUT |
 | Trạng thái khởi chạy | Sinh viên xác nhận đã khởi chạy được Backend, Web, Admin Web và Mobile |
@@ -50,7 +51,8 @@ gói nộp của `submission-src`.
 | Backend API | Node.js, Express `^5.2.1`, SQLite `^6.0.1` | `node server.js` trong `SHOP/backend` | `http://localhost:3000` | Sinh viên xác nhận đã chạy được; port 3000 không lắng nghe tại thời điểm ghi nhận |
 | Frontend Web | React `^19.2.6`, Vite `^8.0.12` | `npm run dev` trong `SHOP/frontend-web` | `http://localhost:5173` | Ảnh lúc 10:31–10:33 cho thấy FR-03 và FR-09 truy cập được |
 | Admin Web | React `^19.2.6`, Vite `^8.0.12` | `npm run dev` trong `SHOP/frontend-admin` | `http://localhost:5174` | Ảnh lúc 10:37 cho thấy trang quản lý danh mục truy cập được |
-| Mobile | Expo SDK package `~54.0.33`, Expo CLI `54.0.24`, React Native `0.81.5`, React `19.1.0` | `npx expo start` trong `SHOP/frontend-mobile` | `http://localhost:8081` trong lần chạy Expo Web | Ảnh lúc 10:48 cho thấy Mobile checkout truy cập được bằng Chrome device emulation |
+| Mobile — smoke/baseline chuẩn | Expo SDK package `~54.0.33`, Expo CLI `54.0.24`, React Native `0.81.5`, React `19.1.0` | `npx expo start` trong `SHOP/frontend-mobile` | `http://localhost:8081` trong lần chạy Expo Web | Smoke và execution chuẩn dùng Chrome/Chromium device emulation |
+| Mobile — native supplement | Expo SDK 57, React Native `0.86.3`, React `19.2.3` | `npx expo start` và mở bằng Expo Go | API Backend qua địa chỉ LAN/configurable endpoint | 9 ảnh xác nhận app chạy và gọi API trên một thiết bị iOS thật |
 
 Địa chỉ Vite thực tế có thể thay đổi khi port mặc định bận. Khi thu evidence, phải
 ghi URL thật được Terminal cung cấp thay vì mặc định dùng giá trị dự kiến trong bảng.
@@ -65,10 +67,15 @@ ghi URL thật được Terminal cung cấp thay vì mặc định dùng giá tr
 | Expo Go | Không áp dụng cho lần smoke test Expo Web |
 | Độ phân giải/kích thước màn hình | Viewport hiển thị trong DevTools: `440 × 956` |
 | Kết nối mạng Mobile–Backend | Expo Web chạy tại `localhost:8081`; API Backend được gọi qua `localhost:3000` |
+| Native supplement | Thiết bị iOS thật qua Expo Go/SDK 57; model thiết bị và phiên bản iOS chưa được ghi nhận; API gọi qua LAN |
 
 Tên trình duyệt được nhận diện từ giao diện ảnh; phiên bản chưa nhìn thấy nên không
 được suy đoán. Profile device emulation chỉ mô phỏng viewport, không chứng minh hành
 vi trên thiết bị iOS thật.
+
+Bộ ảnh native được chụp sau khi nâng Expo SDK và thay đổi cấu hình endpoint. Vì
+khác baseline thực thi chuẩn, ảnh chỉ bổ sung bằng chứng nền tảng, không thay đổi
+verdict của các test case đã chạy bằng Playwright.
 
 ## 6. Test account và test data
 
@@ -104,6 +111,9 @@ trực tiếp từ đồng hồ hệ điều hành xuất hiện trong ảnh.
 | `B-FR09` | `evidence/B/smoke/B-FR09-SMOKE-001-web-coupon.png` | 10:33 AM | Web checkout; coupon `BIGBUY`, giảm 50.000đ, tổng 29.950.000đ |
 | `C-FR14` | `evidence/C/smoke/C-FR14-SMOKE-001-category-admin.png` | 10:37 AM | Admin Web; trang quản lý và danh sách danh mục |
 | `D-M09` | `evidence/D/smoke/D-M09-SMOKE-001-mobile-coupon.png` | 10:48 AM | Expo Web; device emulation `iPhone 16 Pro Max`; coupon `BIGBUY` được áp dụng |
+
+Native supplement gồm 9 ảnh tại `evidence/D/native-ios/screenshots/`, liên quan
+`D-TC-001`, `002`, `003`, `008`, `009`, `010`, `012`, `022` và `042`.
 
 ### Quan sát cần đối chiếu ở bước phân tích đặc tả
 

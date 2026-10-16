@@ -61,3 +61,7 @@ report/latex/main.pdf
 
 # Final archives are created outside Git history
 *.zip
+
+# Playwright traces are submission evidence, not final archives
+!evidence/**/execution/traces/
+!evidence/**/execution/traces/*.zip

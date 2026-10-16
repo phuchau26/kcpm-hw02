@@ -1,5 +1,4 @@
-# A-FR03 — AI gap analysis
-
+# A-FR03 — Gap analysis
 ## 1. Thông tin tài liệu
 
 | Trường | Giá trị |
@@ -8,7 +7,6 @@
 | SUT baseline | `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
 | Mục tiêu | Tách defect đã thực thi khỏi requirement, implementation và testability gap |
 | Trạng thái | `REVIEWED` |
-| Căn cứ chấp nhận | Số liệu đã đối chiếu với evidence và source |
 
 Phân tích này không sửa oracle theo implementation và không biến static finding
 thành execution result. “Confirmed defect” chỉ dùng cho sai lệch đã có case
@@ -120,12 +118,3 @@ Evidence path đầy đủ có prefix `evidence/A/execution/screenshots/`; kết
 4. Sửa email validation, inline errors, indicator/navigation và các GUI defect.
 5. Chạy regression toàn bộ `A-TC-001`–`038`; không chuyển các case đang
    `BLOCKED` thành PASS/FAIL trước lần chạy thật.
-
-## 10. Checklist sinh viên review
-
-- [x] Xác nhận 8 confirmed defect khớp evidence.
-- [x] Xác nhận `RQ01` là thiếu thông tin, không phải giá trị tự đặt thêm.
-- [x] Xác nhận 4 implementation gap chỉ là source-confirmed finding.
-- [x] Xác nhận `TS01` giải thích đúng 29 case `BLOCKED`.
-- [x] Xác nhận traceability không thiếu `A-R01`–`A-R14`, `SEC-01`, `SEC-07`.
-- [x] Chấp nhận artifact sau khi đối chiếu số liệu và evidence.

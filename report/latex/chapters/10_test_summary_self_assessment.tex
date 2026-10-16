@@ -1,32 +1,74 @@
 \chapter{Test Summary and Self-Assessment}
 
-\section{Kết quả hiện có của Pool A}
+\section{Kết quả thực thi của bốn Pool}
 
-Tại thời điểm chốt A-FR03, chỉ Pool A có execution result chi tiết. Không cộng
-smoke evidence hoặc nội dung chưa thực hiện của Pool B, C, D vào số liệu này.
+Bảng chỉ sử dụng số liệu từ machine-readable execution artifact. Cột defect
+mới không double-count năm Backend defect của B được tái hiện trên D.
 
 \begin{table}[H]
   \centering
+  \small
   \begin{tabular}{lrrrrrrr}
     \toprule
-    Phạm vi & Designed & Executed & Pass & Fail & Blocked & Not Run & Bug \\
+    Phạm vi & Designed & Executed & Pass & Fail & Blocked & Not Run & Defect mới \\
     \midrule
     A-FR03 & 38 & 9 & 1 & 8 & 29 & 0 & 8 \\
+    B-FR09 & 41 & 31 & 17 & 14 & 10 & 0 & 9 \\
+    C-FR14 & 48 & 27 & 18 & 9 & 21 & 0 & 5 \\
+    D-M09 & 50 & 30 & 19 & 11 & 20 & 0 & 2 \\
+    \midrule
+    Tổng & 177 & 97 & 55 & 42 & 80 & 0 & 24 \\
     \bottomrule
   \end{tabular}
-  \caption{Test summary đã kiểm chứng của Pool A.}
+  \caption{Test summary dựa trên execution artifact của Pool A--D.}
+  \label{tab:overall-test-summary}
 \end{table}
 
-\section{Tự đánh giá tại checkpoint A-FR03}
+Quy ước \texttt{Executed = PASS + FAIL}. Execution coverage tổng là
+\(97/177=54.80\%\); PASS trong case có verdict là \(55/97=56.70\%\). Tám mươi
+case BLOCKED chiếm \(45.20\%\) tổng thiết kế, nên các tỷ lệ trên không chứng
+minh chất lượng SUT đạt yêu cầu.
+
+\section{Tự đánh giá}
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{lrr}
+    \toprule
+    Tiêu chí & Điểm tối đa & Tự đánh giá \\
+    \midrule
+    Feature A -- Domain + Boundary & 25 & 20 \\
+    Feature B -- Domain + Boundary & 25 & 22 \\
+    Feature C -- Domain + Boundary & 25 & 21 \\
+    Feature D -- Mobile Domain + Boundary & 15 & 11 \\
+    Agent Skills & 10 & 6 \\
+    \midrule
+    Tổng & 100 & 80 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Self-assessment theo rubric của bài tập.}
+  \label{tab:self-assessment}
+\end{table}
+
+Mức 80/100 phản ánh việc workflow và traceability đã hoàn tất cùng evidence bổ
+sung trên iOS thật, đồng thời trừ điểm cho 80 case BLOCKED, 42 FAIL, native
+coverage chưa đầy đủ và chưa có demo video công khai cho Agent Skills.
 
 \begin{itemize}
-  \item Oracle, domain model, BVA và thiết kế test đã có traceability đầy đủ ở
-        mức thiết kế cho 14 rule.
-  \item Automation lưu machine-readable result, screenshot, trace và service log;
-        fixture có cleanup được xác nhận.
-  \item Defect/gap được tách theo bằng chứng; case bị chặn không bị ghi thành FAIL.
-  \item Hạn chế lớn nhất là execution coverage chỉ $23.68\%$ do thiếu confirm
-        password và expiry capability.
-  \item Điểm tự đánh giá tổng bài chưa được tính vì Pool B, C và D chưa có kết
-        quả chi tiết; việc gán điểm ở đây sẽ tạo số liệu không có căn cứ.
+  \item Cả bốn Pool đã có chuỗi artifact từ oracle, Domain Testing/BVA, test
+        design đến execution, defect/gap analysis và traceability/closure.
+  \item FAIL được nhóm theo root cause; BLOCKED không bị chuyển thành PASS hoặc
+        bug. Năm Backend defect dùng chung giữa B và D không bị double-count.
+  \item Pool D lưu 50 screenshot, 50 Playwright trace, \texttt{results.json} và
+        service log; source integrity được kiểm tra bằng hash.
+  \item D có execution coverage 60.00\%, nhưng 11 FAIL và 20 BLOCKED khiến
+        feature không được chấp nhận.
+  \item D có thêm 9 screenshot trên thiết bị iOS thật, chứng minh kết nối LAN và
+        một số trạng thái UI/keyboard. Android, accessibility, orientation và
+        native automation chưa được kiểm chứng.
+  \item Tổng 42 FAIL và 80 BLOCKED cho thấy residual risk còn cao; cần sửa lỗi,
+        chốt requirement gap và regression trước khi nộp kết luận chất lượng.
+  \item Step 7 của D đã được sign-off ở mức workflow; điều này không đồng nghĩa
+        SUT pass hoặc coverage 100\%.
 \end{itemize}

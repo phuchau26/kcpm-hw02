@@ -223,19 +223,3 @@ lấp bằng hành vi hiện tại của source.
 
 Seed chỉ là test data. Giá trị `2099-12-31` không chứng minh quy tắc expiry của
 implementation đúng; fixture Step 5 cần kiểm soát clock/data nếu test sát biên.
-
-## 12. Checklist human review
-
-- [x] Xác nhận `SHOP/README.md` là business oracle chính và SRS ưu tiên hơn API/source khi mâu thuẫn.
-- [x] Xác nhận phạm vi chỉ gồm Web checkout, không gồm Admin CRUD hoặc Mobile.
-- [x] Kiểm tra `B-R01`–`B-R19` phản ánh đúng FR-08, FR-09 và GUI rule áp dụng.
-- [x] Kiểm tra năm điều kiện C1–C5 đều có cả valid và invalid expected result.
-- [x] Kiểm tra công thức percent/fixed/final không bị sửa theo implementation hiện tại.
-- [x] Xác nhận các candidate discrepancy chỉ là giả thuyết chờ execution, chưa phải bug.
-- [x] Xác nhận `B-GAP-R01`–`B-GAP-R07` không bị biến thành business rule tự đặt.
-- [x] Xác nhận baseline và local change của `SHOP` được mô tả đúng.
-
-**Kết luận review:** Sinh viên xác nhận nội dung ngày 2026-10-13. Step 1 đã qua
-human review gate; `B-R01`–`B-R19` và `B-GAP-R01`–`B-GAP-R07` là baseline để tạo
-`02_domain_model.md`. Candidate discrepancy vẫn phải chờ execution evidence và
-không được coi là confirmed bug ở giai đoạn này.

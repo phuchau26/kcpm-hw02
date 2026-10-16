@@ -163,19 +163,3 @@ toàn bộ Step 2:
 Test case không được tự tạo expected value cho các nội dung trên. Có thể kiểm thử
 phần rule đã xác định hoặc ghi `Assumption`/`Not Testable` cho phần phụ thuộc giá
 trị còn thiếu.
-
-## 11. Review record
-
-- [x] Đã đọc toàn bộ năm file Markdown trong `SHOP`.
-- [x] Đã inventory toàn bộ dự án và quét mọi tham chiếu FR-03/OTP/reset token.
-- [x] Đã đọc đầy đủ Backend endpoint/schema và Frontend Web liên quan A-FR03.
-- [x] Đã đối chiếu implementation Mobile nhưng không dùng thay Web oracle.
-- [x] Đã xác nhận `SHOP/README.md` là SRS nghiệp vụ đúng của bài.
-- [x] Đã map input/rule/UI requirement tới oracle tương ứng.
-- [x] Đã tách requirement, API contract, implementation discrepancy và giá trị
-  `NOT SPECIFIED`.
-- [x] Đã giữ nguyên mâu thuẫn OTP 6 số/4 số để kiểm thử, không sửa oracle theo code.
-
-**Kết luận review:** Step 1 đủ cơ sở để chuyển sang `02_domain_model.md`. Các rule
-`A-R01`–`A-R14` được dùng làm baseline; phần `NOT SPECIFIED` không được tự suy
-diễn thành expected result.

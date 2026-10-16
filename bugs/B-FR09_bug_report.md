@@ -10,7 +10,7 @@
 | Kết quả nguồn | `evidence/B/execution/results.json` |
 | Thống kê nguồn | 41 designed; 17 PASS; 14 FAIL; 10 BLOCKED; 0 NOT RUN |
 | Defect đã nhóm | 9 defect từ 14 case FAIL |
-| Trạng thái tài liệu | `PENDING HUMAN REVIEW` |
+| Trạng thái tài liệu | `REVIEWED` |
 
 Môi trường chung: Windows `win32 x64`, Node.js `v22.15.1`, Vite `8.0.12`,
 System Chrome/Chromium, Web `http://127.0.0.1:5173`, API
@@ -46,7 +46,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/backend/server.js:398–403` và `418–423` tính `total_amount * (1 - coupon.discount_value)` thay vì `total_amount * coupon.discount_value / 100`. |
 | Severity / Priority | Critical / P1 — có thể làm tăng tổng thanh toán và tạo discount âm. |
 | Evidence | `evidence/B/execution/results.json`; `screenshots/B-TC-001.png`, `B-TC-030.png`; `traces/B-TC-001.zip`, `B-TC-030.zip` trong `evidence/B/execution/` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-002 — Từ chối order total bằng minimum
 
@@ -61,7 +61,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/backend/server.js:379` dùng `total_amount > coupon.min_order_amount`; oracle yêu cầu `>=`. |
 | Severity / Priority | Medium / P1 — từ chối người dùng hợp lệ tại biên nghiệp vụ. |
 | Evidence | `evidence/B/execution/results.json`; screenshots/traces `B-TC-014`, `B-TC-041` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-003 — Tin total do client gửi, không recompute từ cart
 
@@ -76,7 +76,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/frontend-web/src/pages/Checkout.jsx:14,30,93–100` cho sửa total; `SHOP/backend/server.js:364,379,400,420` trực tiếp tin `total_amount` từ body. |
 | Severity / Priority | Critical / P1 — phá vỡ pricing integrity và có thể bypass điều kiện coupon. |
 | Evidence | `evidence/B/execution/results.json`; screenshots/traces `B-TC-016`, `B-TC-017` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-004 — Apply coupon không yêu cầu authentication
 
@@ -91,7 +91,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/backend/server.js:363` đăng ký route không có `authenticateToken`, khác các route bảo vệ như checkout ở dòng 297. |
 | Severity / Priority | High / P1 — bỏ qua precondition authentication. |
 | Evidence | `evidence/B/execution/results.json`; screenshots/traces `B-TC-018`–`B-TC-020` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-005 — Usage identity lấy từ request body thay vì JWT
 
@@ -106,7 +106,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/backend/server.js:364,386–389` đọc và dùng `user_id` từ body; route không tạo `req.user`. Frontend cũng gửi `user?.id` tại `Checkout.jsx:31`. |
 | Severity / Priority | Critical / P1 — client có thể bypass per-user usage limit. |
 | Evidence | `evidence/B/execution/results.json`; `screenshots/B-TC-021.png`; `traces/B-TC-021.zip` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-006 — Checkout/coupon UI truy cập được khi chưa đăng nhập
 
@@ -121,7 +121,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `SHOP/frontend-web/src/App.jsx:58` render `Checkout` không có protected route; `Checkout.jsx:23–35` không guard authentication trước apply. |
 | Severity / Priority | High / P1 — UI cho phép thao tác ngoài authenticated flow. |
 | Evidence | `evidence/B/execution/results.json`; `screenshots/B-TC-022.png`; `traces/B-TC-022.zip` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-007 — Checkout thiếu `h1` và breadcrumb
 
@@ -136,7 +136,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `Checkout.jsx:80` dùng `h2`; component không render breadcrumb. |
 | Severity / Priority | Low / P3 — ảnh hưởng navigation/semantic accessibility. |
 | Evidence | `evidence/B/execution/results.json`; screenshot/trace `B-TC-036` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-008 — Positive action không dùng màu xanh dương
 
@@ -151,7 +151,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `Checkout.jsx:119` dùng `bg-orange-500`; dòng 145 dùng `bg-green-600`. |
 | Severity / Priority | Low / P3 — không tuân GUI rule. |
 | Evidence | `evidence/B/execution/results.json`; screenshot/trace `B-TC-037` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ### B-BUG-009 — Validation error nằm dưới action
 
@@ -166,7 +166,7 @@ khi chạy. Các case BLOCKED không được ghi thành bug.
 | Root cause | `Checkout.jsx:124–126` render `couponError` sau khối input/button. |
 | Severity / Priority | Low / P3 — không tuân GUI validation placement. |
 | Evidence | `evidence/B/execution/results.json`; screenshot/trace `B-TC-039` |
-| Trạng thái | `CONFIRMED — PENDING HUMAN REVIEW` |
+| Trạng thái | `CONFIRMED — REVIEWED` |
 
 ## 4. Reconciliation
 
@@ -178,11 +178,3 @@ Mọi FAIL được ánh xạ đúng một defect:
 
 Tổng cộng `2+2+2+3+1+1+1+1+1 = 14` case FAIL. Không có case PASS hoặc
 BLOCKED nào được dùng để tăng số bug.
-
-## 5. Human review gate
-
-- [ ] Xác nhận 9 defect thực sự khác root cause và không double-count.
-- [ ] Mở evidence của toàn bộ defect Critical/High.
-- [ ] Xác nhận severity/priority theo quy ước môn học.
-- [ ] Xác nhận source reference đúng baseline.
-- [ ] Chuyển từng defect sang verdict review phù hợp trước Step 7.

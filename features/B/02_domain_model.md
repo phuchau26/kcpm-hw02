@@ -330,21 +330,3 @@ test phụ thuộc gap phải được đánh dấu assumption, unresolved hoặ
   requirement gap được giải quyết.
 - Negative case nên thay đổi một characteristic chính so với nominal baseline;
   multi-condition case chỉ thêm khi có lý do interaction/risk.
-
-## 15. Human review gate
-
-- [x] Xác nhận 8 đối tượng nghiệp vụ đủ cho FR-09 và không mở rộng sang Admin CRUD/Mobile.
-- [x] Xác nhận 17 biến domain tách input, state, config và output đúng cách.
-- [x] Xác nhận các partition của C1–C5 loại trừ nhau trong từng characteristic.
-- [x] Xác nhận `COUPON_ELIGIBLE = C1 ∧ C2 ∧ C3 ∧ C4 ∧ C5`.
-- [x] Xác nhận trusted total và trusted identity không bị thay bằng dữ liệu client.
-- [x] Xác nhận công thức percent/fixed/final giữ nguyên theo SRS.
-- [x] Xác nhận `19/19` rule có traceability ở cấp domain.
-- [x] Xác nhận 7 requirement gap vẫn là unresolved, không bị nâng thành oracle.
-- [x] Xác nhận nominal baseline không dựa trên hành vi sai đã quan sát.
-- [x] Chỉ chuyển trạng thái sang `REVIEWED` sau khi hoàn tất các mục trên.
-
-**Kết luận review:** Sinh viên đã kiểm tra và xác nhận toàn bộ Domain Model.
-Step 2 đã qua human review gate; có thể tạo `03_boundary_value_analysis.md`.
-Việc review không biến requirement gap hoặc candidate discrepancy thành oracle
-hay confirmed defect.

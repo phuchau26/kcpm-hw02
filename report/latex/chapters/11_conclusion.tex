@@ -1,16 +1,36 @@
 \chapter{Conclusion}
 
-\section{Kết luận tại checkpoint Pool A}
+\section{Kết luận tổng thể HW02}
 
-Workflow kiểm thử A-FR03 đã hoàn thành về mặt kỹ thuật từ oracle, Domain Testing,
-BVA, 38 test case đến automation, execution evidence, bug/gap analysis và
-traceability. Kết quả giữ nguyên: 9 case được thực thi, một PASS, tám FAIL và 29
-BLOCKED. Tám defect đã được xác nhận và nhóm theo root cause.
+Bốn phạm vi A-FR03, B-FR09, C-FR14 và D-M09 đã có artifact theo workflow
+Domain Testing: đặc tả/oracle, domain model, EP/BVA, test case, automation hoặc
+execution evidence, defect/gap analysis, traceability và feature closure.
+Tổng cộng 177 test case được thiết kế; 97 case có verdict gồm 55 PASS và 42
+FAIL; 80 case BLOCKED; 0 NOT RUN.
 
-Kết quả này không chứng minh feature hoạt động đúng. Luồng reset password chính
-chưa thể kiểm chứng end-to-end theo SRS do thiếu confirm password; OTP expiry còn
-thiếu rule định lượng và implementation state. Residual risk vì vậy vẫn cao.
-Regression toàn bộ 29 case bị chặn là điều kiện cần sau khi hai blocker được xử
-lý. Kết luận tổng thể cho bài HW02 sẽ chỉ được đưa ra sau khi Pool B, C và D có
-artifact và evidence tương đương; báo cáo hiện không suy diễn kết quả cho các
-pool đó.
+Kết quả không chứng minh hệ thống hoạt động đúng. Pool A còn 29 BLOCKED và tám
+FAIL; Pool B còn lỗi Critical về percent formula, trusted total và identity;
+Pool C còn authorization/data-integrity defect; Pool D tái hiện năm lỗi Backend
+dùng chung, thêm hai lỗi Mobile và còn 20 BLOCKED.
+
+\section{Kết luận riêng cho Mobile}
+
+D-M09 hoàn tất workflow kỹ thuật: 50 designed; 30 executed; 19 PASS; 11 FAIL;
+20 BLOCKED; 0 NOT RUN. Baseline được thu trên Expo Web/Chromium tại viewport
+Mobile \(440 \times 956\). Chín screenshot bổ sung trên một thiết bị iOS thật
+chứng minh kết nối LAN và một số trạng thái UI/keyboard, nhưng khác baseline và
+không phải native automation. Vì vậy chưa có căn cứ kết luận Android, rotation,
+screen reader, native semantic/focus hoặc hiệu năng hoạt động đúng.
+
+Trạng thái chất lượng D-M09 là \texttt{NOT ACCEPTED}. Cần sửa các defect về
+formula, trusted pricing, authentication/identity và Mobile UI; chốt oracle cho
+20 case bị chặn; duy trì API endpoint theo environment; sau đó chạy regression
+trên Expo Web và native iOS/Android với oracle, metadata và trace phù hợp.
+
+\section{Giới hạn của kết luận}
+
+“Workflow technically complete” chỉ mô tả tính đầy đủ và truy vết được của
+artifact trong phạm vi hiện tại. Nó không đồng nghĩa mọi requirement đã được
+thực thi, không đồng nghĩa coverage 100\%, và không phải quyết định chấp nhận
+SUT. Human sign-off, xử lý gap và regression vẫn là điều kiện trước khi chốt
+chất lượng cuối cùng.

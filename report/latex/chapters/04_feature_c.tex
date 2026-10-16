@@ -1,15 +1,127 @@
 \chapter{Pool C --- FR-14: Quản lý danh mục}
 
+\section{Phạm vi và oracle}
+
+Pool C kiểm thử chức năng quản lý danh mục trên Admin Web. Theo FR-14, Admin có
+thể Thêm, Xem và Xóa danh mục; tên danh mục là bắt buộc và không được để trống.
+FR-12 đồng thời yêu cầu JWT hợp lệ và \texttt{role=admin} cho API làm thay đổi
+dữ liệu. Từ ``CRUD'' trong tiêu đề và endpoint \texttt{PUT} không đủ để suy ra
+Update là requirement đã chốt, vì danh sách hành vi FR-14 không nêu thao tác này.
+
+Oracle còn áp dụng các GUI rule về empty state, trường bắt buộc, vị trí lỗi,
+heading, màu button, Tab order và ngôn ngữ. Source chỉ được đọc để xác định đường
+thực thi/root cause, không được dùng để thay expected result.
+
 \section{Smoke test ban đầu}
 
 Ảnh chụp ngày 09/10/2026 lúc 10:37 AM tại \texttt{localhost:5174} cho thấy
 trang quản lý danh mục và danh sách dữ liệu có thể truy cập. Evidence này chỉ
-xác nhận trạng thái \texttt{Accessible}; chưa chứng minh các thao tác thêm, sửa
-hoặc xóa hoạt động đúng.
+xác nhận trạng thái \texttt{Accessible}; chưa chứng minh Create/Update/Delete đúng.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.96\textwidth]{../../evidence/C/smoke/C-FR14-SMOKE-001-category-admin.png}
-  \caption{C-FR14 --- Trang quản lý danh mục trên Admin Web.}
+  \caption{C-FR14 --- Smoke evidence của trang quản lý danh mục.}
   \label{fig:c-fr14-category-admin-smoke}
 \end{figure}
+
+\section{Domain model, EP và BVA}
+
+Domain model bao gồm Category, Admin identity, category list, CRUD operation,
+product reference và persistent state. Các partition chính bao phủ name bị
+thiếu, rỗng, hợp lệ, chỉ có khoảng trắng, trùng và độ dài; ID tồn tại, không tồn
+tại hoặc sai kiểu; role admin/user; reference count; list rỗng hoặc có dữ liệu.
+
+Tám boundary \texttt{C-B01}--\texttt{C-B08} được dùng cho missing/empty/one-character
+name, whitespace, candidate upper length, ID 0/existing/nonexistent, empty list
+và reference count. Những mốc 255/256/1024 chỉ là probe: SRS và schema không
+quy định maximum length nên không được tự xem 255 là giới hạn chính thức.
+
+\section{Thiết kế và automation}
+
+Suite có 48 case \texttt{C-TC-001}--\texttt{C-TC-048}, bao phủ Read, Create,
+Update probe, Delete, authentication/authorization và UI conformance. Playwright
+chạy tuần tự trên Chrome hệ thống; SQLite fixture được reset trước từng case.
+Runner tự khởi động Backend và Admin frontend, dùng runtime database adapter để
+không sửa database runtime của SHOP. Kết quả gồm \texttt{results.json}, 48
+screenshot, 48 trace và service log.
+
+\section{Kết quả thực thi}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    Designed & Executed & Pass & Fail & Blocked & Not Run & Defect \\
+    \midrule
+    48 & 27 & 18 & 9 & 21 & 0 & 5 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Kết quả thực thi C-FR14.}
+  \label{tab:c-fr14-summary}
+\end{table}
+
+Execution coverage là $27/48=56.25\%$. Có 18 PASS, nhưng kết quả không chứng
+minh feature hoạt động đúng vì còn 9 FAIL và 21 BLOCKED. Hình
+\ref{fig:c-fr14-empty-state} cho thấy bảng rỗng không có icon/message; Hình
+\ref{fig:c-fr14-role-bypass} cho thấy JWT user restore vẫn vào được Admin shell.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{../../evidence/C/execution/screenshots/C-TC-002.png}
+  \caption{C-TC-002 FAIL --- empty list thiếu empty-state feedback theo FR-24.}
+  \label{fig:c-fr14-empty-state}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{../../evidence/C/execution/screenshots/C-TC-042.png}
+  \caption{C-TC-042 FAIL --- JWT role user trong localStorage truy cập Admin shell.}
+  \label{fig:c-fr14-role-bypass}
+\end{figure}
+
+\section{Defect và gap}
+
+Chín FAIL được nhóm thành năm root-cause defect; không tạo một bug cho mỗi FAIL.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.15\textwidth}p{0.51\textwidth}p{0.12\textwidth}p{0.10\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    C-BUG-001 & Category list rỗng thiếu empty state & Minor & P2 \\
+    C-BUG-002 & Missing/empty name được lưu vào database & Major & P1 \\
+    C-BUG-003 & Form thiếu required marker và inline error & Minor & P2 \\
+    C-BUG-004 & Role admin không được cưỡng chế ở API/restored session & Critical & P1 \\
+    C-BUG-005 & \texttt{h1} không mô tả trang Category & Minor & P3 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Năm confirmed defect của C-FR14.}
+\end{table}
+
+Chín requirement gap liên quan Update, normalization, duplicate/case, length,
+response contract, malformed/nonexistent ID, referential policy và các exclusion
+đã ghi rõ. Ba implementation risk từ source và một testability gap không được
+nâng thành defect. Sáu blocked-condition group bao phủ đúng 21 case.
+
+\section{Traceability, coverage và residual risk}
+
+Ma trận tại \path{features/C/07_traceability_matrix.md} liên kết đủ 48 case với
+21 rule, 8 boundary, result, defect/gap, screenshot và trace. Design coverage là
+\texttt{21/21} rule; boundary catalog coverage là \texttt{8/8}; đây không phải
+functional execution coverage 100\%.
+
+Residual risk ở mức cao. User thường có thể Create/Delete category và bypass
+Admin shell; category missing/empty name có thể được lưu. Update, normalization,
+upper length, invalid-ID response và referenced-category deletion chưa có
+business verdict. Sau khi sửa defect và chốt các requirement gap, phải regression
+toàn bộ 48 case.
+
+\section{Feature closure}
+
+Workflow Step 1--7 đã được review và chốt về mặt kỹ thuật trong phạm vi artifact
+hiện có. C-FR14 không được kết luận PASS hoặc hoạt động đúng: trạng thái chất
+lượng là \texttt{NOT ACCEPTED --- 9 FAIL, 21 BLOCKED}. Chi tiết closure nằm tại
+\path{features/C/07_feature_closure.md}.

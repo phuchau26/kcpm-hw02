@@ -9,7 +9,6 @@
 | Chuỗi truy vết | Requirement → partition → boundary → test case → result → defect/gap → evidence |
 | Nguồn result | `evidence/A/execution/results.json` |
 | Trạng thái | `REVIEWED` |
-| Căn cứ chấp nhận | Ma trận đã được đối chiếu với artifact và execution result nguồn |
 
 Ký hiệu `—` nghĩa là kỹ thuật hoặc liên kết đó không áp dụng cho case, không
 phải dữ liệu bị bỏ sót. Prefix đầy đủ của screenshot là

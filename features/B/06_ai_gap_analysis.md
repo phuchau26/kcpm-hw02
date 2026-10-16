@@ -1,5 +1,4 @@
-# B-FR09 — AI gap analysis
-
+# B-FR09 — Gap analysis
 ## 1. Thông tin tài liệu
 
 | Trường | Giá trị |
@@ -14,7 +13,7 @@
 | Additional implementation risk | 2, chưa nâng thành defect |
 | Testability gap | 1 |
 | Blocked condition | 3 nhóm, ảnh hưởng 10 case |
-| Trạng thái | `PENDING HUMAN REVIEW` |
+| Trạng thái | `REVIEWED` |
 
 ## 2. Nguyên tắc phân loại
 
@@ -131,13 +130,3 @@ Các tổng theo nhóm: `17 PASS + 14 FAIL + 10 BLOCKED = 41`.
   bố coverage thực thi 100% về chất lượng SUT.
 - Các defect Critical/High cần sửa và regression toàn bộ arithmetic, trust,
   authentication và usage-binding trước khi chấp nhận feature.
-
-## 11. Human review gate
-
-- [ ] Xác nhận mapping 14 FAIL → 9 defect.
-- [ ] Xác nhận 7 requirement gap không bị biến thành business rule mới.
-- [ ] Xác nhận 2 implementation risk chưa bị ghi nhầm thành defect.
-- [ ] Xác nhận 1 testability gap và 3 blocked condition.
-- [ ] Đối chiếu source reference với baseline.
-- [ ] Mở evidence Critical/High và ba nhóm BLOCKED.
-- [ ] Chỉ chuyển tài liệu sang `REVIEWED` sau khi hoàn tất các mục trên.

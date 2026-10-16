@@ -306,16 +306,3 @@ conformance. Đây chưa phải test-case coverage hay execution coverage.
    và discount vượt total giữ unresolved.
 9. Exact message/status không được assert ngoài phần API contract có căn cứ.
 10. Mọi case phải truy vết `rule → partition → boundary (nếu có) → test case`.
-
-## 15. Human review gate
-
-- [x] Xác nhận EP phân biệt valid, invalid, non-conforming và unresolved.
-- [x] Xác nhận code rỗng/whitespace/case không bị gán expected result ngoài SRS.
-- [x] Xác nhận duplicate code chỉ là invalid configuration theo FR-17/schema.
-- [x] Xác nhận `B-B01` dùng equality-at-minimum là valid.
-- [x] Xác nhận `B-B02` dùng equality-at-limit là invalid.
-- [x] Xác nhận `B-B03` giữ `δ` symbolic cho tới khi có clock contract.
-- [x] Xác nhận `B-B04` không tự đặt precision hoặc maximum discount.
-- [x] Xác nhận không tạo percent cap, fixed cap, final floor hoặc code-length boundary.
-- [x] Xác nhận `19/19` rule có traceability và 7 requirement gap được bảo toàn.
-- [x] Chỉ chuyển trạng thái sang `REVIEWED` sau khi hoàn tất checklist.

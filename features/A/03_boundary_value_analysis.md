@@ -214,19 +214,3 @@ Step 4; nó không phải “ngay dưới” equality boundary theo nghĩa số 
    `OV-I1`, `OB-I1`, `OL-I1`–`OL-I3`, `PL-I1`, `PC-I1`) vào bộ test EP.
 7. Nếu SUT phát hành OTP 4 số, ghi actual result và evidence ở Step 5; không sửa
    data design thành boundary 3/4/5.
-
-## 12. Review gate
-
-- [x] Xác nhận chỉ dùng boundary có nguồn từ `A-R01`–`A-R09`.
-- [x] Xác nhận dữ liệu `A-B02`–`A-B06` cô lập đúng characteristic cần kiểm tra.
-- [x] Xác nhận từng chuỗi password có length và số nhóm ký tự đúng như bảng.
-- [x] Xác nhận không tự đặt OTP lifetime, email max length hoặc password max length.
-- [x] Xác nhận relational boundary của confirm password phù hợp với equality rule.
-- [x] Xác nhận traceability giải thích đủ `A-R01`–`A-R14`, kể cả rule không áp dụng BVA.
-- [x] Chuyển trạng thái tài liệu sau review trước khi viết Step 4 test case.
-
-**Review record:** Phép kiểm tra cấu trúc xác nhận đủ 10 boundary ID, 14 rule ID,
-22 data row không trùng ID và 15/15
-password candidate có length/composition đúng như bảng. Các boundary được đối
-chiếu lại với FR-01, FR-03 và SEC-07 trong `SHOP/README.md`. Không phát hiện nội
-dung cần sửa.

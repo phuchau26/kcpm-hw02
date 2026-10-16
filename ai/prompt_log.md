@@ -2297,3 +2297,1158 @@ Source `SHOP` không được sửa; backend dùng bản sao runtime và SQLite 
 - Trạng thái: `PENDING HUMAN REVIEW` cho artifact Step 5–6.
 - Cần kiểm tra: 9 defect, severity/priority, 7 requirement gap, 2 implementation risk, 1 testability gap, 3 blocked condition và evidence Critical/High.
 - AI-02: Đã thêm đúng một dòng `ART031` cho toàn bộ artifact logic Step 5–6 của B-FR09.
+
+## S001-I037 — Đặc tả và test oracle cho C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-13 21:37:36 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART032` — `features/C/01_spec_and_oracle.md` |
+| AI-02 | Có — artifact đặc tả trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo features/C/01\_spec\_and\_oracle.md.
+
+- Đọc SRS và source SHOP liên quan đến Category CRUD.
+- Kiểm tra Admin UI, API, controller, authentication và SQLite schema.
+- Xác định rule cho Create, Read, Update, Delete.
+- Phân biệt business rule, hành vi hiện tại và requirement gap.
+- Chốt precondition, input và expected result.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [01_spec_and_oracle.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/01_spec_and_oracle.md) cho `C-FR14`.
+
+Nội dung đã chốt:
+
+- Create, Read và Delete nằm trong phạm vi theo FR-14; Update giữ `UNRESOLVED` vì chỉ có trong tiêu đề/API/source, không có trong danh sách hành vi của SRS.
+- 21 business/UI/security rule (`C-R01`–`C-R21`), 7 precondition và expected result cho các luồng chính.
+- 12 quan sát implementation được tách riêng, chỉ là candidate discrepancy chờ execution, chưa ghi thành bug.
+- 9 requirement gap (`C-GAP-R01`–`C-GAP-R09`), gồm whitespace/trim, duplicate, length, HTTP response, missing ID và xóa category đang được product tham chiếu.
+- Source `SHOP` không bị sửa; `git diff --check` không phát hiện lỗi.
+
+Tương tác được ghi thành `S001-I037`; AI-02 có đúng một dòng mới `ART032` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit. Bạn cần kiểm tra checklist mục 13 trước khi chuyển tài liệu sang `REVIEWED` và tạo `features/C/02_domain_model.md`.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: phạm vi CRUD, 21 rule, 9 requirement gap, precondition, expected result và cách phân loại candidate discrepancy.
+- AI-02: Đã thêm đúng một dòng `ART032` cho artifact Step 1 của C-FR14.
+
+## S001-I038 — Domain Model cho C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-13 21:44:37 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART033` — `features/C/02_domain_model.md` |
+| AI-02 | Có — Domain Model là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo features/C/02\_domain\_model.md.
+
+- Mô hình hóa Category, Admin identity, Category list và CRUD operation.
+- Xác định các biến như category name, category ID, authentication, record existence và referenced products.
+- Chia valid/invalid partition.
+- Mô hình hóa state transition: nonexistent → created → updated → deleted.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [02_domain_model.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/02_domain_model.md) cho `C-FR14`.
+
+Nội dung gồm:
+
+- 7 domain object và 20 biến cho Category, Admin identity, list, CRUD operation, repository, referenced products và Admin UI.
+- 56 equivalence/composite partition thuộc các lớp `VALID`, `INVALID` và `UNRESOLVED`.
+- 4 entity state và 10 transition, gồm cả `NONEXISTENT → CREATED → UPDATED → DELETED`.
+- Update/`UPDATED` vẫn là `UNRESOLVED`; luồng có business oracle chính thức là `NONEXISTENT → CREATED → DELETED`.
+- Traceability cấp domain bao phủ `21/21` rule và giữ nguyên 9 requirement gap.
+
+`git diff --check` không phát hiện lỗi; source `SHOP` không bị sửa. Tương tác được ghi thành `S001-I038`; AI-02 có đúng một dòng mới `ART033` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+
+Lưu ý: Step 1 cũng vẫn đang `PENDING HUMAN REVIEW`. Bạn cần review cả hai checklist trước khi chuyển chúng sang `REVIEWED` và tạo `features/C/03_boundary_value_analysis.md`.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: 7 object, 20 biến, 56 partition, 10 transition, Update unresolved, 21/21 traceability và 9 gap.
+- AI-02: Đã thêm đúng một dòng `ART033` cho Domain Model của C-FR14.
+
+## S001-I039 — Equivalence Partitioning và BVA cho C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-13 21:48:18 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART034` — `features/C/03_boundary_value_analysis.md` |
+| AI-02 | Có — EP/BVA là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo features/C/03\_boundary\_value\_analysis.md.
+
+- Phân tích tên rỗng, whitespace, tên hợp lệ, tên trùng và ký tự đặc biệt.
+- Phân tích độ dài tên nếu SRS hoặc source có giới hạn.
+- Kiểm tra category ID hợp lệ, không tồn tại, âm, 0 và sai kiểu.
+- Phân tích update/delete với category đang được product tham chiếu.
+- Không tự đặt giới hạn độ dài hoặc duplicate rule nếu không có căn cứ.
+````
+
+### Phản hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [03_boundary_value_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/03_boundary_value_analysis.md) cho `C-FR14`.
+
+Kết quả phân tích gồm:
+
+- 8 boundary (`C-B01`–`C-B08`) và 24 test-data candidate.
+- 16 partition cho category name: missing/empty có oracle invalid; non-empty nominal hợp lệ; whitespace, duplicate và upper length giữ `UNRESOLVED`.
+- 8 partition/probe cho ID: existing, nonexistent, `0`, âm, decimal, text, SQL-like và missing route segment.
+- 7 tổ hợp Update/Delete × record existence × referenced products; Update và Delete referenced category không bị gán verdict giả.
+- Không phát hiện `maxlength`, `UNIQUE`, backend length validation hoặc foreign key cho Category; không sao chép giới hạn 255 của Product sang Category.
+
+Tôi cũng sửa một dòng trong [02_domain_model.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/02_domain_model.md): một ký tự nằm phía non-empty có căn cứ, còn gap độ dài chỉ áp dụng cho upper/extreme length chưa được quy định.
+
+`git diff --check` không phát hiện lỗi; source `SHOP` không bị sửa. Tương tác được ghi thành `S001-I039`; AI-02 có đúng một dòng mới `ART034` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+
+Step 1–3 hiện vẫn `PENDING HUMAN REVIEW`. Sau khi bạn kiểm tra checklist mục 15, có thể chuyển cả ba file sang `REVIEWED` rồi tạo `features/C/04_test_cases.md`.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: 8 boundary, 24 data row, name/ID classification, referenced-product matrix và các gap không bị biến thành rule.
+- AI-02: Đã thêm đúng một dòng `ART034` cho EP/BVA của C-FR14.
+
+## S001-I040 — Thiết kế test case và thực thi C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-13 22:55:47 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART035` — Step 4–5 của C-FR14 |
+| AI-02 | Có — test design, automation, kết quả và evidence là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo features/C/04\_test\_cases.md.
+Test case cần bao phủ:
+
+- Hiển thị danh sách category.
+- Create category hợp lệ và không hợp lệ.
+- Update category hợp lệ và không hợp lệ.
+- Delete category tồn tại và không tồn tại.
+- Authentication và authorization của Admin.
+- Category được product tham chiếu.
+- Error placement, heading, breadcrumb, màu button và tab order.
+- Traceability: rule → partition/boundary → test case.
+
+5. Automation và Execution
+   Tạo:
+   - automation/C-FR14/
+   - evidence/C/execution/
+   - features/C/05\_execution\_results.md
+     Thực hiện:
+   - Dùng Playwright trên Admin Web.
+   - Tạo SQLite fixture cô lập.
+   - Tự khởi động Backend và Admin frontend.
+   - Chạy tuần tự toàn bộ test case.
+   - Ghi PASS, FAIL, BLOCKED hoặc NOT RUN.
+   - Lưu results.json, screenshot, trace và service log.
+   - Không sửa source SHOP.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 4 và Step 5 cho `C-FR14`; các artifact đang ở trạng thái `PENDING HUMAN REVIEW` và chưa commit.
+
+Kết quả thực thi 48 test case:
+
+- PASS: 18
+- FAIL: 9
+- BLOCKED: 21
+- NOT RUN: 0
+
+Các FAIL tập trung vào: empty state; backend/UI chấp nhận tên category thiếu hoặc rỗng; authorization theo role chưa được cưỡng chế ở API/Admin shell; thiếu required marker và inline error; heading chưa mô tả trang Category. Đây chưa được mặc định xem là 9 bug riêng — việc nhóm theo root cause thuộc Step 6.
+
+Các BLOCKED chủ yếu do requirement chưa chốt cho whitespace/duplicate/case sensitivity/độ dài, chức năng Update không tồn tại, chính sách ID không tồn tại hoặc sai kiểu, chính sách xóa category đang được product tham chiếu, và breadcrumb không áp dụng theo requirement hiện có.
+
+Đã tạo hoặc cập nhật:
+
+- `features/C/04_test_cases.md`
+- `automation/C-FR14/` (runner, SQLite fixture, cấu hình và hướng dẫn)
+- `features/C/05_execution_results.md`
+- `evidence/C/execution/results.json`
+- `evidence/C/execution/service-logs.txt`
+- 48 screenshot và 48 Playwright trace trong `evidence/C/execution/`
+- `ai/prompt_log.md` và một dòng AI-02 `ART035`
+
+Kiểm tra cuối: 48 ID duy nhất, đủ 48 screenshot/48 trace, toàn bộ trace ZIP mở được, không có runner error, backend và Admin frontend đã dừng. Fixture SQLite nằm riêng trong runtime bị ignore; source `SHOP` không bị sửa bởi automation. Không có file runtime, `node_modules` hoặc database fixture được đưa vào danh sách commit.
+
+Tương tác được ghi thành `S001-I040`; `ART035` giữ `PENDING HUMAN REVIEW`. Bước tiếp theo sau khi bạn review là Step 6: nhóm FAIL theo root cause và lập defect/gap analysis.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: phạm vi 48 test case, expected result, phân loại 18 PASS/9 FAIL/21 BLOCKED và evidence đại diện.
+- AI-02: thêm đúng một dòng `ART035` cho toàn bộ artifact logic của Step 4–5 C-FR14.
+
+## S001-I041 — Defect và Gap Analysis cho C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 15:51:57 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART036` — Step 6 của C-FR14 |
+| AI-02 | Có — bug report và gap analysis là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+6. Defect và Gap Analysis
+   Tạo:
+   - bugs/C-FR14\_bug\_report.md
+   - features/C/06\_ai\_gap\_analysis.md
+     Trong đó:
+   - Nhóm các FAIL có cùng root cause.
+   - Phân biệt confirmed defect, requirement gap, implementation gap, testability gap và blocked condition.
+   - Kiểm tra source read-only để tìm root cause.
+   - Không biến case BLOCKED thành bug.
+   - Dẫn đúng test case và evidence.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 6 cho `C-FR14`; hai tài liệu đang ở trạng thái `PENDING HUMAN REVIEW` và chưa commit.
+
+Kết quả phân tích:
+
+- 9 case FAIL được nhóm thành 5 confirmed defect.
+- 9 requirement gap được giữ nguyên từ đặc tả.
+- 3 implementation risk từ source read-only, chưa nâng thành defect.
+- 1 testability gap đã được runner giảm thiểu.
+- 6 blocked-condition group bao phủ đúng 21 case BLOCKED; không case BLOCKED nào bị ghi thành bug.
+
+Năm defect gồm: thiếu empty state; thiếu validation/constraint tên category; form thiếu required marker và inline error; thiếu cưỡng chế role admin tại API/restored session; và `h1` không mô tả trang Category. Defect authorization được xếp `Critical/P1`; defect validation dữ liệu là `Major/P1`.
+
+Đã tạo:
+
+- `bugs/C-FR14_bug_report.md`
+- `features/C/06_ai_gap_analysis.md`
+
+Đã kiểm tra đủ 9 FAIL trong bug report, các đường dẫn evidence cụ thể đều tồn tại, tổng blocked group là `4 + 4 + 5 + 5 + 2 + 1 = 21`, và `git diff --check` không có lỗi mới. Source `SHOP` chỉ được đọc, không bị sửa; test không được chạy lại; chưa commit.
+
+Tương tác được ghi thành `S001-I041`; AI-02 có đúng một dòng `ART036` ở trạng thái `PENDING HUMAN REVIEW`.
+
+Checklist bạn cần review:
+
+- Xác nhận cách nhóm 9 FAIL thành 5 root cause.
+- Mở evidence của `C-BUG-002` và `C-BUG-004` trước vì liên quan data integrity và authorization.
+- Xác nhận severity/priority.
+- Xác nhận 9 requirement gap không bị biến thành business rule.
+- Xác nhận 3 implementation risk chưa bị gọi nhầm là defect.
+- Xác nhận 21 BLOCKED vẫn giữ nguyên verdict.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: mapping 9 FAIL → 5 defect, severity/priority, 9 requirement gap, 3 implementation risk, 1 testability gap và 6 blocked condition.
+- AI-02: thêm đúng một dòng `ART036` cho Step 6 C-FR14.
+
+## S001-I042 — Traceability, Report và Feature Closure cho C-FR14
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:02:30 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART037` — Step 7 của C-FR14 |
+| AI-02 | Có — traceability, closure và nội dung báo cáo là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+7. Traceability, Report và Feature Closure
+   Tạo:
+   - features/C/07\_traceability\_matrix.md
+   - features/C/07\_feature\_closure.md
+     Sau đó:
+   - Liên kết requirement → partition → boundary → test case → result → defect/gap → evidence.
+   - Cập nhật chương Pool C trong báo cáo LaTeX.
+   - Ghi coverage, residual risk và nội dung chưa kiểm chứng.
+   - Render PDF để kiểm tra bảng, ảnh và đường dẫn.
+   - Chỉ chốt workflow; không kết luận feature hoạt động đúng nếu còn FAIL hoặc BLOCKED.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 7 cho `C-FR14`. Workflow được chốt ở mức `TECHNICALLY COMPLETE — PENDING HUMAN SIGN-OFF`; chất lượng SUT là `NOT ACCEPTED — 9 FAIL, 21 BLOCKED`.
+
+Đã tạo:
+
+- `features/C/07_traceability_matrix.md`
+- `features/C/07_feature_closure.md`
+
+Đã cập nhật báo cáo:
+
+- `report/latex/chapters/04_feature_c.tex`
+- `report/latex/chapters/06_ai_gap_analysis.tex`
+- `report/latex/chapters/07_bug_report.tex`
+- `report/latex/chapters/10_test_summary_self_assessment.tex`
+- `report/latex/chapters/11_conclusion.tex`
+
+Coverage và traceability:
+
+- 48/48 test case có dòng traceability duy nhất và khớp `results.json`.
+- Design coverage: 21/21 rule.
+- Boundary catalog: 8/8 boundary có test/probe.
+- Execution coverage: 27/48 = 56.25%.
+- 5/5 defect có FAIL và evidence; 9 requirement gap, 3 implementation risk, 1 testability gap và 6 blocked-condition group được liên kết.
+- Đủ 48 screenshot và 48 trace; không thiếu evidence path.
+
+Residual risk vẫn cao: role-user authorization bypass và dữ liệu name rỗng/NULL chưa được sửa; Update, normalization, upper length, invalid-ID response và referenced-category policy chưa được kiểm chứng đầy đủ. Vì vậy closure không tuyên bố feature hoạt động đúng hoặc coverage đạt 100%.
+
+PDF đã render thành công bằng XeLaTeX: `report/latex/main.pdf`, 25 trang. Chương Pool C ở trang báo cáo 6–10 đã được kiểm tra trực quan; bảng và ba ảnh không tràn/méo, cross-reference ổn định, không có lỗi biên dịch, undefined reference hoặc overfull box. Log chỉ còn một underfull box có sẵn trong chương Pool A và warning MiKTeX không ghi được log hệ thống; chúng không ảnh hưởng PDF.
+
+Tương tác được ghi thành `S001-I042`; AI-02 có đúng một dòng `ART037` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+
+Checklist human sign-off:
+
+- Xác nhận ma trận đủ 48 case, 21 rule, 8 boundary và 5 defect.
+- Xác nhận thống kê `48/27/18/9/21/0`.
+- Xác nhận 21 BLOCKED không bị biến thành bug.
+- Xác nhận residual risk và các nội dung chưa kiểm chứng.
+- Xem trang 6–10 của PDF, đặc biệt hai ảnh execution và bảng defect.
+- Nếu đồng ý, chuyển hai artifact Step 7 sang `REVIEWED` rồi mới commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: ma trận 48 dòng, coverage, closure verdict, chương Pool C trang 6–10 và residual risk.
+- AI-02: thêm đúng một dòng `ART037` cho Step 7 C-FR14.
+
+## S001-I043 — Traceability, Report và Feature Closure cho B-FR09
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:10:04 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART038` — Step 7 của B-FR09 |
+| AI-02 | Có — traceability, closure và nội dung báo cáo là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+tạo tài liệu step 7 tương đương cho feature B
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 7 cho `B-FR09`. Workflow được chốt ở mức `TECHNICALLY COMPLETE — PENDING HUMAN SIGN-OFF`; chất lượng SUT là `NOT ACCEPTED — 14 FAIL, 10 BLOCKED`.
+
+Đã tạo:
+
+- `features/B/07_traceability_matrix.md`
+- `features/B/07_feature_closure.md`
+
+Đã cập nhật chương Pool B và các phần tổng hợp của báo cáo LaTeX:
+
+- `report/latex/chapters/03_feature_b.tex`
+- `report/latex/chapters/06_ai_gap_analysis.tex`
+- `report/latex/chapters/07_bug_report.tex`
+- `report/latex/chapters/10_test_summary_self_assessment.tex`
+- `report/latex/chapters/11_conclusion.tex`
+
+Coverage và traceability:
+
+- 41/41 test case có dòng traceability duy nhất và khớp `results.json`.
+- Design coverage: 19/19 rule.
+- Boundary catalog: 8/8 boundary được liên kết với test hoặc probe.
+- Execution coverage: 31/41 = 75,61%.
+- 9/9 confirmed defect có FAIL và evidence; 7 requirement gap, 2 implementation risk, 1 testability gap và 3 blocked-condition group đã được liên kết.
+
+Residual risk ở mức rất cao vì còn lỗi Critical về công thức percent discount, total do client kiểm soát và identity binding; các miền expiry, normalization, rounding và cap/floor chưa được kiểm chứng đầy đủ. Vì vậy closure không tuyên bố feature hoạt động đúng hoặc coverage đạt 100%.
+
+PDF đã render thành công bằng XeLaTeX: `report/latex/main.pdf`, 30 trang. Chương Pool B ở trang báo cáo 5–9 đã được kiểm tra trực quan; bảng và ảnh không tràn trang nghiêm trọng, không có lỗi biên dịch, undefined reference hoặc overfull box. Log chỉ còn một underfull box có sẵn trong Pool A và cảnh báo MiKTeX không ghi được log hệ thống; chúng không ảnh hưởng PDF.
+
+Tương tác được ghi thành `S001-I043`; AI-02 có đúng một dòng `ART038` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+
+Checklist human sign-off:
+
+- Xác nhận ma trận đủ 41 case, 19 rule, 8 boundary và 9 defect.
+- Xác nhận thống kê `41/31/17/14/10/0`.
+- Xác nhận 10 case BLOCKED không bị biến thành bug.
+- Xác nhận residual risk và các nội dung chưa kiểm chứng.
+- Xem trang 5–9 của PDF, đặc biệt hai ảnh execution và bảng defect.
+- Nếu đồng ý, chuyển hai artifact Step 7 sang `REVIEWED` rồi mới commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: ma trận 41 dòng, coverage, closure verdict, chương Pool B trang 5–9 và residual risk.
+- AI-02: thêm đúng một dòng `ART038` cho Step 7 B-FR09.
+
+## S001-I044 — Giải thích các test case BLOCKED của feature C
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:11:45 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng — chỉ phân tích và tư vấn |
+| AI-02 | Không — không tạo hoặc thay đổi artifact trực tiếp của bài nộp |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+ở feature C tôi thấy có một số tc bị blocked giải thích nguyên do và có cần manual lại ko
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Không cần chạy manual lại toàn bộ 21 case ngay bây giờ. Các case này đã được automation gọi API hoặc quan sát UI và đã có actual result, screenshot, trace; chúng bị `BLOCKED` vì **thiếu oracle/business rule để quyết định PASS hay FAIL**, không phải vì Playwright không thực thi được.
+
+Sáu nhóm nguyên nhân:
+
+| Test case | Vì sao BLOCKED | Cần làm gì |
+|---|---|---|
+| `C-TC-010`–`013` | Chưa có rule về whitespace, trim, duplicate và phân biệt hoa/thường. Hệ thống hiện chấp nhận tất cả. | Chốt rule với giảng viên/SRS rồi chạy lại automation. Manual không giải quyết được thiếu oracle. |
+| `C-TC-017`–`020` | Không có maximum length hoặc contract cho `null`/sai kiểu. Các probe 255, 256, 1024 ký tự và `null` đều được lưu. | Chốt giới hạn và kiểu dữ liệu trước, sau đó tự động hóa lại. |
+| `C-TC-021`–`025` | API có Update nhưng FR-14 không chốt Update trong danh sách hành vi và Admin UI không có chức năng này. | Trước tiên xác nhận Update có thuộc phạm vi không. Nếu có, bổ sung oracle rồi regression; nếu không, đánh dấu ngoài phạm vi thay vì manual. |
+| `C-TC-027`–`031` | Chưa quy định response cho ID không tồn tại, `0`, số âm, số thập phân hoặc chuỗi. API hiện trả success dù không đổi record. | Chốt accept/reject và response contract rồi chạy lại automation. |
+| `C-TC-033`, `034` | Chưa có referential policy khi xóa Category đang được Product tham chiếu. Hiện Category bị xóa và Product giữ `category_id` mồ côi. | Đây là nhóm cần ưu tiên chốt chính sách `reject/cascade/set-null`; sau đó regression trên SQLite fixture cô lập. |
+| `C-TC-045` | FR-23 không yêu cầu breadcrumb cho Admin Category nên không có oracle áp dụng. | Nên ghi `N/A` hoặc giữ observation; chỉ chạy lại nếu phạm vi requirement được mở rộng. |
+
+Danh sách và điều kiện chạy lại đã được ghi tại [07_feature_closure.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/07_feature_closure.md:66); căn cứ chi tiết của sáu blocked condition nằm tại [06_ai_gap_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/06_ai_gap_analysis.md:87). Kết quả từng case và evidence nằm tại [05_execution_results.md](D:/HCMUS/KCPM/HW2/submission-src/features/C/05_execution_results.md:38).
+
+Kết luận:
+
+- **Không manual rerun lúc này** vì thao tác thủ công chỉ lặp lại behavior đã được ghi nhận, không tạo ra expected result hợp lệ.
+- Bạn chỉ cần **human review evidence**, nhất là `C-TC-020`, `C-TC-033` và `C-TC-034`, để xác nhận observation đúng.
+- Sau khi rule được chốt, cập nhật oracle/expected result theo rule mới rồi chạy lại automation. Có thể manual thêm một lượt smoke test trên UI sau khi sửa SUT, nhưng đó là regression bổ sung, không phải cách gỡ trạng thái BLOCKED hiện tại.
+- Riêng `C-TC-045` nên cân nhắc chuyển thành `N/A` khi review, không cần chạy lại nếu requirement không đổi.
+
+Tương tác này được ghi vào `prompt_log.md` dưới mã `S001-I044`; không thêm AI-02 vì chỉ phân tích, không tạo artifact nộp mới.
+````
+
+### Human review
+
+- Trạng thái: Không áp dụng; đây là giải thích dựa trên artifact hiện có.
+- AI-02: Không áp dụng vì không tạo hoặc thay đổi artifact trực tiếp của bài nộp.
+
+## S001-I045 — Đặc tả và test oracle cho D-M09
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:21:54 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART039` — Step 1 của D-M09 |
+| AI-02 | Có — đặc tả và test oracle là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+1. Đặc tả và test oracle
+   Tạo:
+   features/D/01\_spec\_and\_oracle.md
+   Thực hiện:
+
+- Đọc SRS, SHOP/README.md, api\_specification.md, Backend và frontend-mobile/App.js.
+- Xác định các business rule dùng chung với FR-09.
+- Xác định hành vi riêng của Mobile:
+  - Nhập và chuẩn hóa coupon code.
+  - Trạng thái enable/disabled của nút Áp dụng.
+  - Loading khi gửi request.
+  - Hiển thị lỗi, discount amount và final amount.
+  - Cập nhật lại giao diện khi thay đổi coupon code.
+- Phân biệt:
+  - Rule có căn cứ.
+  - Hành vi hiện tại của Mobile.
+  - Requirement gap.
+- Ghi rõ smoke evidence hiện tại là Expo Web với device emulation, chưa phải native Mobile.
+- Giữ trạng thái PENDING HUMAN REVIEW.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [01_spec_and_oracle.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/01_spec_and_oracle.md) cho `D-M09`; trạng thái hiện tại là `PENDING HUMAN REVIEW`.
+
+Tài liệu đã:
+
+- Xác định `SHOP/README.md` là SRS/business oracle chính và giữ thứ tự ưu tiên SRS → API contract → source.
+- Chốt `D-R01`–`D-R20`, gồm năm điều kiện C1–C5, công thức percent/fixed/final, trusted total và các GUI rule có căn cứ.
+- Tách 13 hành vi Mobile quan sát từ source thành `D-OBS-01`–`D-OBS-13`; các behavior như `trim().toUpperCase()`, disabled, loading và reset result khi sửa code không bị tự nâng thành business rule.
+- Ghi 11 requirement/testability gap `D-GAP-R01`–`D-GAP-R11`, gồm bằng chứng phân công Pool D, normalization, state khi apply, rounding, expiry, native semantics, network và environment matrix.
+- Phân biệt candidate discrepancy của Mobile/shared Backend với confirmed defect; chưa sử dụng kết quả Pool B để kết luận cho Pool D.
+- Ghi rõ smoke evidence hiện tại là Expo Web trên Chrome device emulation `iPhone 16 Pro Max`, viewport `440 × 956`, không phải native Android/iOS và chưa tạo verdict PASS/FAIL.
+- Ghi nhận local `API_URL` hiện dùng `localhost` khác baseline IP LAN; đây là cấu hình môi trường, không phải thay đổi oracle.
+
+Kiểm tra cấu trúc xác nhận đủ 20 Rule ID, 13 Observation ID và 11 Gap ID duy nhất; `git diff --check` không phát hiện lỗi. Source `SHOP` chỉ được đọc, không bị chỉnh sửa trong lượt này. Chưa commit.
+
+Tương tác được ghi thành `S001-I045`; AI-02 có đúng một dòng `ART039` ở trạng thái `PENDING HUMAN REVIEW`.
+
+Bước tiếp theo: bạn review checklist cuối file, đặc biệt xác nhận phạm vi Mobile Feature 9 và mức áp dụng FR-21/FR-22 cho React Native. Chỉ sau khi xác nhận mới chuyển Step 1 sang `REVIEWED` và tạo `features/D/02_domain_model.md`.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: `D-R01`–`D-R20`, các behavior Mobile chỉ là observation, 11 gap và qualification của Expo Web smoke evidence.
+- AI-02: thêm đúng một dòng `ART039` cho Step 1 D-M09.
+
+## S001-I046 — Yêu cầu tạo domain model D-M09 khi Step 1 chưa qua review gate
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:24:22 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng — chưa tạo Step 2 do review gate chưa đạt |
+| AI-02 | Không — chưa tạo hoặc thay đổi artifact nội dung của bài nộp |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+features/D/02\_domain\_model.md
+Mô hình hóa:
+
+- Mobile user/session.
+- Cart và cart total.
+- Coupon code input.
+- Coupon và CouponUsage.
+- Apply Coupon request/response.
+- Mobile checkout state.
+- Loading, error và success state.
+- Discount amount và final amount.
+- Network/backend availability.
+  Các biến chính:
+- Coupon code: empty, whitespace, normalized, existing, nonexistent.
+- Authentication và user identity.
+- Cart total và minimum order value.
+- Coupon active/expired.
+- Discount type/value.
+- Usage count/limit.
+- Request state: idle → loading → success/error.
+- UI state trước và sau khi áp dụng coupon.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Chưa thể tạo Step 2 đúng quy trình vì [01_spec_and_oracle.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/01_spec_and_oracle.md:12) vẫn là `PENDING HUMAN REVIEW`; toàn bộ checklist review còn chưa được xác nhận. Nếu tạo domain model ngay, các rule đang chờ duyệt có thể bị dùng nhầm làm baseline.
+
+Bạn chỉ cần xác nhận: **“Tôi đã review Step 1 của feature D; giữ các gap như hiện tại và cho phép chuyển sang REVIEWED.”** Sau đó tôi sẽ:
+
+- Chuyển Step 1 sang `REVIEWED — HUMAN APPROVED`.
+- Tạo `features/D/02_domain_model.md` với đầy đủ các đối tượng, biến, partition, constraint, dependency và state transition bạn vừa liệt kê.
+- Giữ các behavior `trim/uppercase`, loading, disabled và reset UI ở dạng implementation state/gap, không tự biến thành business rule.
+- Cập nhật prompt log và thêm đúng một dòng AI-02 cho artifact Step 2.
+
+Tương tác này đã được ghi thành `S001-I046`; không thêm AI-02 vì chưa tạo artifact Step 2.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên xác nhận Step 1 D-M09.
+- AI-02: Không áp dụng vì chưa tạo artifact Step 2.
+
+## S001-I047 — Domain model cho D-M09
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 16:30:18 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART040` — Step 2 của D-M09 |
+| AI-02 | Có — domain model là artifact trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+features/D/02\_domain\_model.md
+Mô hình hóa:
+
+- Mobile user/session.
+- Cart và cart total.
+- Coupon code input.
+- Coupon và CouponUsage.
+- Apply Coupon request/response.
+- Mobile checkout state.
+- Loading, error và success state.
+- Discount amount và final amount.
+- Network/backend availability.
+  Các biến chính:
+- Coupon code: empty, whitespace, normalized, existing, nonexistent.
+- Authentication và user identity.
+- Cart total và minimum order value.
+- Coupon active/expired.
+- Discount type/value.
+- Usage count/limit.
+- Request state: idle → loading → success/error.
+- UI state trước và sau khi áp dụng coupon.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã tạo [02_domain_model.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/02_domain_model.md) cho `D-M09`; trạng thái `PENDING HUMAN REVIEW`.
+
+Domain model gồm:
+
+- 11 object: Mobile session, cart/pricing, coupon input, Coupon, CouponUsage, request, response, Mobile view, application aggregate, network/backend và clock.
+- 26 domain variable, tách rõ raw/effective code, client/trusted identity và client/trusted total.
+- 60 equivalence/composite/UI/network/platform partition.
+- 6 request state: `IDLE_EMPTY → READY → LOADING → SUCCESS/BUSINESS_ERROR/TRANSPORT_ERROR`.
+- 8 interaction constraint cho code mapping, threshold, identity/usage, arithmetic, network, UI edit và runtime/API URL.
+- Traceability domain bao phủ `20/20` rule và giữ nguyên `11/11` requirement/testability gap.
+
+Các điểm quan trọng:
+
+- Empty, whitespace, trim/uppercase, disabled/loading và reset result khi edit vẫn là `UNRESOLVED` ở những tầng chưa có oracle.
+- Business rejection được tách khỏi network/Backend failure; transport failure không bị gán thành coupon reject hay defect nghiệp vụ.
+- Expo Web, Android emulator và iOS/thiết bị thật là các environment partition riêng, không thay thế evidence cho nhau.
+- Hai điều kiện mở của Step 1 tiếp tục được giữ: bằng chứng phân công chính thức và lựa chọn môi trường thực thi Step 5.
+
+Đã kiểm tra đủ 11 Object ID, 26 Variable ID, 60 Partition ID, 6 State ID, 8 Constraint ID, 20 Rule ID và 11 Gap ID; `git diff --check` không phát hiện lỗi. Source `SHOP` không bị sửa và chưa commit.
+
+Tương tác được ghi thành `S001-I047`; AI-02 có đúng một dòng `ART040` ở trạng thái `PENDING HUMAN REVIEW`.
+
+Bước tiếp theo: review checklist cuối file. Sau khi domain model được xác nhận mới tạo `features/D/03_boundary_value_analysis.md`.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: object/variable, 60 partition, state transition, trust boundary, network classification và traceability 20 rule.
+- AI-02: thêm đúng một dòng `ART040` cho Step 2 D-M09.
+
+## S001-I048 — Yêu cầu tạo BVA D-M09 khi Step 2 chưa qua review gate
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 17:11:12 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng — chưa tạo Step 3 do review gate chưa đạt |
+| AI-02 | Không — chưa tạo hoặc thay đổi artifact nội dung của bài nộp |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+3. Equivalence Partitioning và BVA
+   Tạo:
+   features/D/03\_boundary\_value\_analysis.md
+   Phân tích:
+
+- Coupon hợp lệ/không hợp lệ.
+- Empty và whitespace.
+- Lowercase, uppercase và khoảng trắng đầu/cuối.
+- Order total: dưới, bằng và trên minimum.
+- Coupon active/inactive.
+- Trước, đúng và sau expiry.
+- Usage count: dưới, bằng và vượt limit.
+- Discount value: âm, 0, dương.
+- Percent và fixed discount.
+- Final amount, rounding, cap và floor nếu có oracle.
+- Network success, HTTP error và request thất bại.
+- Trạng thái button trước/trong/sau request.
+  Không tự đặt maximum code length, rounding, cap/floor hoặc normalization rule khi chưa có căn cứ.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Chưa thể tạo Step 3 đúng workflow vì [02_domain_model.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/02_domain_model.md:12) vẫn là `PENDING HUMAN REVIEW`; chín mục checklist chưa được xác nhận.
+
+Bạn chỉ cần yêu cầu: **“Không chép; kiểm tra và review Step 2 theo hình thức USER-DELEGATED AI REVIEW, sau đó tạo Step 3.”** Tôi sẽ thực hiện liền mạch:
+
+1. Đối chiếu lại 11 object, 26 variable, 60 partition, state transition và traceability của Step 2.
+2. Đánh dấu review trung thực theo hình thức được ủy quyền, không ghi là independent human review.
+3. Tạo `features/D/03_boundary_value_analysis.md` với các partition/boundary bạn đã liệt kê.
+4. Giữ code length, normalization, rounding, cap/floor, network behavior và button state là `UNRESOLVED` khi chưa có oracle.
+
+Tương tác được ghi thành `S001-I048`; không thêm AI-02 vì chưa tạo artifact Step 3.
+````
+
+### Human review
+
+- Trạng thái: Chờ review gate Step 2 D-M09.
+- AI-02: Không áp dụng vì chưa tạo artifact Step 3.
+
+## S001-I049 — Yêu cầu tạo test case D-M09 khi Step 3 chưa qua review gate
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-14 17:40:10 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng — chưa tạo Step 4 do review gate chưa đạt |
+| AI-02 | Không — chưa tạo hoặc thay đổi artifact nội dung của bài nộp |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo:
+features/D/04\_test\_cases.md
+Test case cần bao phủ:
+
+- Mở Mobile checkout và hiển thị coupon input.
+- Nút Áp dụng disabled với input rỗng/whitespace.
+- Chuẩn hóa trim() và uppercase trước request.
+- Coupon hợp lệ loại percent và fixed.
+- Coupon không tồn tại, inactive và expired.
+- Order total dưới, bằng và trên minimum.
+- Usage limit.
+- Người dùng chưa đăng nhập hoặc identity không hợp lệ.
+- Loading state và chống nhấn nút nhiều lần.
+- Network/API error.
+- Xóa hoặc sửa code sau khi đã áp dụng coupon.
+- Discount amount và final amount hiển thị đúng.
+- Checkout sử dụng đúng final amount.
+- Khả năng hiển thị trên viewport Mobile, keyboard và accessibility nếu có requirement.
+- Traceability: rule → partition/boundary → test case.
+  Không sao chép verdict của Pool B sang Pool D; chỉ tái sử dụng business oracle đã có căn cứ.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Chưa thể tạo Step 4 đúng workflow vì [03_boundary_value_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/03_boundary_value_analysis.md:12) vẫn là `PENDING HUMAN REVIEW`; chín mục checklist chưa được xác nhận.
+
+Điểm cần review quan trọng nhất là các case empty/whitespace, trim/uppercase, loading/double tap, network resilience và native accessibility chỉ có thể mang expected result `UNRESOLVED`/`BLOCKED` khi chưa có oracle; không được viết thành PASS/FAIL expectation theo source hiện tại.
+
+Bạn có thể yêu cầu: **“Không chép; review Step 3 theo hình thức USER-DELEGATED AI REVIEW rồi tạo Step 4, giữ nguyên mọi miền UNRESOLVED.”** Khi đó tôi sẽ:
+
+- Kiểm tra và đóng review gate Step 3 trung thực.
+- Tạo `features/D/04_test_cases.md` với ID, precondition, dữ liệu, bước chạy, expected result và traceability đầy đủ.
+- Không sao chép actual result/verdict từ Pool B.
+- Giữ các test thiếu oracle ở trạng thái thiết kế `BLOCKED/UNRESOLVED`, kèm điều kiện mở khóa.
+
+Tương tác được ghi thành `S001-I049`; không thêm AI-02 vì chưa tạo artifact Step 4.
+````
+
+### Human review
+
+- Trạng thái: Chờ review gate Step 3 D-M09.
+- AI-02: Không áp dụng vì chưa tạo artifact Step 4.
+
+## S001-I050 — Step 6 defect và gap analysis cho D-M09
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-15 19:39:00 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART041` — Step 6 của D-M09 |
+| AI-02 | Có — bug report và gap analysis là một artifact logic trực tiếp của bài nộp; `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+6. Defect và Gap Analysis
+   Tạo:
+   bugs/D-M09\_bug\_report.md
+   features/D/06\_ai\_gap\_analysis.md
+   Thực hiện:
+
+- Nhóm các FAIL theo root cause.
+- Phân biệt:
+  - Confirmed defect.
+  - Requirement gap.
+  - Implementation gap.
+  - Mobile-specific gap.
+  - Testability gap.
+  - Environment/connection issue.
+  - Blocked condition.
+- Không biến case BLOCKED thành bug.
+- Kiểm tra source read-only để xác định root cause.
+- Nếu lỗi Mobile và Web có cùng root cause ở Backend, dẫn chiếu defect Pool B thay vì mô tả như hai lỗi Backend độc lập.
+- Tách lỗi Backend khỏi lỗi render/state management của Mobile client.
+- Dẫn đúng screenshot, video/trace, results.json và service log.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 6 cho `D-M09`.
+
+Các file được tạo:
+
+- [D-M09_bug_report.md](D:/HCMUS/KCPM/HW2/submission-src/bugs/D-M09_bug_report.md)
+- [06_ai_gap_analysis.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/06_ai_gap_analysis.md)
+
+Kết quả phân tích:
+
+- 11 FAIL được ánh xạ đủ vào 7 root-cause group.
+- 5 root cause Backend dẫn chiếu canonical defect `B-BUG-001`–`B-BUG-005`; không tạo defect Backend trùng cho Pool D.
+- 2 defect mới riêng Mobile:
+  - `D-BUG-001`: positive action không dùng màu xanh dương.
+  - `D-BUG-002`: validation error nằm dưới action Apply.
+- `D-TC-044` được ánh xạ chính vào `B-BUG-003` và ghi nhận tác động phụ của `B-BUG-001`, không double-count.
+- 20 BLOCKED được giữ nguyên, nhóm thành 6 blocked condition và không case nào bị biến thành bug.
+
+Gap analysis ghi nhận:
+
+- 11 requirement gap.
+- 3 implementation gap/risk chưa phải defect.
+- 2 Mobile-specific/environment gap.
+- 2 testability gap.
+- Không có active environment/connection incident trong lần chạy Expo Web; rủi ro `localhost` chỉ được ghi cho native runtime.
+
+Đã kiểm tra source SHOP ở chế độ read-only, đối chiếu đủ 11 FAIL, đúng thống kê `19 PASS + 11 FAIL + 20 BLOCKED = 50`, và dẫn đầy đủ `results.json`, screenshot, Playwright trace cùng service log. Không có video được tạo nên tài liệu nêu rõ trace là evidence động.
+
+Hai artifact đang ở trạng thái `PENDING HUMAN REVIEW`. Tương tác được ghi thành `S001-I050`; AI-02 có đúng một dòng `ART041` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit và không sửa source SHOP.
+
+Checklist review chính: xác nhận năm defect Backend dùng đúng canonical record Pool B, hai `D-BUG-*` thuộc Mobile client, `D-TC-044` không bị double-count, và sáu nhóm BLOCKED không bị diễn giải thành defect.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: root-cause grouping, cross-reference Pool B, severity/priority, phân loại gap và evidence path.
+- AI-02: thêm đúng một dòng `ART041` cho Step 6 D-M09.
+
+## S001-I051 — Yêu cầu Step 7 D-M09 khi Step 6 chưa qua review gate
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-15 19:43:00 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng — chưa tạo Step 7 do review gate chưa đạt |
+| AI-02 | Không — chưa tạo hoặc thay đổi artifact Step 7/báo cáo |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+Tạo:
+features/D/07\_traceability\_matrix.md
+features/D/07\_feature\_closure.md
+Sau đó:
+
+- Liên kết:
+  requirement
+  → partition
+  → boundary
+  → test case
+  → execution result
+  → defect/gap
+  → Mobile evidence
+- Cập nhật chương Pool D trong báo cáo LaTeX.
+- Cập nhật Test Summary, Self-assessment và Conclusion bằng số liệu thật.
+- Ghi rõ:
+  - Thiết bị/nền tảng thực thi.
+  - Designed, Executed, PASS, FAIL, BLOCKED, NOT RUN.
+  - Coverage.
+  - Defect và gap.
+  - Residual risk.
+  - Nội dung chưa kiểm chứng trên native Android/iOS.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Chưa tạo Step 7 vì review gate của Step 6 chưa đạt.
+
+Hiện các artifact sau vẫn là `PENDING HUMAN REVIEW` và checklist chưa được xác nhận:
+
+- `features/D/05_execution_results.md`
+- `bugs/D-M09_bug_report.md`
+- `features/D/06_ai_gap_analysis.md`
+
+Theo skill `domain-testing-feature-workflow`, Step 7 chỉ được thực hiện sau khi defect/gap đã được review. Tôi chưa tạo traceability matrix, feature closure hoặc sửa báo cáo LaTeX để tránh trình bày dữ liệu chưa được bạn chấp nhận như kết luận cuối.
+
+Bạn chỉ cần trả lời một trong hai câu:
+
+- **“Tôi đã review Step 5 và Step 6; xác nhận nội dung hợp lệ, hãy thực hiện Step 7.”**
+- **“Kiểm tra và review Step 5–6 theo hình thức USER-DELEGATED AI REVIEW, sau đó thực hiện Step 7.”**
+
+Sau xác nhận đó, tôi có thể tạo đồng thời hai file Step 7, cập nhật chương Pool D, Test Summary, Self-assessment, Conclusion và render PDF để kiểm tra.
+
+Tương tác này được ghi thành `S001-I051`; không thêm AI-02 vì chưa tạo artifact Step 7. Chưa commit và không sửa source SHOP.
+````
+
+### Human review
+
+- Trạng thái: Chờ review gate Step 5–6 của D-M09.
+- AI-02: Không áp dụng vì chưa tạo artifact Step 7.
+
+## S001-I052 — Hoàn thành Step 7 và chốt workflow D-M09
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-15 20:20:10 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART042` |
+| AI-02 | Có — một dòng cho toàn bộ artifact logic Step 7 D-M09 |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+&#x20;
+
+Tạo:
+features/D/07\_traceability\_matrix.md
+features/D/07\_feature\_closure.md
+Sau đó:
+
+- Liên kết:
+  requirement
+  → partition
+  → boundary
+  → test case
+  → execution result
+  → defect/gap
+  → Mobile evidence
+- Cập nhật chương Pool D trong báo cáo LaTeX.
+- Cập nhật Test Summary, Self-assessment và Conclusion bằng số liệu thật.
+- Ghi rõ:
+  - Thiết bị/nền tảng thực thi.
+  - Designed, Executed, PASS, FAIL, BLOCKED, NOT RUN.
+  - Coverage.
+  - Defect và gap.
+  - Residual risk.
+  - Nội dung chưa kiểm chứng trên native Android/iOS.
+- Render PDF và kiểm tra bảng, ảnh, caption và đường dẫn.
+- Chỉ chốt workflow; không kết luận Mobile feature hoạt động đúng nếu còn FAIL/BLOCKED hoặc mới chỉ chạy Expo Web.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thành Step 7 và chốt workflow kỹ thuật cho D-M09, chưa chấp nhận chất lượng feature.
+
+Các artifact chính:
+
+- Tạo [07_traceability_matrix.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/07_traceability_matrix.md) và [07_feature_closure.md](D:/HCMUS/KCPM/HW2/submission-src/features/D/07_feature_closure.md).
+- Cập nhật [Pool D](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/05_feature_d.tex), [AI gap analysis](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/06_ai_gap_analysis.tex), [bug report](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/07_bug_report.tex), [Test Summary/Self-assessment](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/10_test_summary_self_assessment.tex) và [Conclusion](D:/HCMUS/KCPM/HW2/submission-src/report/latex/chapters/11_conclusion.tex).
+- Render [main.pdf](D:/HCMUS/KCPM/HW2/submission-src/report/latex/main.pdf) để review; PDF là build output và không nằm trong danh sách commit.
+
+Kết quả D-M09: Designed 50, Executed 30, PASS 19, FAIL 11, BLOCKED 20, NOT RUN 0. Execution coverage là 60.00%; tỷ lệ PASS trong case đã thực thi là 63.33%. Ma trận bao phủ 50/50 test case, 20/20 rule và 6/6 boundary; toàn bộ 101 tham chiếu screenshot/trace/results trong ma trận đều tồn tại. 11 FAIL được truy vết đến bảy root-cause group; 20 BLOCKED vẫn là blocked condition, không bị đổi thành bug.
+
+Trạng thái đúng của feature là `TECHNICALLY COMPLETE — PENDING HUMAN SIGN-OFF`, còn chất lượng SUT là `NOT ACCEPTED — 11 FAIL, 20 BLOCKED; EXPO WEB ONLY`. Kết quả chỉ thu trên Expo Web/Chromium với viewport 440 × 956; chưa kiểm chứng native Android/iOS, soft keyboard, orientation, accessibility/native semantic, hiệu năng hoặc kết nối thiết bị thật. Residual risk vẫn rất cao.
+
+Báo cáo tổng hợp đúng số liệu bốn pool: 177 designed, 97 executed, 55 PASS, 42 FAIL, 80 BLOCKED, 0 NOT RUN và 24 defect mới không đếm trùng các Backend defect dùng chung. XeLaTeX render thành công 37 trang A4; không có lỗi biên dịch, file/ảnh thiếu hoặc tràn dọc. Ba ảnh Pool D và caption hiển thị đúng; chỉ còn các cảnh báo dàn dòng nhỏ dưới 3 pt và bibliography rỗng, không làm mất nội dung.
+
+Đã ghi tương tác `S001-I052` và thêm đúng một dòng AI-02 `ART042` ở trạng thái `PENDING HUMAN REVIEW`. Không sửa source SHOP và chưa commit.
+
+Checklist human sign-off: đối chiếu ngẫu nhiên các dòng PASS/FAIL/BLOCKED với `results.json`; kiểm tra bảy root-cause group và các gap; xem ba ảnh/caption Pool D trong PDF; xác nhận giới hạn Expo Web và native Android/iOS chưa kiểm chứng; sau đó mới chuyển hai artifact Step 7 và `ART042` sang verdict phù hợp.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: ma trận 50 case, thống kê D và tổng bốn pool, root-cause/gap, ba ảnh/caption trong PDF và giới hạn Expo Web.
+- AI-02: thêm đúng một dòng `ART042` cho toàn bộ artifact logic Step 7 D-M09.
+
+## S001-I053 — Sửa kết nối API cho Expo trên thiết bị iOS thật
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 09:21:25 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng |
+| AI-02 | Không — chỉ sửa cấu hình/source chạy thử trong `SHOP` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+chạy được app trên ios nhưng ko fetch được data
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã sửa đúng nguyên nhân: Mobile trước đó gọi `http://localhost:3000/api`, nên trên iPhone request quay về chính iPhone thay vì máy tính.
+
+Thay đổi tại [App.js](D:/HCMUS/KCPM/HW2/SHOP/frontend-mobile/App.js:16):
+
+- Expo Web tiếp tục dùng `http://localhost:3000/api`.
+- iOS/Android mặc định dùng `http://10.0.210.191:3000/api`.
+- Có thể ghi đè bằng biến `EXPO_PUBLIC_API_URL` khi IP Wi-Fi thay đổi.
+
+Đã cập nhật thêm [setup_guide.md](D:/HCMUS/KCPM/HW2/SHOP/setup_guide.md) với hướng dẫn thiết bị thật.
+
+Kiểm tra thực tế:
+
+- Backend đang listen trên `0.0.0.0:3000`.
+- `http://localhost:3000/api/products`: HTTP 200.
+- `http://10.0.210.191:3000/api/products`: HTTP 200.
+- iOS bundle SDK 57 build thành công, 582 modules.
+
+Hãy đóng Metro hiện tại và chạy lại bằng PowerShell:
+
+```powershell
+cd D:\HCMUS\KCPM\HW2\SHOP\frontend-mobile
+$env:EXPO_PUBLIC_API_URL="http://10.0.210.191:3000/api"
+npx expo start --clear --lan
+```
+
+Trên iPhone:
+
+1. Kết nối cùng Wi-Fi với máy tính.
+2. Cho phép Expo Go truy cập **Local Network** trong iOS Settings.
+3. Mở Safari và thử `http://10.0.210.191:3000/api/products`.
+4. Nếu Safari thấy JSON, quét lại QR và app sẽ fetch được dữ liệu.
+5. Nếu Safari không mở được, cho phép `node.exe` qua Windows Firewall ở mạng Private.
+
+IP `10.0.210.191` có thể đổi khi kết nối Wi-Fi khác; khi đó chạy `ipconfig` và thay giá trị `EXPO_PUBLIC_API_URL`. Chưa commit. Tương tác này được ghi vào `S001-I053`; không thêm AI-02 vì không tạo artifact trực tiếp cho bài nộp.
+````
+
+### Human review
+
+- Trạng thái: Chờ sinh viên xác nhận fetch sản phẩm thành công trên iOS thật.
+- AI-02: Không áp dụng vì thay đổi chỉ thuộc source/cấu hình chạy thử `SHOP`.
+
+## S001-I054 — Bổ sung evidence iOS thật và đồng bộ Pool D
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 09:42:18 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART043` |
+| AI-02 | Có — `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- README.md: SHOP/README.md
+- 04_test_cases.md: submission-src/features/D/04_test_cases.md
+- setup_guide.md: SHOP/setup_guide.md
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+
+## My request:
+tôi đã chụp màn hình các tc được bạn đề xuất nhưng không thể chụp hết, bạn dựa vào các tên ảnh được tôi đổi theo đúng bảng mô tả [tc1.jpg](SHOP/tc1.jpg) ... [tc44.jpg](SHOP/tc44.jpg). Bạn được quyền đổi tên, di chuyển chúng, và cập nhật tất cả tài liệu feature D có liên quan đến những phần này, được quyền cập nhật báo cáo chính luôn
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn tất đồng bộ 9 ảnh chụp trên iOS thật vào Pool D và báo cáo chính.
+
+- Ảnh đã được đổi tên, chuyển vào [native-ios/screenshots](D:/HCMUS/KCPM/HW2/submission-src/evidence/D/native-ios/screenshots/) và liên kết với các case `001`, `002`, `003`, `008`, `009`, `010`, `012`, `022`, `042`.
+- `tc44.jpg` được ánh xạ thành `D-TC-042-ios-physical.jpg` vì nội dung thực tế là lỗi mất kết nối, không phải checkout integration `D-TC-044`.
+- Giữ nguyên kết quả chuẩn: 50 designed, 30 executed, 19 PASS, 11 FAIL, 20 BLOCKED, 0 NOT RUN. Chín ảnh được ghi là evidence bổ sung: 5 exact, 2 modified-data và 2 observation-only.
+- Đã cập nhật execution result/JSON, bug report, gap analysis, traceability, feature closure, environment, báo cáo Markdown và các chương LaTeX liên quan. `D-TC-042` vẫn BLOCKED; raw transport exception được ghi thành `D-IG-04`, không tự nâng thành defect.
+- Báo cáo PDF render thành công, không có lỗi biên dịch hoặc file ảnh thiếu. Chỉ còn cảnh báo dàn dòng nhỏ, không làm mất nội dung.
+- Đã ghi `S001-I054` và thêm một dòng AI-02 `ART043` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+
+Nội dung báo cáo được giữ theo phong cách hiện tại: tiếng Việt, trực tiếp và dựa trên evidence. Bạn chỉ cần review mapping 9 ảnh, phần baseline deviation và ba hình iOS trong chương Pool D; sau đó có thể chuyển `ART043` sang verdict phù hợp.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần kiểm tra: mapping 9 ảnh, phân loại exact/modified-data/observation, baseline deviation và phần Pool D trong PDF.
+- AI-02: `ART043` — `PENDING HUMAN REVIEW`.
+
+## S001-I055 — Hoàn thiện Git history và xuất Git log
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 10:08:08 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | Không áp dụng |
+| AI-02 | Không — thao tác Git và xuất commit log |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Active file: submission-src/features/A/07_feature_closure.md
+
+## Open tabs:
+- 07_feature_closure.md: submission-src/features/A/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/B/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/C/07_feature_closure.md
+- 07_feature_closure.md: submission-src/features/D/07_feature_closure.md
+- README.md: SHOP/README.md
+
+## My request:
+1. Hoàn thiện Git history và xuất Git log
+   Hiện repository có 62 thay đổi chưa commit. Git history mới có Step 1–7 của Pool A và Step 1–6 của Pool B; còn thiếu:
+
+- Step 7 Pool B.
+- Toàn bộ 7 step Pool C.
+- Toàn bộ 7 step Pool D.
+- Commit hoàn thiện báo cáo và hồ sơ AI.
+- File Git log dạng text theo yêu cầu đề bài.
+  Ngoài ra, .gitignore đang bỏ qua \*.zip, khiến 48 trace Pool C và 50 trace Pool D không được Git theo dõi. Cần thêm ngoại lệ hoặc chủ động đưa chúng vào gói nộp.
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã hoàn thiện Git history và xuất Git log.
+
+- Đã tạo 15 commit theo step còn thiếu: Step 7 Pool B, Step 1–7 Pool C và Step 1–7 Pool D.
+- Đã tạo thêm commit hoàn thiện báo cáo/hồ sơ AI và commit chứa `git_log.txt`; tổng cộng 17 commit mới trong lượt này.
+- `.gitignore` vẫn bỏ qua ZIP đóng gói cuối nhưng cho phép theo dõi Playwright trace. Git hiện quản lý đủ 48 trace Pool C và 50 trace Pool D.
+- [git_log.txt](D:/HCMUS/KCPM/HW2/submission-src/git_log.txt) chứa toàn bộ lịch sử chức năng và báo cáo đến commit ngay trước commit thêm chính file log; đây là giới hạn tuần hoàn bình thường của commit-log artifact.
+- Đã kiểm tra JSON, cú pháp runner, số lượng screenshot/trace, `git diff --cached --check` cho từng commit và trạng thái repository sau cùng.
+- Tương tác được ghi tại `S001-I055`; không thêm AI-02 vì đây là thao tác Git. Chưa push lên remote.
+
+Working tree hiện sạch đối với file được theo dõi; chỉ còn các dependency, runtime database và LaTeX build output đã được ignore đúng quy ước.
+````
+
+### Human review
+
+- Trạng thái: Không áp dụng; thao tác Git theo yêu cầu trực tiếp.
+- AI-02: Không áp dụng.

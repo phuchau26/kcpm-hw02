@@ -1,3 +1,49 @@
 \chapter{AI Audit Report}
 
-% Include the mandatory AI audit or import the finalized audit content here.
+\section{Phạm vi audit}
+
+AI được sử dụng trong quá trình xây dựng artifact kiểm thử, automation, phân tích
+defect/gap và báo cáo. Công cụ được khai báo là OpenAI Codex, model
+\texttt{codex gpt-5.6 sol}, reasoning effort medium. Nhật ký gốc bao phủ 55
+interaction từ \texttt{S001-I001} đến \texttt{S001-I055}; bản đầy đủ nằm tại
+\path{ai/prompt_log.md}.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{lp{8.7cm}}
+    \toprule
+    Khoảng interaction & Nội dung chính \\
+    \midrule
+    S001-I001--I017 & Tổ chức workspace, scope, môi trường, evidence và khung báo cáo. \\
+    S001-I018--I029 & Đặc tả, Domain Model, BVA, test design, execution và closure Pool A. \\
+    S001-I030--I036 & Reusable skills và workflow kiểm thử Pool B. \\
+    S001-I037--I044 & Workflow kiểm thử và closure Pool C. \\
+    S001-I045--I055 & Workflow kiểm thử, Expo Web/native iOS evidence, closure Pool D và Git log. \\
+    \bottomrule
+  \end{tabular}
+  \caption{Phạm vi interaction được audit.}
+  \label{tab:ai-audit-ranges}
+\end{table}
+
+\section{Phương pháp kiểm chứng}
+
+Mỗi artifact do AI hỗ trợ được đối chiếu với hierarchy nguồn: đề bài và SRS,
+source code liên quan, SQLite schema, runtime result, screenshot/trace và service
+log. Expected result không được thay đổi để khớp hành vi hiện tại. FAIL được nhóm
+theo root cause; BLOCKED được tách khỏi defect khi chưa có bằng chứng về lỗi SUT.
+Source \texttt{SHOP} chỉ được đọc để xác định oracle và root cause.
+
+Biểu mẫu \path{ai/AI-02_AI_Audit_Report_Working.docx} ghi nhận 31 artifact trực
+tiếp của bài nộp. Trong đó 30 artifact có verdict \texttt{VALID}; \texttt{ART043}
+đang \texttt{PENDING HUMAN REVIEW}; không có \texttt{INVALID} hoặc
+\texttt{INCOMPLETE}. Verdict chỉ xác nhận artifact nhất quán với nguồn và
+evidence, không có nghĩa SUT đạt yêu cầu.
+
+\section{Kết quả và giới hạn}
+
+Audit giữ nguyên 42 FAIL và 80 BLOCKED trong bốn Pool. Các giới hạn quan trọng
+gồm requirement gap chưa được chốt, UI/Backend chưa hỗ trợ một số procedure và
+Pool D mới có baseline Expo Web và một bộ ảnh iOS thật bổ sung giới hạn. Vì vậy,
+AI hỗ trợ tăng độ bao phủ phân tích và traceability nhưng không thay thế human
+judgment, native automation hoặc regression sau khi defect được sửa.

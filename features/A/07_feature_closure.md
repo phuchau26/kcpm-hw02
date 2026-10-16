@@ -113,7 +113,7 @@ thành công theo SRS. Chưa kiểm chứng qua execution:
 - Screenshots: `evidence/A/execution/screenshots/`.
 - Full trace: `evidence/A/execution/traces/A-FR03-full-run.zip`.
 - Service log: `evidence/A/execution/service-logs.txt`.
-- Report: `report/latex/chapters/02_feature_a.tex`, chapter AI gap và Bug Report.
+- Report: `report/latex/chapters/02_feature_a.tex`, chapter Gap analysis và Bug Report.
 
 ## 10. Kết luận feature
 
@@ -122,12 +122,3 @@ oracle, domain model, BVA, 38 test case, automation, execution record, defect/ga
 analysis, traceability và report content đều có artifact. Tuy nhiên chất lượng
 SUT **chưa được xác nhận đầy đủ** vì 29/38 case bị chặn. Feature không được kết
 luận “Pass” và cần regression sau khi bổ sung confirm password và OTP expiry.
-
-## 11. Human sign-off
-
-- [x] Xác nhận ma trận có đủ 38 case, 14 rule, 10 boundary và 8 Bug ID.
-- [x] Xác nhận thống kê `38/9/1/8/29/0` không bị thay đổi.
-- [x] Xác nhận residual risk và danh sách chưa kiểm chứng là đầy đủ.
-- [x] Xác nhận nội dung báo cáo/ảnh evidence phản ánh đúng artifact nguồn.
-- [x] Xác nhận artifact Step 5–7 nhất quán với execution result và evidence.
-- [x] Chốt closure và chuẩn bị commit Step 5–7.

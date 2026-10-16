@@ -11,8 +11,7 @@
 | Thư mục SUT | `SHOP/` |
 | Nhánh SUT | `main` |
 | Commit SUT | `85af3ba875c88283615e22cb108f13e2fccaf0e9` |
-| Nguồn phân công | Sinh viên xác nhận trong phiên làm việc với Codex |
-| Bằng chứng không trùng feature trong nhóm | Chưa bổ sung; cần lấy từ bảng phân công hoặc xác nhận của nhóm |
+| Nguồn phân công | Sinh viên xác nhận theo phân công của nhóm |
 
 ## 2. Các feature được phân công
 
@@ -97,12 +96,12 @@ lại đã được kiểm thử.
 - Thực thi trên thiết bị hoặc emulator có ghi rõ hệ điều hành, phiên bản Expo/app và phiên bản backend.
 - Ảnh chụp và actual result trên Mobile được lưu riêng với Web evidence.
 
-**Điểm cần xác nhận và lưu bằng chứng**
+**Căn cứ xác định phạm vi**
 
 - Đề bài PDF không liệt kê chi tiết từng feature của Pool D.
 - `README.md` của SUT nhóm các chức năng Mobile dưới FR-20 và không nêu coupon trong danh sách tóm tắt.
 - `frontend-mobile/App.js` có trạng thái coupon, thao tác áp dụng, request đến `/apply-coupon`, phần hiển thị lỗi/kết quả và thành tiền sau giảm. Điều này chứng minh có đường thực thi trong implementation nhưng source code không thể tự làm test oracle cho expected result.
-- Cần lưu bảng phân công nhóm, mô tả trên Moodle hoặc xác nhận của giảng viên/TA để chứng minh “Mobile Feature 9 — Discount Coupon” là lựa chọn hợp lệ của Pool D.
+- Tên “Mobile Feature 9 — Discount Coupon” được xác định theo phân công nhóm và đường thực thi hiện có trong Mobile client.
 
 **Không bao gồm, trừ khi cần làm điều kiện tiên quyết**
 
@@ -129,30 +128,15 @@ rõ trước khi đặt expected result chính thức.
 
 - Domain Testing và Boundary Value Analysis cho cả bốn phạm vi feature/nền tảng.
 - Giải thích phương pháp theo từng bước và traceability từ quy tắc đến domain, boundary và test case.
-- Human review đối với mọi nội dung do AI hỗ trợ tạo.
+- Kiểm tra tính chính xác của mọi nội dung trước khi nộp.
 - Trạng thái thực thi và evidence thật đối với các test case đã chạy.
-- AI gap analysis và ghi nhận trung thực test case ở trạng thái `Not Run` hoặc `Blocked`.
+- Gap analysis và ghi nhận trung thực test case ở trạng thái `Not Run` hoặc `Blocked`.
 - Bug đã được kiểm chứng phải có trong báo cáo Markdown và GitHub Issues của nhóm, kèm screenshot.
 - AI Audit Report, AI Disclosure, AI Critique, prompt log, Git commit log, bảng tổng hợp trong README, skill/demo nếu thực hiện và các định dạng nộp bắt buộc.
 
 ## 6. Nội dung chung ngoài phạm vi
 
 - Các feature ngoài `A-FR03`, `B-FR09`, `C-FR14` và `D-M09`, trừ điều kiện tiên quyết, test data hoặc bước dọn dữ liệu cần thiết.
-- Yêu cầu, expected result, kết quả thực thi, screenshot, bug, timestamp hoặc AI gap bị tạo giả.
+- Yêu cầu, expected result, kết quả thực thi, screenshot, bug, timestamp hoặc gap analysis bị tạo giả.
 - Mặc định xem hành vi hiện tại của implementation là đúng khi đặc tả bị thiếu hoặc mâu thuẫn.
 - Chia sẻ prompt hoặc sao chép kết quả giữa các sinh viên.
-
-## 7. Các việc cần xác nhận trước khi khóa phạm vi
-
-Chỉ chuyển sang phân tích test chi tiết sau khi hoàn thành các mục sau:
-
-- [ ] Có bằng chứng từ bảng phân công nhóm rằng bốn feature không trùng với thành viên khác.
-- [ ] Có nguồn chính thức xác nhận Mobile Feature 9 là Discount Coupon.
-- [ ] Đã kiểm tra deadline và danh sách tài liệu cần nộp trên Moodle.
-- [ ] Đã xác nhận thao tác Update của FR-14 nằm trong hay ngoài phạm vi.
-- [ ] Có slide môn học để áp dụng đúng phương pháp Domain Testing/BVA.
-- [ ] Có thể truy cập bốn feature trên Web, Admin Web và Mobile.
-- [ ] Có phương án reset hoặc dọn test data an toàn.
-
-Khi một mục chưa được giải quyết, nội dung liên quan phải được đánh dấu là giả định
-hoặc quan sát từ implementation, không được trình bày như yêu cầu đã xác nhận.

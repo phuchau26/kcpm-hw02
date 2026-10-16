@@ -29,3 +29,95 @@ Chi tiết bước tái hiện, expected/actual result, source root cause và ev
 được lưu trong \path{bugs/A-FR03_bug_report.md}. Tám bug đã được xác nhận theo
 cơ chế sinh viên ủy quyền AI review; 29 case \texttt{BLOCKED} không được đếm
 thành defect mới.
+
+\section{Pool B --- B-FR09}
+
+Mười bốn case FAIL được nhóm thành chín defect. Ba defect Critical/P1 liên quan
+công thức percent, trusted total và identity binding; hai defect High/P1 liên
+quan authentication/protected checkout.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.16\textwidth}p{0.49\textwidth}p{0.12\textwidth}p{0.12\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    B-BUG-001 & Sai công thức percent & Critical & P1 \\
+    B-BUG-002 & Sai equality tại minimum & Medium & P1 \\
+    B-BUG-003 & Tin total client & Critical & P1 \\
+    B-BUG-004 & Apply thiếu auth & High & P1 \\
+    B-BUG-005 & Tin body user identity & Critical & P1 \\
+    B-BUG-006 & Checkout không protected & High & P1 \\
+    B-BUG-007 & Thiếu heading/breadcrumb & Low & P3 \\
+    B-BUG-008 & Sai màu positive action & Low & P3 \\
+    B-BUG-009 & Error nằm dưới action & Low & P3 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tổng hợp defect của B-FR09.}
+\end{table}
+
+Chi tiết reproduction, root cause và evidence nằm tại
+\path{bugs/B-FR09_bug_report.md}. Mười case \texttt{BLOCKED} không được tính
+thành defect.
+
+\section{Pool C --- C-FR14}
+
+Chín case FAIL được nhóm thành năm defect theo root cause. Defect Critical/P1 là
+việc thiếu role enforcement tại API và restored Admin session; defect Major/P1
+là backend/database chấp nhận category name missing hoặc empty.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.16\textwidth}p{0.49\textwidth}p{0.12\textwidth}p{0.12\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    C-BUG-001 & Thiếu empty state & Minor & P2 \\
+    C-BUG-002 & Thiếu validation/constraint name & Major & P1 \\
+    C-BUG-003 & Thiếu marker và inline error & Minor & P2 \\
+    C-BUG-004 & Thiếu cưỡng chế role admin & Critical & P1 \\
+    C-BUG-005 & Heading không mô tả Category & Minor & P3 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tổng hợp defect của C-FR14.}
+\end{table}
+
+Chi tiết reproduction, source root cause và evidence nằm trong
+\path{bugs/C-FR14_bug_report.md}. Hai mươi mốt case \texttt{BLOCKED} không được
+đếm thành defect.
+
+\section{Pool D --- D-M09}
+
+Mười một case FAIL được nhóm thành bảy root cause. Năm root cause Backend đã có
+canonical defect ở Pool B; Pool D chỉ bổ sung evidence Mobile. Hai defect mới
+thuộc source Mobile client.
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.17\textwidth}p{0.48\textwidth}p{0.12\textwidth}p{0.12\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    B-BUG-001 & Sai công thức percent, tái hiện trên Mobile & Critical & P1 \\
+    B-BUG-002 & Sai equality tại minimum & Medium & P1 \\
+    B-BUG-003 & Tin total client tại apply/checkout & Critical & P1 \\
+    B-BUG-004 & Apply thiếu authentication & High & P1 \\
+    B-BUG-005 & Tin body user identity & Critical & P1 \\
+    D-BUG-001 & Mobile positive action sai màu & Low & P3 \\
+    D-BUG-002 & Mobile validation error dưới Apply & Low & P3 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Root-cause group ảnh hưởng D-M09; năm ID B là defect dùng chung.}
+\end{table}
+
+Chi tiết reproduction, source root cause và evidence nằm trong
+\path{bugs/D-M09_bug_report.md}. Hai mươi case \texttt{BLOCKED} không được tính
+thành defect; tổng defect mới của Pool D là hai, tránh double-count năm lỗi
+Backend đã tính ở Pool B.
+
+Ảnh iOS thật bổ sung corroborate 	exttt{B-BUG-001}. Quan sát mất mạng ở
+	exttt{D-TC-042} được giữ là implementation gap 	exttt{D-IG-04}, không chuyển
+case 	exttt{BLOCKED} thành defect vì chưa có network-message oracle.

@@ -242,12 +242,3 @@ implementation 4 số, trái oracle 6 số.
   không thể bao phủ đầy đủ bằng input format đơn lẻ.
 - UI/output conformance được thiết kế test riêng, không trộn vào equivalence class
   của input nếu không cần thiết.
-
-## 13. Human review gate
-
-- [x] Xác nhận các partition trong từng characteristic là loại trừ nhau.
-- [x] Xác nhận valid predicate của Bước 1 và Bước 2.
-- [x] Xác nhận không có boundary hoặc expected result nào được tự thêm ngoài spec.
-- [x] Xác nhận nominal baseline không sử dụng hành vi sai đã quan sát.
-- [x] Xác nhận traceability bao phủ `A-R01` đến `A-R14`.
-- [x] Chuyển trạng thái tài liệu sau khi review trước khi tạo Step 3.

@@ -1,4 +1,4 @@
-# A-FR03 — Test case design và review
+# A-FR03 — Test case design
 
 ## 1. Thông tin tài liệu
 
@@ -215,22 +215,3 @@ xác `P8`.
 6. Chạy reuse và storage/security case cuối để tránh state làm nhiễu case khác.
 7. Ghi `Blocked` trung thực cho case không có control/fixture; không đổi expected
    result để ép case chạy được.
-
-## 13. Review gate
-
-- [x] Xác nhận 38 test ID là duy nhất và liên tục.
-- [x] Xác nhận mỗi invalid partition trong domain model có ít nhất một test case.
-- [x] Xác nhận mọi điểm BVA khả thi có test case và data đúng file Step 3.
-- [x] Xác nhận expected result chỉ dựa trên oracle, không theo implementation bug.
-- [x] Xác nhận fixture 6 chữ số phù hợp để cô lập test Bước 2.
-- [x] Xác nhận các success case có cleanup và negative case kiểm tra `P-old` không đổi.
-- [x] Xác nhận traceability bao phủ `A-R01`–`A-R14`.
-- [x] Review/correct test cases trước khi đổi trạng thái và bắt đầu Step 5.
-
-**Review record:** Nội dung đã được đối chiếu với SRS, ba artifact Step 1–3 và
-đường thực thi trong `ForgotPassword.jsx`,
-`server.js`, `database.js`. Hai lỗi khả thi đã được sửa: thứ tự tạo token fixture
-sau khi UI sang Bước 2, và dùng password khác ở lần reuse token. Review cũng làm
-rõ giới hạn chứng minh randomness và coupling không tránh được của password rỗng.
-Kiểm tra tự động xác nhận 38 test ID duy nhất/liên tục, đủ invalid partition,
-`A-R01`–`A-R14`, `A-B01`–`A-B10` và password data đúng length/composition.

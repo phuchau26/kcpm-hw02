@@ -273,19 +273,3 @@ kết luận FR-09 application behavior với corrupted data.
 6. Chạy valid lower-bound arithmetic/config cases.
 7. Chạy clock cases nếu có controlled clock; nếu không ghi `BLOCKED`.
 8. Chạy requirement-gap probes cuối, ghi actual nhưng không ép business verdict.
-
-## 18. Review gate
-
-Gate đã được kiểm tra trước khi triển khai Step 5. Expected result vẫn giữ nguyên;
-mọi case thiếu oracle được giữ dưới dạng requirement gap/blocked condition.
-
-- [x] Xác nhận 41 Test ID duy nhất, liên tục và 9 precondition check tách riêng.
-- [x] Xác nhận expected result không dùng candidate implementation bug làm oracle.
-- [x] Xác nhận `B-TC-005`–`008`, `032`–`034` giữ đúng giới hạn requirement gap.
-- [x] Xác nhận clock cases không tự đặt timezone/granularity.
-- [x] Xác nhận trusted total và JWT identity được kiểm tra end-to-end/API phù hợp.
-- [x] Xác nhận mọi data row của `B-B01`–`B-B06` được map tới test/check.
-- [x] Xác nhận `B-B07/B-B08` không bị trình bày như specified numeric boundary.
-- [x] Xác nhận traceability bao phủ `B-R01`–`B-R19` và `B-GAP-R01`–`B-GAP-R07`.
-- [x] Xác nhận fixture/cleanup giữ các case độc lập và không dùng runtime database.
-- [x] Cho phép chuyển sang Step 5 theo yêu cầu execution trực tiếp của sinh viên.

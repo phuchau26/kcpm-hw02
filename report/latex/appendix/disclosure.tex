@@ -1,4 +1,26 @@
 \chapter{AI Disclosure}
 
-% Insert the finalized mandatory disclosure. Do not claim work that has not
-% actually been performed or reviewed.
+\section{Công cụ và phạm vi sử dụng}
+
+Tôi sử dụng OpenAI Codex, model \texttt{codex gpt-5.6 sol} với reasoning effort
+medium, để hỗ trợ đọc cấu trúc dự án, xây dựng Domain Model, Equivalence
+Partitioning/BVA, soạn test case, tạo Playwright automation, tổng hợp execution
+result, phân tích defect/gap, lập traceability matrix và chuẩn bị báo cáo.
+
+AI không được dùng để sửa source \texttt{SHOP}, tạo evidence giả, thay đổi
+expected result theo hành vi SUT hoặc chuyển case BLOCKED thành PASS. Các kết
+quả thực thi đến từ fixture, service log, screenshot, trace và
+\texttt{results.json} trong repository. Pool D chỉ có evidence Expo Web với
+Mobile viewport; chưa có bằng chứng native Android/iOS.
+
+\section{Review và trách nhiệm}
+
+Các artifact trực tiếp của bài nộp được liệt kê trong biểu mẫu AI-02 và được
+đối chiếu với SRS, source, database, runtime và evidence trước khi chốt verdict.
+Toàn bộ interaction được lưu theo thứ tự thời gian trong
+\path{ai/prompt_log.md}. Tôi chịu trách nhiệm cuối cùng đối với scope, oracle,
+verdict, defect classification, traceability và nội dung báo cáo.
+
+Việc khai báo AI nhằm minh bạch hóa cách công cụ được sử dụng; verdict
+\texttt{VALID} trong AI-02 là verdict của artifact, không phải tuyên bố rằng
+feature hoặc SUT hoạt động đúng.

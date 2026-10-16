@@ -93,8 +93,8 @@ chạy. Failure IDs: `A-TC-001`, `A-TC-003`, `A-TC-004`, `A-TC-034`, `A-TC-035`,
 4. Thiếu confirm password, required marker và sai input type email.
 5. Thiếu `<h1>`, nút reset sai màu và Tab order thiếu control confirm.
 
-Các cluster trên là kết quả execution/candidate defect; Bug ID và GitHub Issue
-được quyết định ở Step 6 sau human review, không gán trong file này.
+Các cluster trên là kết quả execution/candidate defect; Bug ID được quản lý trong
+`bugs/A-FR03_bug_report.md`, không gán trong file này.
 
 ## 6. Evidence và khả năng tái lập
 
@@ -104,14 +104,3 @@ Các cluster trên là kết quả execution/candidate defect; Bug ID và GitHub
 - Automation source: `automation/A-FR03/`.
 - Cleanup: password seed restored = `true`;
   reset token cleared = `true`.
-
-## 7. Review record
-
-- [x] Đã mở và đối chiếu screenshot của mọi case FAIL.
-- [x] Đã mở shared blocker screenshot và xác nhận thiếu confirm field.
-- [x] Đã đối chiếu actual result với `results.json`, trace và source liên quan.
-- [x] Đã xác nhận classification `1 PASS / 8 FAIL / 29 BLOCKED` nhất quán.
-- [x] Đã nhóm failure theo root cause trong `bugs/A-FR03_bug_report.md`.
-- [x] Đã giữ nguyên expected result; không nâng case `BLOCKED` thành `FAIL`.
-
-**Kết luận review:** Kết quả Step 5 đủ nhất quán để dùng làm đầu vào Step 6.

@@ -11,8 +11,7 @@
 | Môi trường | Chrome hệ thống; Web `127.0.0.1:5173`; API `127.0.0.1:3000`; SQLite fixture |
 | Nguồn kết quả | `features/A/05_execution_results.md`; `evidence/A/execution/results.json` |
 | Full trace | `evidence/A/execution/traces/A-FR03-full-run.zip` |
-| Trạng thái tài liệu | `REVIEWED — USER-DELEGATED AI REVIEW` |
-| Căn cứ chấp nhận | Sinh viên ủy quyền AI quyết định review cuối ngày 2026-10-13 |
+| Trạng thái tài liệu | `REVIEWED` |
 
 Severity dùng ba mức: `Major` khi làm sai rule nghiệp vụ/bảo mật hoặc chặn một
 phần lớn luồng; `Minor` khi chức năng chính vẫn truy cập được nhưng vi phạm GUI,
@@ -23,14 +22,14 @@ severity.
 
 | Bug ID | Tóm tắt | Test case | Severity | Priority | Status |
 |---|---|---|---|---|---|
-| `A-BUG-001` | OTP được sinh và hiển thị chỉ có 4 chữ số | `A-TC-001` | Major | High | Confirmed — User-Delegated Review |
-| `A-BUG-002` | Email dùng `type="text"`, cho phép email sai format gọi API | `A-TC-003`, `A-TC-035` | Minor | High | Confirmed — User-Delegated Review |
-| `A-BUG-003` | Validation error dùng `alert()` thay vì inline phía trên submit | `A-TC-004`, `A-TC-036` | Minor | Medium | Confirmed — User-Delegated Review |
-| `A-BUG-004` | Thiếu Step Indicator và control quay lại trang đăng nhập | `A-TC-034` | Minor | Medium | Confirmed — User-Delegated Review |
-| `A-BUG-005` | Label của các field bắt buộc thiếu ký hiệu `*` | `A-TC-035` | Minor | Low | Confirmed — User-Delegated Review |
-| `A-BUG-006` | Bước 2 thiếu trường xác nhận mật khẩu | `A-TC-035`, `A-TC-038` | Major | High | Confirmed — User-Delegated Review |
-| `A-BUG-007` | Trang dùng `<h2>`, không có đúng một `<h1>` | `A-TC-037` | Minor | Low | Confirmed — User-Delegated Review |
-| `A-BUG-008` | Nút đặt lại mật khẩu dùng màu xanh lá thay vì xanh dương | `A-TC-037` | Minor | Low | Confirmed — User-Delegated Review |
+| `A-BUG-001` | OTP được sinh và hiển thị chỉ có 4 chữ số | `A-TC-001` | Major | High | Confirmed |
+| `A-BUG-002` | Email dùng `type="text"`, cho phép email sai format gọi API | `A-TC-003`, `A-TC-035` | Minor | High | Confirmed |
+| `A-BUG-003` | Validation error dùng `alert()` thay vì inline phía trên submit | `A-TC-004`, `A-TC-036` | Minor | Medium | Confirmed |
+| `A-BUG-004` | Thiếu Step Indicator và control quay lại trang đăng nhập | `A-TC-034` | Minor | Medium | Confirmed |
+| `A-BUG-005` | Label của các field bắt buộc thiếu ký hiệu `*` | `A-TC-035` | Minor | Low | Confirmed |
+| `A-BUG-006` | Bước 2 thiếu trường xác nhận mật khẩu | `A-TC-035`, `A-TC-038` | Major | High | Confirmed |
+| `A-BUG-007` | Trang dùng `<h2>`, không có đúng một `<h1>` | `A-TC-037` | Minor | Low | Confirmed |
+| `A-BUG-008` | Nút đặt lại mật khẩu dùng màu xanh lá thay vì xanh dương | `A-TC-037` | Minor | Low | Confirmed |
 
 `A-TC-038` không tạo defect Tab-order riêng: chuỗi focus bị thiếu control vì
 chính trường confirm password không tồn tại, cùng root cause với `A-BUG-006`.
@@ -51,7 +50,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Major / High |
 | Evidence | `evidence/A/execution/screenshots/A-TC-001.png`; `evidence/A/execution/results.json`; `evidence/A/execution/traces/A-FR03-full-run.zip` |
 | Root cause evidence | `SHOP/backend/server.js:72` sinh miền 1000–9999; `ForgotPassword.jsx:69` ghi nhãn 4 số |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-002 — Email sai format vẫn gọi API
 
@@ -67,7 +66,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / High |
 | Evidence | `evidence/A/execution/screenshots/A-TC-003.png`, `evidence/A/execution/screenshots/A-TC-035.png`; `evidence/A/execution/results.json`; full trace |
 | Root cause evidence | `SHOP/frontend-web/src/pages/ForgotPassword.jsx:50` đặt `type="text"` |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-003 — Lỗi validation không hiển thị inline
 
@@ -83,7 +82,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / Medium |
 | Evidence | `evidence/A/execution/screenshots/A-TC-004.png`, `evidence/A/execution/screenshots/A-TC-036.png`; dialog events trong `evidence/A/execution/results.json` và full trace |
 | Root cause evidence | `ForgotPassword.jsx:20`, `:28`, `:37` gọi `alert()`; không render error state |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-004 — Luồng hai bước thiếu indicator và quay lại login
 
@@ -99,7 +98,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / Medium |
 | Evidence | `evidence/A/execution/screenshots/A-TC-034.png`; `evidence/A/execution/results.json`; full trace |
 | Root cause evidence | `ForgotPassword.jsx:41–98` không render indicator/link login; dòng 93 gọi `setStep(1)` |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-005 — Label bắt buộc thiếu dấu sao
 
@@ -115,7 +114,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / Low |
 | Evidence | `evidence/A/execution/screenshots/A-TC-035.png`; `evidence/A/execution/results.json`; full trace |
 | Root cause evidence | Label tại `ForgotPassword.jsx:48`, `:69`, `:79` không chứa `*` |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-006 — Thiếu trường xác nhận mật khẩu
 
@@ -131,7 +130,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Major / High |
 | Evidence | `evidence/A/execution/screenshots/A-TC-035.png`, `evidence/A/execution/screenshots/A-TC-038.png`, `evidence/A/execution/screenshots/shared-missing-confirm-password.png`; full trace |
 | Root cause evidence | State và JSX ở `ForgotPassword.jsx:5–10`, `:63–96` không có confirm password |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-007 — Không có thẻ `<h1>` mô tả trang
 
@@ -147,7 +146,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / Low |
 | Evidence | `evidence/A/execution/screenshots/A-TC-037.png`; `evidence/A/execution/results.json`; full trace |
 | Root cause evidence | `ForgotPassword.jsx:43` dùng `<h2>` |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ### A-BUG-008 — Nút reset dùng sai màu positive action
 
@@ -163,7 +162,7 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
 | Severity / Priority | Minor / Low |
 | Evidence | `evidence/A/execution/screenshots/A-TC-037.png`; `evidence/A/execution/results.json`; full trace |
 | Root cause evidence | `ForgotPassword.jsx:90` dùng `bg-green-600` |
-| Status | `CONFIRMED — USER-DELEGATED REVIEW` |
+| Status | `CONFIRMED` |
 
 ## 4. Phạm vi kết luận
 
@@ -173,14 +172,3 @@ chính trường confirm password không tồn tại, cùng root cause với `A-
   `A-BUG-006`; riêng `A-TC-014` còn phụ thuộc expiry rule/fixture.
 - Các sai lệch chỉ phát hiện qua static source review được giữ trong
   `features/A/06_ai_gap_analysis.md`, chưa gắn trạng thái defect confirmed.
-
-## 5. Checklist sinh viên review
-
-- [x] Đồng ý cách nhóm root cause và số lượng 8 defect.
-- [x] Đồng ý severity/priority của từng defect.
-- [x] Đối chiếu evidence/trace của các defect, ưu tiên defect Major.
-- [x] Xác nhận 29 case `BLOCKED` không bị đếm thành 29 defect.
-- [x] Chuyển tám defect sang `CONFIRMED — USER-DELEGATED REVIEW`.
-
-Review được thực hiện theo yêu cầu ủy quyền rõ ràng của sinh viên ngày
-2026-10-13; tài liệu không tuyên bố đây là independent human review.

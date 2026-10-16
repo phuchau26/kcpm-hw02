@@ -16,3 +16,45 @@ state trong schema.
 Chi tiết phân loại và traceability requirement--boundary--test--result--gap nằm
 trong \path{features/A/06_ai_gap_analysis.md}. Nội dung đã được review theo cơ
 chế sinh viên ủy quyền AI quyết định.
+
+\section{Pool B --- B-FR09}
+
+Đối chiếu 41 test case với oracle, source và evidence xác định chín confirmed
+defect, bảy requirement gap, hai implementation risk và một testability gap.
+Ba blocked condition bao phủ đúng 10 case; không case \texttt{BLOCKED} nào được
+nâng thành defect.
+
+Các gap chưa chốt gồm code normalization/empty behavior, rounding, cap/floor,
+time model, exact response và usage lifecycle. Source còn cho thấy Web normalize
+code khác Backend và usage được ghi bằng request riêng sau checkout; hai điểm
+này vẫn là risk do thiếu contract. Chi tiết nằm tại
+\path{features/B/06_ai_gap_analysis.md}.
+
+\section{Pool C --- C-FR14}
+
+Đối chiếu 48 test case với source và evidence xác định năm confirmed defect,
+chín requirement gap, ba implementation risk và một testability gap. Sáu nhóm
+blocked condition bao phủ đúng 21 case; không case \texttt{BLOCKED} nào được
+chuyển thành bug.
+
+Các gap quan trọng chưa chốt gồm Update, trim/whitespace, duplicate/case,
+maximum length, nonexistent/malformed ID và referential policy khi Product đang
+tham chiếu Category. Actual bất thường ở các probe này chỉ được ghi observation,
+không được dùng để tự đặt business rule. Chi tiết nằm tại
+\path{features/C/06_ai_gap_analysis.md}.
+
+\section{Pool D --- D-M09}
+
+Đối chiếu 50 test case với oracle, source và Mobile evidence xác định bảy
+confirmed root-cause group: năm lỗi Backend dùng chung dẫn canonical record
+\texttt{B-BUG-001}--\texttt{B-BUG-005} và hai defect riêng Mobile. Cách dẫn
+chiếu này tránh mô tả cùng một Backend root cause thành hai lỗi độc lập giữa Web
+và Mobile.
+
+Phân tích còn ghi nhận 11 requirement gap, bốn implementation risk, hai
+Mobile/environment gap và hai testability gap. Sáu blocked condition bao phủ
+đúng 20 case; không case \texttt{BLOCKED} nào được nâng thành bug. Các khoảng
+trống quan trọng là normalization, time model, rounding/cap/floor, UI state,
+network resilience, usage atomicity và native device matrix. Chín screenshot
+iOS thật làm giảm environment gap nhưng không thay thế native automation. Chi tiết nằm tại
+\path{features/D/06_ai_gap_analysis.md}.

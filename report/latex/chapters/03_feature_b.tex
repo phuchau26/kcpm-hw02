@@ -1,5 +1,16 @@
 \chapter{Pool B --- FR-09: Discount Coupon trên Web}
 
+\section{Phạm vi và oracle}
+
+Pool B kiểm thử Discount Coupon trong Web checkout. Oracle chính là FR-09 với
+năm điều kiện: coupon tồn tại/active, còn hạn, đủ minimum, user có JWT hợp lệ và
+chưa đạt usage limit. FR-08 yêu cầu total do hệ thống tính và Backend phải tính
+lại; công thức percent, fixed và final amount được giữ nguyên theo SRS.
+
+Source chỉ được dùng để xác định đường thực thi và root cause. Các nội dung chưa
+được quy định như code normalization, rounding, cap/floor, time model và usage
+lifecycle được giữ thành requirement gap, không lấy behavior hiện tại làm oracle.
+
 \section{Smoke test ban đầu}
 
 Ảnh chụp ngày 09/10/2026 lúc 10:33 AM tại Web checkout cho thấy coupon
@@ -13,3 +24,102 @@ case có precondition, input, expected result và actual result được kiểm 
   \caption{B-FR09 --- Discount Coupon tại Web checkout.}
   \label{fig:b-fr09-web-coupon-smoke}
 \end{figure}
+
+\section{Domain model, EP và BVA}
+
+Domain model bao gồm Coupon, user đã xác thực, tổng tiền giỏ hàng, CouponUsage,
+trạng thái thời gian hết hạn và kết quả discount. Equivalence Partitioning bao phủ code,
+active state, expiry, threshold, auth, identity, usage, type và output.
+
+Tám boundary \texttt{B-B01}--\texttt{B-B08} bao gồm order threshold, usage
+count, expiry, positive discount, minimum config, usage-limit config và hai miền
+chưa có cap/normalization boundary chính thức. Chín \texttt{B-PC} check chỉ bảo
+vệ fixture; chúng không được tính thành Web application test case.
+
+\section{Thiết kế và automation}
+
+Suite có 41 case \texttt{B-TC-001}--\texttt{B-TC-041}, bao phủ nominal,
+formula, threshold, trusted total, authentication, identity binding, usage,
+arithmetic extreme và UI conformance. Playwright chạy tuần tự trên Chrome hệ
+thống với SQLite fixture cô lập; runner tự khởi động Web và Backend, lưu 41
+screenshot, 41 trace, \texttt{results.json} và service log.
+
+\section{Kết quả thực thi}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    Designed & Executed & Pass & Fail & Blocked & Not Run & Defect \\
+    \midrule
+    41 & 31 & 17 & 14 & 10 & 0 & 9 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Kết quả thực thi B-FR09.}
+  \label{tab:b-fr09-summary}
+\end{table}
+
+Execution coverage là $31/41=75.61\%$. Mười bốn FAIL được nhóm thành chín
+defect; 10 BLOCKED giữ nguyên vì thiếu oracle hoặc controlled clock. Hình
+\ref{fig:b-fr09-percent-formula} cho thấy công thức percent tạo discount âm;
+Hình \ref{fig:b-fr09-heading} cho thấy checkout thiếu \texttt{h1}/breadcrumb.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{../../evidence/B/execution/screenshots/B-TC-001.png}
+  \caption{B-TC-001 FAIL --- percent coupon làm final amount tăng lên 4.000.000đ.}
+  \label{fig:b-fr09-percent-formula}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{../../evidence/B/execution/screenshots/B-TC-036.png}
+  \caption{B-TC-036 FAIL --- checkout thiếu \texttt{h1} và breadcrumb.}
+  \label{fig:b-fr09-heading}
+\end{figure}
+
+\section{Defect và gap}
+
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{p{0.15\textwidth}p{0.51\textwidth}p{0.12\textwidth}p{0.10\textwidth}}
+    \toprule
+    ID & Tóm tắt & Severity & Priority \\
+    \midrule
+    B-BUG-001 & Sai công thức percent discount & Critical & P1 \\
+    B-BUG-002 & Từ chối total bằng minimum & Medium & P1 \\
+    B-BUG-003 & Tin total do client gửi & Critical & P1 \\
+    B-BUG-004 & Apply coupon không yêu cầu auth & High & P1 \\
+    B-BUG-005 & Usage identity lấy từ request body & Critical & P1 \\
+    B-BUG-006 & Checkout/coupon UI không protected & High & P1 \\
+    B-BUG-007 & Thiếu \texttt{h1} và breadcrumb & Low & P3 \\
+    B-BUG-008 & Positive action sai màu & Low & P3 \\
+    B-BUG-009 & Validation error nằm dưới action & Low & P3 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Chín confirmed defect của B-FR09.}
+\end{table}
+
+Bảy requirement gap, hai implementation risk và một testability gap được tách
+khỏi confirmed defect. Ba blocked-condition group bao phủ đúng 10 case; actual
+bất thường ở rounding/cap/time probe không bị tự động ghi thành bug.
+
+\section{Traceability, coverage và residual risk}
+
+Ma trận tại \path{features/B/07_traceability_matrix.md} liên kết đủ 41 case với
+19 rule, 8 boundary, result, defect/gap, screenshot và trace. Design coverage là
+\texttt{19/19}; boundary catalog là \texttt{8/8}; execution coverage là
+\texttt{31/41}. Các con số này không chứng minh chất lượng đạt 100\%.
+
+Residual risk ở mức rất cao: percent formula và client-controlled total ảnh
+hưởng pricing; apply thiếu auth và usage identity có thể bị giả mạo. Exact expiry,
+normalization, rounding và cap/floor vẫn chưa được kiểm chứng. Cần sửa defect,
+chốt gap và regression đủ 41 case.
+
+\section{Feature closure}
+
+Workflow Step 1--7 đã được review và chốt về mặt kỹ thuật. B-FR09 không được
+kết luận PASS: trạng thái chất lượng là
+\texttt{NOT ACCEPTED --- 14 FAIL, 10 BLOCKED}. Chi tiết closure nằm
+tại \path{features/B/07_feature_closure.md}.
