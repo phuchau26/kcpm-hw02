@@ -1,0 +1,71 @@
+[2026-10-15T19:32:04+07:00] [backend] Server is running on http://localhost:3000
+[2026-10-15T19:32:08+07:00] [expo-web] Starting project at D:\HCMUS\KCPM\HW2\SHOP\frontend-mobile
+[2026-10-15T19:32:20+07:00] [expo-web] Metro is running in CI mode, reloads are disabled. Remove CI=true to enable watch mode.
+[2026-10-15T19:32:22+07:00] [expo-web] Starting Metro Bundler
+[2026-10-15T19:32:25+07:00] [expo-web] Web Bundled 450ms index.js (246 modules)
+[2026-10-15T19:32:25+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:26+07:00] [expo-web] The following packages should be updated for best compatibility with the installed expo version:
+[2026-10-15T19:32:26+07:00] [expo-web]   expo@54.0.34 - expected version: ~54.0.37
+[2026-10-15T19:32:26+07:00] [expo-web] Your project may not work correctly until you install the expected versions of the packages.
+[2026-10-15T19:32:26+07:00] [expo-web] Waiting on http://localhost:8081
+[2026-10-15T19:32:26+07:00] [expo-web] Logs for your project will appear below.
+[2026-10-15T19:32:26+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:26+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:27+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:27+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:28+07:00] [expo-web] Web Bundled 14ms index.js (1 module)
+[2026-10-15T19:32:28+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:29+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:29+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:30+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:30+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:31+07:00] [expo-web] Web Bundled 15ms index.js (1 module)
+[2026-10-15T19:32:31+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:32+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:32+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:33+07:00] [expo-web] Web Bundled 14ms index.js (1 module)
+[2026-10-15T19:32:33+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:34+07:00] [expo-web] Web Bundled 12ms index.js (1 module)
+[2026-10-15T19:32:34+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:35+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:35+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:36+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:36+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:37+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:38+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:38+07:00] [expo-web] Web Bundled 14ms index.js (1 module)
+[2026-10-15T19:32:38+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:39+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:39+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:44+07:00] [expo-web] Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+[2026-10-15T19:32:44+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:44+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:45+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:45+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:46+07:00] [expo-web] Web Bundled 14ms index.js (1 module)
+[2026-10-15T19:32:46+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:47+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:48+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:48+07:00] [expo-web] Web Bundled 13ms index.js (1 module)
+[2026-10-15T19:32:49+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:50+07:00] [expo-web] Web Bundled 12ms index.js (1 module)
+[2026-10-15T19:32:50+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:51+07:00] [expo-web] Web Bundled 11ms index.js (1 module)
+[2026-10-15T19:32:51+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:52+07:00] [expo-web] Web Bundled 14ms index.js (1 module)
+[2026-10-15T19:32:53+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:54+07:00] [expo-web] Web Bundled 10ms index.js (1 module)
+[2026-10-15T19:32:54+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:55+07:00] [expo-web] Web Bundled 12ms index.js (1 module)
+[2026-10-15T19:32:55+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:56+07:00] [expo-web] Web Bundled 10ms index.js (1 module)
+[2026-10-15T19:32:56+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:57+07:00] [expo-web] Web Bundled 8ms index.js (1 module)
+[2026-10-15T19:32:57+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:58+07:00] [expo-web] Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+[2026-10-15T19:32:58+07:00] [expo-web] Web Bundled 12ms index.js (1 module)
+[2026-10-15T19:32:58+07:00] [expo-web]  LOG  [web] Logs will appear in the browser console
+[2026-10-15T19:32:59+07:00] [expo-web] Runner sent stop signal to PID 17996.
+[2026-10-15T19:32:59+07:00] [backend] Runner sent stop signal to PID 21088.
+[2026-10-15T19:32:59+07:00] [runner] Summary {"designed":50,"attempted":50,"executed":30,"passed":19,"failed":11,"blocked":20,"notRun":0}
+[2026-10-15T19:32:59+07:00] [runner] Source integrity unchanged=true
