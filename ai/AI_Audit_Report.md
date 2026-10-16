@@ -11,7 +11,7 @@
 | Model | `codex gpt-5.6 sol` |
 | Reasoning effort | `medium` |
 | Múi giờ | Asia/Saigon (`UTC+07:00`) |
-| Phạm vi log | `S001-I001`–`S001-I061` |
+| Phạm vi log | `S001-I001`–`S001-I062` |
 
 ## 2. Phạm vi sử dụng AI
 
@@ -35,13 +35,13 @@ Sinh viên chịu trách nhiệm đối chiếu output với SRS, API contract, 
 | `S001-I018`–`S001-I029` | Workflow A-FR03 | Spec, Domain Model, BVA, 38 test case, execution, defect/gap và closure |
 | `S001-I030`–`S001-I036` | Reusable skills và workflow B-FR09 | Ba skills; 41 test case, execution, 9 defect và closure Pool B |
 | `S001-I037`–`S001-I044` | Workflow C-FR14 | 48 test case, execution, 5 defect và closure Pool C |
-| `S001-I045`–`S001-I061` | Workflow D-M09 và hoàn thiện hồ sơ nộp | 50 test case, Expo Web execution, native iOS supplement, closure Pool D, Git log, README, biểu mẫu AI, consistency/citation và demo video |
+| `S001-I045`–`S001-I062` | Workflow D-M09 và hoàn thiện hồ sơ nộp | 50 test case, Expo Web execution, native iOS supplement, closure Pool D, Git log, README, biểu mẫu AI, consistency/citation, demo video và self-assessment |
 
-Nhật ký nguyên văn nằm tại `ai/prompt_log.md`, gồm 61 interaction. AI-02 ghi nhận
-34 artifact: 32 `VALID`, 0 `INVALID`, 1 `INCOMPLETE` và 1 `PENDING HUMAN REVIEW`.
+Nhật ký nguyên văn nằm tại `ai/prompt_log.md`, gồm 62 interaction. AI-02 ghi nhận
+35 artifact: 34 `VALID`, 0 `INVALID`, 1 `INCOMPLETE` và 0 `PENDING HUMAN REVIEW`.
 `ART044` đã chuyển thành `VALID` sau khi bổ sung YouTube demo URL. Artifact chưa
-hoàn chỉnh còn lại là `ART045` (AI-03 cần xác nhận category và chữ ký cá nhân).
-Một artifact còn trạng thái `PENDING HUMAN REVIEW`; chi tiết nằm trong AI-02.
+hoàn chỉnh còn lại là `ART045` do thiếu chữ ký cá nhân. Không còn artifact ở
+trạng thái `PENDING HUMAN REVIEW`; chi tiết verdict nằm trong AI-02.
 
 ## 4. Cách kiểm chứng
 
@@ -59,12 +59,12 @@ Một artifact còn trạng thái `PENDING HUMAN REVIEW`; chi tiết nằm trong
 
 | Chỉ số | Kết quả |
 |---|---:|
-| AI interaction | 61 |
-| Artifact được audit | 34 |
-| VALID | 32 |
+| AI interaction | 62 |
+| Artifact được audit | 35 |
+| VALID | 34 |
 | INVALID | 0 |
 | INCOMPLETE | 1 |
-| PENDING | 1 |
+| PENDING | 0 |
 
 Verdict `VALID` xác nhận artifact phản ánh đúng nguồn và evidence trong phạm vi
 đã kiểm tra; verdict này không có nghĩa SUT hoạt động đúng. Kết quả chất lượng

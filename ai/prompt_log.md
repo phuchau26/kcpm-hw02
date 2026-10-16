@@ -3799,3 +3799,51 @@ tiêu đề của video là \
 
 - Trạng thái: `VALID`.
 - AI-02: cập nhật chính dòng `ART044`; không tạo dòng mới.
+
+## S001-I062 — Đồng bộ điểm tự đánh giá Agent Skills
+
+| Thuộc tính | Giá trị |
+|---|---|
+| Thời gian | 2026-10-16 15:23:32 +07:00 |
+| Công cụ | OpenAI Codex |
+| Model | codex gpt-5.6 sol |
+| Reasoning effort | medium |
+| Artifact ID | `ART047` |
+| AI-02 | Có — `PENDING HUMAN REVIEW` |
+
+### Prompt của sinh viên — nguyên văn
+
+````text
+# Context from my IDE setup:
+
+## Open tabs:
+- SKILL.md: submission-src/skills/domain-model-and-bva/SKILL.md
+- execution-contract.md: submission-src/skills/playwright-domain-test-runner/references/execution-contract.md
+- SKILL.md: submission-src/skills/playwright-domain-test-runner/SKILL.md
+- scope.md: submission-src/supporting/scope.md
+- environment.md: submission-src/supporting/environment.md
+
+## My request:
+ủa agent skill tôi đã có video demo rồi mà sao vẫn chỉ có 6 điểm, chỉnh lên 10 phần đó và tất cả những file có điểm tự đánh giá phải là 84
+````
+
+### Phần hồi cuối của AI — nguyên văn
+
+````markdown
+Đã đồng bộ điểm tự đánh giá:
+
+- Agent Skills: `6/10` → `10/10`.
+- Tổng điểm: `80/100` → `84/100`.
+- Cập nhật thống nhất tại `README.md`, `report/main_report.md` và chương Test Summary/Self-assessment của báo cáo LaTeX.
+- Căn cứ được ghi rõ: ba Agent Skills có tài liệu sử dụng, execution contract và video demo công khai.
+- Đã kiểm tra không còn bảng self-assessment nào ghi Agent Skills `6/10` hoặc tổng `80/100`. Các số `80` còn lại là số test case `BLOCKED`, không phải điểm.
+- Báo cáo đã render lại thành công, không có lỗi LaTeX hoặc citation/reference bị thiếu.
+
+AI-02 đã thêm `ART047` ở trạng thái `PENDING HUMAN REVIEW`. Chưa commit.
+````
+
+### Human review
+
+- Trạng thái: `PENDING HUMAN REVIEW`.
+- Cần xác nhận mức tự đánh giá Agent Skills `10/10` và tổng `84/100`.
+- AI-02: `ART047`.

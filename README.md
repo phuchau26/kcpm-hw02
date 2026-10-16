@@ -35,10 +35,10 @@ Repository này chứa toàn bộ source tài liệu, automation và evidence d�
 | Feature B — Domain + Boundary | 25 | 22 |
 | Feature C — Domain + Boundary | 25 | 21 |
 | Feature D — Mobile Domain + Boundary | 15 | 11 |
-| Agent Skills | 10 | 6 |
-| **Tổng** | **100** | **80** |
+| Agent Skills | 10 | 10 |
+| **Tổng** | **100** | **84** |
 
-Điểm tự đánh giá bị giới hạn bởi 80 test case BLOCKED, 42 test case FAIL và native evidence mới giới hạn ở 9 ảnh trên một thiết bị iOS.
+Mức tự đánh giá 84/100 ghi nhận ba Agent Skills có tài liệu sử dụng, execution contract và video demo công khai. Điểm tổng vẫn bị giới hạn bởi 80 test case BLOCKED, 42 test case FAIL và native evidence mới giới hạn ở 9 ảnh trên một thiết bị iOS.
 
 ## Demo video
 

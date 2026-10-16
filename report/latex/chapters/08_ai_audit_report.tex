@@ -4,8 +4,8 @@
 
 AI được sử dụng trong quá trình xây dựng artifact kiểm thử, automation, phân tích
 defect/gap và báo cáo. Công cụ được khai báo là OpenAI Codex, model
-\texttt{codex gpt-5.6 sol}, reasoning effort medium. Nhật ký gốc bao phủ 61
-interaction từ \texttt{S001-I001} đến \texttt{S001-I061}; bản đầy đủ nằm tại
+\texttt{codex gpt-5.6 sol}, reasoning effort medium. Nhật ký gốc bao phủ 62
+interaction từ \texttt{S001-I001} đến \texttt{S001-I062}; bản đầy đủ nằm tại
 \path{ai/prompt_log.md}.
 
 \begin{table}[H]
@@ -19,7 +19,7 @@ interaction từ \texttt{S001-I001} đến \texttt{S001-I061}; bản đầy đ�
     S001-I018--I029 & Đặc tả, Domain Model, BVA, test design, execution và closure Pool A. \\
     S001-I030--I036 & Reusable skills và workflow kiểm thử Pool B. \\
     S001-I037--I044 & Workflow kiểm thử và closure Pool C. \\
-    S001-I045--I061 & Workflow kiểm thử, native iOS evidence, closure Pool D, hồ sơ nộp, consistency/citation và demo video. \\
+    S001-I045--I062 & Workflow kiểm thử, native iOS evidence, closure Pool D, hồ sơ nộp, consistency/citation, demo video và self-assessment. \\
     \bottomrule
   \end{tabular}
   \caption{Phạm vi interaction được audit.}
@@ -37,11 +37,11 @@ root cause và canonical execution. Sau đó cấu hình Mobile được nâng E
 đổi API endpoint để thu evidence iOS bổ sung; thay đổi này không được dùng để
 sửa verdict canonical.
 
-Biểu mẫu \path{ai/AI-02_AI_Audit_Report_Working.docx} ghi nhận 34 artifact trực
-tiếp của bài nộp: 32 \texttt{VALID}, 0 \texttt{INVALID}, 1 \texttt{INCOMPLETE}
-và 1 \texttt{PENDING}. \texttt{ART044} đã chuyển thành \texttt{VALID} sau khi
-bổ sung YouTube demo URL. Artifact chưa hoàn chỉnh còn lại là AI-03 cần sinh
-viên xác nhận category/ký; chi tiết verdict nằm trong AI-02. Verdict chỉ xác
+Biểu mẫu \path{ai/AI-02_AI_Audit_Report_Working.docx} ghi nhận 35 artifact trực
+tiếp của bài nộp: 34 \texttt{VALID}, 0 \texttt{INVALID}, 1 \texttt{INCOMPLETE}
+và 0 \texttt{PENDING}. \texttt{ART044} đã chuyển thành \texttt{VALID} sau khi
+bổ sung YouTube demo URL. Artifact chưa hoàn chỉnh còn lại là AI-03 thiếu chữ
+ký cá nhân; chi tiết verdict nằm trong AI-02. Verdict chỉ xác
 nhận artifact nhất quán với nguồn và evidence, không có nghĩa SUT đạt yêu cầu.
 
 \section{Kết quả và giới hạn}
