@@ -1,0 +1,44 @@
+HW02 Git Commit Log
+Student: Nguyen Phuc Hau
+Student ID: 23120252
+Repository: kcpm-hw02
+Branch: master
+Generated: 2026-10-16T10:11:38+07:00
+Format: commit hash | author date | author | subject
+Note: This export contains every functional and report commit through the commit immediately before the commit that adds this log file.
+
+c3effb76c79da6840045b1e5677ff7488360ea45 | 2026-10-09T10:07:51+07:00 | Phuc Hau | docs: initialize HW02 submission workspace
+c1d616fbf79a3f6a387dd8cbe6bc610503109565 | 2026-10-09T14:46:42+07:00 | Phuc Hau | docs: add smoke evidence and initialize feature report
+d944dac2228c2e0aca346428582fa630474a50be | 2026-10-09T15:21:35+07:00 | Phuc Hau | test(A-FR03): step 1 establish spec and oracle
+ff0b08903b152c440c0014692e4fa9cc2a9f8831 | 2026-10-12T21:05:22+07:00 | Phuc Hau | test(A-FR03): refine step 1 oracle from project source
+439577c036fe9e9719612718073ee9f6d6b33e63 | 2026-10-12T21:05:32+07:00 | Phuc Hau | test(A-FR03): step 2 model input domains
+978e433bf41ae6a7e8dace6edc4f35667e32377c | 2026-10-12T21:06:06+07:00 | Phuc Hau | test(A-FR03): step 3 derive boundary cases
+4e775dee0fc1ef5f4b754b58cd24a73a0cd711be | 2026-10-12T21:19:36+07:00 | Phuc Hau | test(A-FR03): step 4 review and finalize test cases
+3ed1e0729fa4959962781b7ab43e1e969cac7207 | 2026-10-13T10:17:54+07:00 | Phuc Hau | test(A-FR03): step 5 record execution evidence
+bc9b9bad661dd74d8bf1b3cb2882955c94638992 | 2026-10-13T10:18:05+07:00 | Phuc Hau | test(A-FR03): step 6 record defects and AI gaps
+7ff3a3e6179dd939c6864d4707390f86d7821bb3 | 2026-10-13T10:18:20+07:00 | Phuc Hau | docs(A-FR03): step 7 finalize feature report
+f2517c4e2818fb8f783ed863a6bb51bdc8817cd9 | 2026-10-13T21:32:14+07:00 | Phuc Hau | skill: add reusable domain testing workflows
+4cd82be04aabb0b21cc35d91bab9d28745edc9ca | 2026-10-13T21:32:22+07:00 | Phuc Hau | docs(A-FR03): normalize review records
+f24c22c97dd3433239564b5e2f5c8144a37ca727 | 2026-10-13T21:32:28+07:00 | Phuc Hau | test(B-FR09): step 1 establish spec and oracle
+f3e472183ebff8e12e1a29704d7f60ee4015fad7 | 2026-10-13T21:32:31+07:00 | Phuc Hau | test(B-FR09): step 2 model input domains
+d288f3360de52bf79bfdd056950a662fd968ba40 | 2026-10-13T21:32:36+07:00 | Phuc Hau | test(B-FR09): step 3 derive boundary cases
+181974f284e2db5b775f6c980737bd824f01c9f6 | 2026-10-13T21:32:39+07:00 | Phuc Hau | test(B-FR09): step 4 review and finalize test cases
+c124dda0d23919a6edca5de6ad401858029786a0 | 2026-10-13T21:33:14+07:00 | Phuc Hau | test(B-FR09): step 5 record execution evidence
+9d50b49cc155f92f46f50a00b055cf2656c46613 | 2026-10-13T21:33:18+07:00 | Phuc Hau | test(B-FR09): step 6 record defects and gaps
+152e8d4b5c7fc98234e6b2d76e46c8b99fb09d4b | 2026-10-13T21:33:22+07:00 | Phuc Hau | docs(ai): update audit records for skills and B-FR09
+6b4f599205062fdf4206c64dc76d9ea40a02f232 | 2026-10-16T10:07:29+07:00 | Phuc Hau | docs(B-FR09): step 7 finalize feature report
+3c763b1778bb0b509e50374c4188bdaf1a910fb8 | 2026-10-16T10:07:30+07:00 | Phuc Hau | test(C-FR14): step 1 establish spec and oracle
+d73d4410a2f6b31d225c9ec2dddc3c3a1bee5b4b | 2026-10-16T10:07:31+07:00 | Phuc Hau | test(C-FR14): step 2 model input domains
+050582876a8b2d8a60398ca9960dd74353ea1d88 | 2026-10-16T10:07:32+07:00 | Phuc Hau | test(C-FR14): step 3 derive boundary cases
+2d48fda2e0556f5acdd2e79f408c7c2543edcd00 | 2026-10-16T10:07:33+07:00 | Phuc Hau | test(C-FR14): step 4 review and finalize test cases
+f0e54ca38255a0a4b686e54c4d8162e7264d89c2 | 2026-10-16T10:07:35+07:00 | Phuc Hau | test(C-FR14): step 5 record execution evidence
+b85f242677b322a53b938a8400e88317b447e382 | 2026-10-16T10:07:36+07:00 | Phuc Hau | test(C-FR14): step 6 record defects and gaps
+4e96f8849378af5a55cac50f5566a979483f0da7 | 2026-10-16T10:07:37+07:00 | Phuc Hau | docs(C-FR14): step 7 finalize feature report
+c2a7ded20bd2f2691656097cb8282a01c2afee0c | 2026-10-16T10:07:38+07:00 | Phuc Hau | test(D-M09): step 1 establish spec and oracle
+d875ff6295bb3bb020a7bf297ec45c4cfc461a0d | 2026-10-16T10:07:40+07:00 | Phuc Hau | test(D-M09): step 2 model input domains
+a8b270c148eccd4f08815020649ed3665233d14a | 2026-10-16T10:07:41+07:00 | Phuc Hau | test(D-M09): step 3 derive boundary cases
+c816f14ecb88aa859511d3b63448d0e09f4736ad | 2026-10-16T10:07:42+07:00 | Phuc Hau | test(D-M09): step 4 review and finalize test cases
+69a41ff4ba8e87897247e9a150da83201e0a88d5 | 2026-10-16T10:07:43+07:00 | Phuc Hau | test(D-M09): step 5 record execution evidence
+160f97b0a9582da7b677a8bd8d8ebb362ac6a344 | 2026-10-16T10:07:45+07:00 | Phuc Hau | test(D-M09): step 6 record defects and gaps
+28aec6b11c4ea1878f0ef69c4eb80d2d2bf72b56 | 2026-10-16T10:07:46+07:00 | Phuc Hau | docs(D-M09): step 7 finalize feature report
+5351629b737d9e458112f71cd23235f255b3094e | 2026-10-16T10:11:38+07:00 | Phuc Hau | docs: finalize report and AI records
