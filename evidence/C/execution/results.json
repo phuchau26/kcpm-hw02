@@ -1,0 +1,4322 @@
+{
+  "schemaVersion": 1,
+  "feature": "C-FR14",
+  "platform": "Admin Web",
+  "baseline": "85af3ba875c88283615e22cb108f13e2fccaf0e9",
+  "startedAt": "2026-10-13T22:55:04+07:00",
+  "endedAt": "2026-10-13T22:55:31+07:00",
+  "command": "npm test",
+  "environment": {
+    "os": "win32 x64",
+    "node": "v22.15.1",
+    "browser": "System Chromium channel: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "adminUrl": "http://127.0.0.1:5174",
+    "apiUrl": "http://127.0.0.1:3000",
+    "timezone": "Asia/Saigon (UTC+07:00)",
+    "database": "isolated SQLite runtime fixture"
+  },
+  "conventions": {
+    "attempted": "PASS + FAIL + BLOCKED",
+    "executed": "PASS + FAIL"
+  },
+  "executionOrder": [
+    "C-TC-001",
+    "C-TC-002",
+    "C-TC-003",
+    "C-TC-004",
+    "C-TC-005",
+    "C-TC-006",
+    "C-TC-007",
+    "C-TC-008",
+    "C-TC-009",
+    "C-TC-010",
+    "C-TC-011",
+    "C-TC-012",
+    "C-TC-013",
+    "C-TC-014",
+    "C-TC-015",
+    "C-TC-016",
+    "C-TC-017",
+    "C-TC-018",
+    "C-TC-019",
+    "C-TC-020",
+    "C-TC-021",
+    "C-TC-022",
+    "C-TC-023",
+    "C-TC-024",
+    "C-TC-025",
+    "C-TC-026",
+    "C-TC-027",
+    "C-TC-028",
+    "C-TC-029",
+    "C-TC-030",
+    "C-TC-031",
+    "C-TC-032",
+    "C-TC-033",
+    "C-TC-034",
+    "C-TC-035",
+    "C-TC-036",
+    "C-TC-037",
+    "C-TC-038",
+    "C-TC-039",
+    "C-TC-040",
+    "C-TC-041",
+    "C-TC-042",
+    "C-TC-043",
+    "C-TC-044",
+    "C-TC-045",
+    "C-TC-046",
+    "C-TC-047",
+    "C-TC-048"
+  ],
+  "summary": {
+    "designed": 48,
+    "attempted": 48,
+    "executed": 27,
+    "passed": 18,
+    "failed": 9,
+    "blocked": 21,
+    "notRun": 0
+  },
+  "results": [
+    {
+      "id": "C-TC-001",
+      "group": "Read",
+      "title": "Hiển thị list có dữ liệu",
+      "steps": "Đăng nhập admin; mở tab Danh mục",
+      "expected": "Hiển thị đúng toàn bộ ID/name của fixture",
+      "coverage": "C-R11,C-R12; C-LS-V1; N/A-state",
+      "status": "PASS",
+      "actual": {
+        "expected": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          }
+        ],
+        "rows": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          }
+        ]
+      },
+      "reason": "",
+      "executionOrder": 1,
+      "timestamp": "2026-10-13T22:55:06+07:00",
+      "durationMs": 773,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-001.png",
+        "evidence/C/execution/traces/C-TC-001.zip"
+      ]
+    },
+    {
+      "id": "C-TC-002",
+      "group": "Read",
+      "title": "Empty category list",
+      "steps": "Fixture không có category/product; mở tab Danh mục",
+      "expected": "Không có record giả; có icon/hình và message empty state thân thiện",
+      "coverage": "C-R13; C-LS-V2; C-B07,C-DATA-23",
+      "status": "FAIL",
+      "actual": {
+        "rows": [],
+        "iconCount": 0,
+        "mainText": "Quản lý Danh mục\nThêm mới\nID\tTên Danh Mục\tHành động"
+      },
+      "reason": "Empty list thiếu icon/hình hoặc message thân thiện.",
+      "executionOrder": 2,
+      "timestamp": "2026-10-13T22:55:07+07:00",
+      "durationMs": 690,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-002.png",
+        "evidence/C/execution/traces/C-TC-002.zip"
+      ]
+    },
+    {
+      "id": "C-TC-003",
+      "group": "Read",
+      "title": "ID/name fidelity",
+      "steps": "So sánh từng row UI với database snapshot",
+      "expected": "Mỗi row có đúng ID/name, không thiếu/thừa record",
+      "coverage": "C-R11,C-R12; C-LS-V1; C-DATA-24",
+      "status": "PASS",
+      "actual": {
+        "expected": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          }
+        ],
+        "rows": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          }
+        ]
+      },
+      "reason": "",
+      "executionOrder": 3,
+      "timestamp": "2026-10-13T22:55:08+07:00",
+      "durationMs": 705,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-003.png",
+        "evidence/C/execution/traces/C-TC-003.zip"
+      ]
+    },
+    {
+      "id": "C-TC-004",
+      "group": "Read/Security",
+      "title": "Render category markup an toàn",
+      "steps": "Seed name chứa `<img onerror>`; mở list",
+      "expected": "Markup hiển thị như text, không tạo element/execute script",
+      "coverage": "C-R04; C-NM-V2,C-UI-SAFE; C-DATA-10",
+      "status": "PASS",
+      "actual": {
+        "textVisible": 1,
+        "injected": 0,
+        "executed": false
+      },
+      "reason": "",
+      "executionOrder": 4,
+      "timestamp": "2026-10-13T22:55:09+07:00",
+      "durationMs": 674,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-004.png",
+        "evidence/C/execution/traces/C-TC-004.zip"
+      ]
+    },
+    {
+      "id": "C-TC-005",
+      "group": "Create",
+      "title": "Create nominal hợp lệ",
+      "steps": "UI nhập `Thiết bị đeo C-FR14`; submit",
+      "expected": "`N→N+1`; đúng một record mới; record cũ giữ nguyên và UI đọc lại được",
+      "coverage": "C-R06,C-R09,C-R10; C-NM-V1,C-PS-V1; C-DATA-04",
+      "status": "PASS",
+      "actual": {
+        "status": 200,
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Thiết bị đeo C-FR14"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "created": [
+          {
+            "id": 5,
+            "name": "Thiết bị đeo C-FR14"
+          }
+        ]
+      },
+      "reason": "",
+      "executionOrder": 5,
+      "timestamp": "2026-10-13T22:55:09+07:00",
+      "durationMs": 1009,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-005.png",
+        "evidence/C/execution/traces/C-TC-005.zip"
+      ]
+    },
+    {
+      "id": "C-TC-006",
+      "group": "Create/BVA",
+      "title": "Name một ký tự",
+      "steps": "API Create name `A`",
+      "expected": "Accept theo non-empty oracle; tạo đúng một record",
+      "coverage": "C-R06,C-R08,C-R09; C-NM-V1; C-B01,C-B02,C-DATA-03",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "A"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 6,
+      "timestamp": "2026-10-13T22:55:11+07:00",
+      "durationMs": 150,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-006.png",
+        "evidence/C/execution/traces/C-TC-006.zip"
+      ]
+    },
+    {
+      "id": "C-TC-007",
+      "group": "Create",
+      "title": "Missing name",
+      "steps": "API body `{}`",
+      "expected": "Reject; database/list giữ `N→N`",
+      "coverage": "C-R07; C-NM-I1,C-PS-V3; C-B01,C-DATA-01",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": null
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Missing/empty name không bị reject hoặc database đã đổi.",
+      "executionOrder": 7,
+      "timestamp": "2026-10-13T22:55:11+07:00",
+      "durationMs": 144,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-007.png",
+        "evidence/C/execution/traces/C-TC-007.zip"
+      ]
+    },
+    {
+      "id": "C-TC-008",
+      "group": "Create/BVA",
+      "title": "Empty name qua API",
+      "steps": "API body `name=\"\"`",
+      "expected": "Reject; database/list giữ `N→N`",
+      "coverage": "C-R08; C-NM-I2,C-PS-V3; C-B02,C-DATA-02",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": ""
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Missing/empty name không bị reject hoặc database đã đổi.",
+      "executionOrder": 8,
+      "timestamp": "2026-10-13T22:55:11+07:00",
+      "durationMs": 145,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-008.png",
+        "evidence/C/execution/traces/C-TC-008.zip"
+      ]
+    },
+    {
+      "id": "C-TC-009",
+      "group": "Create/UI",
+      "title": "Empty name và error placement",
+      "steps": "UI để trống rồi submit",
+      "expected": "Request không gửi; lỗi trong trang phía trên submit; database không đổi",
+      "coverage": "C-R08,C-R20,C-R21; C-NM-I2,C-UI-REQ,C-UI-ERR; C-B02",
+      "status": "FAIL",
+      "actual": {
+        "postRequests": 1,
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": ""
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "errorCount": 0,
+        "errorTop": null,
+        "buttonTop": 88
+      },
+      "reason": "Empty UI submit không được chặn với inline error phía trên nút.",
+      "executionOrder": 9,
+      "timestamp": "2026-10-13T22:55:11+07:00",
+      "durationMs": 1047,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-009.png",
+        "evidence/C/execution/traces/C-TC-009.zip"
+      ]
+    },
+    {
+      "id": "C-TC-010",
+      "group": "Create/Gap",
+      "title": "Whitespace-only",
+      "steps": "API Create `name=\" \"`",
+      "expected": "`BLOCKED`: ghi accept/reject/persist; chưa có trim/blank oracle",
+      "coverage": "C-GAP-R02; C-NM-U1; C-B03,C-DATA-05",
+      "status": "BLOCKED",
+      "actual": {
+        "name": " ",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": " "
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định whitespace/trim/duplicate/case semantics.",
+      "executionOrder": 10,
+      "timestamp": "2026-10-13T22:55:13+07:00",
+      "durationMs": 140,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-010.png",
+        "evidence/C/execution/traces/C-TC-010.zip"
+      ]
+    },
+    {
+      "id": "C-TC-011",
+      "group": "Create/Gap",
+      "title": "Whitespace đầu/cuối",
+      "steps": "API Create `name=\"  Laptop  \"`",
+      "expected": "`BLOCKED`: ghi preserve/trim/reject; không đặt verdict normalization",
+      "coverage": "C-GAP-R02; C-NM-U2; C-DATA-06",
+      "status": "BLOCKED",
+      "actual": {
+        "name": "  Laptop  ",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "  Laptop  "
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định whitespace/trim/duplicate/case semantics.",
+      "executionOrder": 11,
+      "timestamp": "2026-10-13T22:55:13+07:00",
+      "durationMs": 150,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-011.png",
+        "evidence/C/execution/traces/C-TC-011.zip"
+      ]
+    },
+    {
+      "id": "C-TC-012",
+      "group": "Create/Gap",
+      "title": "Duplicate exact",
+      "steps": "Tạo `Laptop` khi đã có `Laptop`",
+      "expected": "`BLOCKED`: ghi actual; không tự đặt uniqueness rule",
+      "coverage": "C-GAP-R03; C-NM-U3; C-DATA-07",
+      "status": "BLOCKED",
+      "actual": {
+        "name": "Laptop",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Laptop"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định whitespace/trim/duplicate/case semantics.",
+      "executionOrder": 12,
+      "timestamp": "2026-10-13T22:55:13+07:00",
+      "durationMs": 152,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-012.png",
+        "evidence/C/execution/traces/C-TC-012.zip"
+      ]
+    },
+    {
+      "id": "C-TC-013",
+      "group": "Create/Gap",
+      "title": "Duplicate khác case",
+      "steps": "Tạo `laptop` khi có `Laptop`",
+      "expected": "`BLOCKED`: ghi actual; chưa có case/duplicate oracle",
+      "coverage": "C-GAP-R03; C-NM-U4; C-DATA-08",
+      "status": "BLOCKED",
+      "actual": {
+        "name": "laptop",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "laptop"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định whitespace/trim/duplicate/case semantics.",
+      "executionOrder": 13,
+      "timestamp": "2026-10-13T22:55:14+07:00",
+      "durationMs": 142,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-013.png",
+        "evidence/C/execution/traces/C-TC-013.zip"
+      ]
+    },
+    {
+      "id": "C-TC-014",
+      "group": "Create",
+      "title": "Ký tự đặc biệt thông thường",
+      "steps": "Create `Phụ kiện & Cáp (USB-C)`",
+      "expected": "Accept theo rule non-empty; round-trip đúng text",
+      "coverage": "C-R06,C-R08,C-R09; C-NM-V1; C-DATA-09",
+      "status": "PASS",
+      "actual": {
+        "name": "Phụ kiện & Cáp (USB-C)",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Phụ kiện & Cáp (USB-C)"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "rows": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          },
+          {
+            "id": 5,
+            "name": "Phụ kiện & Cáp (USB-C)"
+          }
+        ]
+      },
+      "reason": "",
+      "executionOrder": 14,
+      "timestamp": "2026-10-13T22:55:14+07:00",
+      "durationMs": 770,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-014.png",
+        "evidence/C/execution/traces/C-TC-014.zip"
+      ]
+    },
+    {
+      "id": "C-TC-015",
+      "group": "Create",
+      "title": "Unicode",
+      "steps": "Create `Điện thoại_日本語_🙂`",
+      "expected": "Accept theo rule non-empty và đọc lại đúng text; ghi chú charset gap nếu reject",
+      "coverage": "C-R06,C-R08,C-R09,C-GAP-R04; C-NM-V1; C-DATA-11",
+      "status": "PASS",
+      "actual": {
+        "name": "Điện thoại_日本語_🙂",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Điện thoại_日本語_🙂"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "rows": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          },
+          {
+            "id": 5,
+            "name": "Điện thoại_日本語_🙂"
+          }
+        ]
+      },
+      "reason": "",
+      "executionOrder": 15,
+      "timestamp": "2026-10-13T22:55:15+07:00",
+      "durationMs": 775,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-015.png",
+        "evidence/C/execution/traces/C-TC-015.zip"
+      ]
+    },
+    {
+      "id": "C-TC-016",
+      "group": "Create/Security",
+      "title": "Markup payload",
+      "steps": "Create markup rồi mở list",
+      "expected": "Nếu render, hiển thị text và không thực thi script; mutation chỉ tác động một record",
+      "coverage": "C-R04,C-R06,C-R10; C-NM-V2,C-UI-SAFE; C-DATA-10",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "<img src=x onerror=\"window.__cfr14=1\">"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "rows": [
+          {
+            "id": 1,
+            "name": "Điện thoại"
+          },
+          {
+            "id": 2,
+            "name": "Laptop"
+          },
+          {
+            "id": 3,
+            "name": "Phụ kiện"
+          },
+          {
+            "id": 4,
+            "name": "Âm thanh"
+          },
+          {
+            "id": 5,
+            "name": "<img src=x onerror=\"window.__cfr14=1\">"
+          }
+        ],
+        "injected": 0,
+        "executed": false,
+        "exactText": 1
+      },
+      "reason": "",
+      "executionOrder": 16,
+      "timestamp": "2026-10-13T22:55:16+07:00",
+      "durationMs": 774,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-016.png",
+        "evidence/C/execution/traces/C-TC-016.zip"
+      ]
+    },
+    {
+      "id": "C-TC-017",
+      "group": "Create/Gap",
+      "title": "Name length 255",
+      "steps": "API Create chuỗi 255 ký tự",
+      "expected": "`BLOCKED`: ghi actual; 255 không phải max của Category",
+      "coverage": "C-GAP-R04; C-NM-U5; C-B04,C-DATA-12",
+      "status": "BLOCKED",
+      "actual": {
+        "length": 255,
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Category không có maximum length oracle; đây là upper-length probe.",
+      "executionOrder": 17,
+      "timestamp": "2026-10-13T22:55:17+07:00",
+      "durationMs": 156,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-017.png",
+        "evidence/C/execution/traces/C-TC-017.zip"
+      ]
+    },
+    {
+      "id": "C-TC-018",
+      "group": "Create/Gap",
+      "title": "Name length 256",
+      "steps": "API Create chuỗi 256 ký tự",
+      "expected": "`BLOCKED`: ghi actual; không gán max+1 verdict",
+      "coverage": "C-GAP-R04; C-NM-U5; C-B04,C-DATA-13",
+      "status": "BLOCKED",
+      "actual": {
+        "length": 256,
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Category không có maximum length oracle; đây là upper-length probe.",
+      "executionOrder": 18,
+      "timestamp": "2026-10-13T22:55:17+07:00",
+      "durationMs": 157,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-018.png",
+        "evidence/C/execution/traces/C-TC-018.zip"
+      ]
+    },
+    {
+      "id": "C-TC-019",
+      "group": "Create/Gap",
+      "title": "Name length 1024",
+      "steps": "API Create chuỗi 1024 ký tự",
+      "expected": "`BLOCKED`: robustness observation; không có upper limit oracle",
+      "coverage": "C-GAP-R04; C-NM-U5; C-DATA-14",
+      "status": "BLOCKED",
+      "actual": {
+        "length": 1024,
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Category không có maximum length oracle; đây là upper-length probe.",
+      "executionOrder": 19,
+      "timestamp": "2026-10-13T22:55:17+07:00",
+      "durationMs": 284,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-019.png",
+        "evidence/C/execution/traces/C-TC-019.zip"
+      ]
+    },
+    {
+      "id": "C-TC-020",
+      "group": "Create/Gap",
+      "title": "Name null",
+      "steps": "API Create `name=null`",
+      "expected": "`BLOCKED`: representation/error contract chưa quy định",
+      "coverage": "C-GAP-R04,C-GAP-R05; C-NM-U6; N/A-no-boundary",
+      "status": "BLOCKED",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": null
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS/API contract chưa quy định null/wrong-type representation.",
+      "executionOrder": 20,
+      "timestamp": "2026-10-13T22:55:18+07:00",
+      "durationMs": 153,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-020.png",
+        "evidence/C/execution/traces/C-TC-020.zip"
+      ]
+    },
+    {
+      "id": "C-TC-021",
+      "group": "Update/Gap",
+      "title": "Update existing nominal",
+      "steps": "PUT target tồn tại với name mới",
+      "expected": "`BLOCKED`: ghi actual transition; Update chưa được FR-14 chốt",
+      "coverage": "C-GAP-R01; C-OP-U1,C-TR-04; N/A-state-probe",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 4,
+        "refs": {
+          "count": 0
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category updated"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Updated C-TC-021"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Update không có business oracle trong nội dung FR-14.",
+      "executionOrder": 21,
+      "timestamp": "2026-10-13T22:55:18+07:00",
+      "durationMs": 146,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-021.png",
+        "evidence/C/execution/traces/C-TC-021.zip"
+      ]
+    },
+    {
+      "id": "C-TC-022",
+      "group": "Update/Gap",
+      "title": "Update empty name",
+      "steps": "PUT target tồn tại với `name=\"\"`",
+      "expected": "`BLOCKED`: Update scope và validation oracle chưa chốt",
+      "coverage": "C-GAP-R01,C-R08; C-OP-U1,C-NM-I2; C-B02",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 4,
+        "refs": {
+          "count": 0
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category updated"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": ""
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Update không có business oracle trong nội dung FR-14.",
+      "executionOrder": 22,
+      "timestamp": "2026-10-13T22:55:18+07:00",
+      "durationMs": 151,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-022.png",
+        "evidence/C/execution/traces/C-TC-022.zip"
+      ]
+    },
+    {
+      "id": "C-TC-023",
+      "group": "Update/Gap",
+      "title": "Update missing name",
+      "steps": "PUT target tồn tại body `{}`",
+      "expected": "`BLOCKED`: ghi actual; Update chưa có business oracle",
+      "coverage": "C-GAP-R01; C-OP-U1,C-NM-I1; C-B01",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 4,
+        "refs": {
+          "count": 0
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category updated"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": null
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Update không có business oracle trong nội dung FR-14.",
+      "executionOrder": 23,
+      "timestamp": "2026-10-13T22:55:18+07:00",
+      "durationMs": 147,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-023.png",
+        "evidence/C/execution/traces/C-TC-023.zip"
+      ]
+    },
+    {
+      "id": "C-TC-024",
+      "group": "Update/Gap",
+      "title": "Update target không tồn tại",
+      "steps": "PUT `max(id)+1`",
+      "expected": "`BLOCKED`: missing-target và Update đều chưa có oracle",
+      "coverage": "C-GAP-R01,C-GAP-R06; C-ID-U1,C-TR-09; C-B06,C-DATA-16",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 999,
+        "refs": {
+          "count": 0
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category updated"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Update không có business oracle trong nội dung FR-14.",
+      "executionOrder": 24,
+      "timestamp": "2026-10-13T22:55:19+07:00",
+      "durationMs": 144,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-024.png",
+        "evidence/C/execution/traces/C-TC-024.zip"
+      ]
+    },
+    {
+      "id": "C-TC-025",
+      "group": "Update/Gap",
+      "title": "Update category được product tham chiếu",
+      "steps": "PUT category có reference count 1",
+      "expected": "`BLOCKED`: ghi actual; chưa có Update/reference policy",
+      "coverage": "C-GAP-R01,C-GAP-R07; C-RF-U1,C-RM-06; C-B08,C-DATA-22",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 2,
+        "refs": {
+          "count": 1
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category updated"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Updated C-TC-025"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Update không có business oracle trong nội dung FR-14.",
+      "executionOrder": 25,
+      "timestamp": "2026-10-13T22:55:19+07:00",
+      "durationMs": 139,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-025.png",
+        "evidence/C/execution/traces/C-TC-025.zip"
+      ]
+    },
+    {
+      "id": "C-TC-026",
+      "group": "Delete",
+      "title": "Delete existing unreferenced",
+      "steps": "DELETE target tồn tại, reference count 0",
+      "expected": "`N→N-1`; chỉ target biến mất; non-target giữ nguyên",
+      "coverage": "C-R14,C-R15; C-ID-V1,C-RF-V1,C-PS-V2; C-B06,C-B08,C-DATA-15,C-DATA-21",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 26,
+      "timestamp": "2026-10-13T22:55:19+07:00",
+      "durationMs": 136,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-026.png",
+        "evidence/C/execution/traces/C-TC-026.zip"
+      ]
+    },
+    {
+      "id": "C-TC-027",
+      "group": "Delete/Gap",
+      "title": "Delete nonexistent positive ID",
+      "steps": "DELETE `max(id)+1`",
+      "expected": "`BLOCKED`: ghi response/state; missing-target oracle chưa có",
+      "coverage": "C-GAP-R06; C-ID-U1,C-TR-09; C-B06,C-DATA-16",
+      "status": "BLOCKED",
+      "actual": {
+        "rawId": "999",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định response/verdict cho nonexistent hoặc malformed ID.",
+      "executionOrder": 27,
+      "timestamp": "2026-10-13T22:55:20+07:00",
+      "durationMs": 145,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-027.png",
+        "evidence/C/execution/traces/C-TC-027.zip"
+      ]
+    },
+    {
+      "id": "C-TC-028",
+      "group": "Delete/Gap",
+      "title": "Delete ID 0",
+      "steps": "DELETE ID `0`",
+      "expected": "`BLOCKED`: ghi actual; không tự đặt numeric range",
+      "coverage": "C-GAP-R06; C-ID-A03; C-B05,C-DATA-17",
+      "status": "BLOCKED",
+      "actual": {
+        "rawId": "0",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định response/verdict cho nonexistent hoặc malformed ID.",
+      "executionOrder": 28,
+      "timestamp": "2026-10-13T22:55:20+07:00",
+      "durationMs": 135,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-028.png",
+        "evidence/C/execution/traces/C-TC-028.zip"
+      ]
+    },
+    {
+      "id": "C-TC-029",
+      "group": "Delete/Gap",
+      "title": "Delete ID âm",
+      "steps": "DELETE ID `-1`",
+      "expected": "`BLOCKED`: robustness observation",
+      "coverage": "C-GAP-R06; C-ID-A04; C-DATA-18",
+      "status": "BLOCKED",
+      "actual": {
+        "rawId": "-1",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định response/verdict cho nonexistent hoặc malformed ID.",
+      "executionOrder": 29,
+      "timestamp": "2026-10-13T22:55:20+07:00",
+      "durationMs": 142,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-029.png",
+        "evidence/C/execution/traces/C-TC-029.zip"
+      ]
+    },
+    {
+      "id": "C-TC-030",
+      "group": "Delete/Gap",
+      "title": "Delete ID decimal",
+      "steps": "DELETE ID `1.5`",
+      "expected": "`BLOCKED`: route/type behavior chưa quy định",
+      "coverage": "C-GAP-R06; C-ID-A05; C-DATA-19",
+      "status": "BLOCKED",
+      "actual": {
+        "rawId": "1.5",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định response/verdict cho nonexistent hoặc malformed ID.",
+      "executionOrder": 30,
+      "timestamp": "2026-10-13T22:55:21+07:00",
+      "durationMs": 145,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-030.png",
+        "evidence/C/execution/traces/C-TC-030.zip"
+      ]
+    },
+    {
+      "id": "C-TC-031",
+      "group": "Delete/Gap",
+      "title": "Delete ID text",
+      "steps": "DELETE ID `abc`",
+      "expected": "`BLOCKED`: exact response chưa quy định",
+      "coverage": "C-GAP-R05,C-GAP-R06; C-ID-A06; C-DATA-20",
+      "status": "BLOCKED",
+      "actual": {
+        "rawId": "abc",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định response/verdict cho nonexistent hoặc malformed ID.",
+      "executionOrder": 31,
+      "timestamp": "2026-10-13T22:55:21+07:00",
+      "durationMs": 138,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-031.png",
+        "evidence/C/execution/traces/C-TC-031.zip"
+      ]
+    },
+    {
+      "id": "C-TC-032",
+      "group": "Delete/Security",
+      "title": "SQL-like ID",
+      "steps": "DELETE URL-encoded `1 OR 1=1`",
+      "expected": "Không được xóa nhiều record; query được parameterized; non-target giữ nguyên",
+      "coverage": "C-R05,C-R15; C-ID-A07; N/A-security-partition",
+      "status": "PASS",
+      "actual": {
+        "rawId": "1 OR 1=1",
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 32,
+      "timestamp": "2026-10-13T22:55:21+07:00",
+      "durationMs": 144,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-032.png",
+        "evidence/C/execution/traces/C-TC-032.zip"
+      ]
+    },
+    {
+      "id": "C-TC-033",
+      "group": "Delete/Gap",
+      "title": "Delete category có một product reference",
+      "steps": "DELETE target reference count 1",
+      "expected": "`BLOCKED`: ghi reject/delete/orphan; policy chưa có",
+      "coverage": "C-GAP-R07; C-RF-U1,C-RM-02; C-B08,C-DATA-22",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 2,
+        "refsBefore": {
+          "count": 1
+        },
+        "refsAfter": {
+          "count": 1
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định referential policy cho Delete category.",
+      "executionOrder": 33,
+      "timestamp": "2026-10-13T22:55:21+07:00",
+      "durationMs": 137,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-033.png",
+        "evidence/C/execution/traces/C-TC-033.zip"
+      ]
+    },
+    {
+      "id": "C-TC-034",
+      "group": "Delete/Gap",
+      "title": "Delete category có nhiều product reference",
+      "steps": "DELETE target reference count 2",
+      "expected": "`BLOCKED`: cùng reference partition; ghi actual",
+      "coverage": "C-GAP-R07; C-RF-U1,C-RM-03; C-B08",
+      "status": "BLOCKED",
+      "actual": {
+        "target": 1,
+        "refsBefore": {
+          "count": 2
+        },
+        "refsAfter": {
+          "count": 2
+        },
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "SRS chưa quy định referential policy cho Delete category.",
+      "executionOrder": 34,
+      "timestamp": "2026-10-13T22:55:22+07:00",
+      "durationMs": 139,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-034.png",
+        "evidence/C/execution/traces/C-TC-034.zip"
+      ]
+    },
+    {
+      "id": "C-TC-035",
+      "group": "Authentication",
+      "title": "Create thiếu JWT",
+      "steps": "POST nominal không Authorization",
+      "expected": "Reject; database giữ `N→N`",
+      "coverage": "C-R02; C-AU-I1,C-PS-V3; N/A-categorical",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 401,
+          "ok": false,
+          "body": {
+            "error": "Unauthorized"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 35,
+      "timestamp": "2026-10-13T22:55:22+07:00",
+      "durationMs": 143,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-035.png",
+        "evidence/C/execution/traces/C-TC-035.zip"
+      ]
+    },
+    {
+      "id": "C-TC-036",
+      "group": "Authentication",
+      "title": "Create JWT sai",
+      "steps": "POST nominal với token sai",
+      "expected": "Reject; database giữ `N→N`",
+      "coverage": "C-R02; C-AU-I2,C-PS-V3; N/A-categorical",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 403,
+          "ok": false,
+          "body": {
+            "error": "Forbidden"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 36,
+      "timestamp": "2026-10-13T22:55:22+07:00",
+      "durationMs": 143,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-036.png",
+        "evidence/C/execution/traces/C-TC-036.zip"
+      ]
+    },
+    {
+      "id": "C-TC-037",
+      "group": "Authentication",
+      "title": "Create JWT hết hạn",
+      "steps": "POST nominal với JWT hết hạn hợp chữ ký",
+      "expected": "Reject; database giữ `N→N`",
+      "coverage": "C-R02; C-AU-I3,C-PS-V3; N/A-categorical",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 403,
+          "ok": false,
+          "body": {
+            "error": "Forbidden"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 37,
+      "timestamp": "2026-10-13T22:55:22+07:00",
+      "durationMs": 169,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-037.png",
+        "evidence/C/execution/traces/C-TC-037.zip"
+      ]
+    },
+    {
+      "id": "C-TC-038",
+      "group": "Authorization",
+      "title": "Create bằng user token",
+      "steps": "POST nominal với JWT `role=user`",
+      "expected": "Reject; database giữ `N→N`",
+      "coverage": "C-R03; C-RL-I1,C-EL-I2; N/A-categorical",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category created",
+            "id": 5
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": "Auth C-TC-038"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Create mutation không bị reject bởi authentication/authorization oracle.",
+      "executionOrder": 38,
+      "timestamp": "2026-10-13T22:55:23+07:00",
+      "durationMs": 132,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-038.png",
+        "evidence/C/execution/traces/C-TC-038.zip"
+      ]
+    },
+    {
+      "id": "C-TC-039",
+      "group": "Authentication",
+      "title": "Delete thiếu JWT",
+      "steps": "DELETE existing unreferenced không token",
+      "expected": "Reject; target và non-target giữ nguyên",
+      "coverage": "C-R02,C-R15; C-AU-I1,C-TR-08; N/A-categorical",
+      "status": "PASS",
+      "actual": {
+        "response": {
+          "status": 401,
+          "ok": false,
+          "body": {
+            "error": "Unauthorized"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "",
+      "executionOrder": 39,
+      "timestamp": "2026-10-13T22:55:23+07:00",
+      "durationMs": 133,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-039.png",
+        "evidence/C/execution/traces/C-TC-039.zip"
+      ]
+    },
+    {
+      "id": "C-TC-040",
+      "group": "Authorization",
+      "title": "Delete bằng user token",
+      "steps": "DELETE existing unreferenced với `role=user`",
+      "expected": "Reject; target và non-target giữ nguyên",
+      "coverage": "C-R03,C-R15; C-RL-I1,C-EL-I5; N/A-categorical",
+      "status": "FAIL",
+      "actual": {
+        "response": {
+          "status": 200,
+          "ok": true,
+          "body": {
+            "message": "Category deleted"
+          }
+        },
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Delete mutation không bị reject bởi authentication/authorization oracle.",
+      "executionOrder": 40,
+      "timestamp": "2026-10-13T22:55:23+07:00",
+      "durationMs": 141,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-040.png",
+        "evidence/C/execution/traces/C-TC-040.zip"
+      ]
+    },
+    {
+      "id": "C-TC-041",
+      "group": "Authorization/UI",
+      "title": "User login vào Admin",
+      "steps": "Login Admin Web bằng account user",
+      "expected": "UI từ chối và không hiển thị Admin subsystem",
+      "coverage": "C-R01; C-RL-I1; N/A-categorical",
+      "status": "PASS",
+      "actual": {
+        "tokenStored": false,
+        "loginVisible": 1,
+        "dialogs": [
+          "Bạn không phải là admin!"
+        ]
+      },
+      "reason": "",
+      "executionOrder": 41,
+      "timestamp": "2026-10-13T22:55:24+07:00",
+      "durationMs": 668,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-041.png",
+        "evidence/C/execution/traces/C-TC-041.zip"
+      ]
+    },
+    {
+      "id": "C-TC-042",
+      "group": "Authorization/UI",
+      "title": "User token trong localStorage",
+      "steps": "Inject JWT user vào `adminToken`, reload",
+      "expected": "Không được truy cập/hiển thị chức năng quản lý category",
+      "coverage": "C-R01,C-R03; C-DM-04,C-RL-I1; N/A-categorical",
+      "status": "FAIL",
+      "actual": {
+        "adminShell": 1,
+        "tokenStillStored": true
+      },
+      "reason": "JWT user trong localStorage truy cập được Admin subsystem.",
+      "executionOrder": 42,
+      "timestamp": "2026-10-13T22:55:24+07:00",
+      "durationMs": 1169,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-042.png",
+        "evidence/C/execution/traces/C-TC-042.zip"
+      ]
+    },
+    {
+      "id": "C-TC-043",
+      "group": "UI",
+      "title": "Required marker và error placement",
+      "steps": "Mở form; submit empty",
+      "expected": "Có label `*`; lỗi trong trang nằm trên submit; không chỉ alert",
+      "coverage": "C-R20,C-R21; C-UI-REQ,C-UI-ERR; C-B02",
+      "status": "FAIL",
+      "actual": {
+        "hasRequired": false,
+        "nearbyText": "Thêm mới",
+        "postRequests": 1,
+        "errorCount": 0,
+        "errorTop": null,
+        "buttonTop": 88,
+        "before": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        },
+        "after": {
+          "categories": [
+            {
+              "id": 1,
+              "name": "Điện thoại"
+            },
+            {
+              "id": 2,
+              "name": "Laptop"
+            },
+            {
+              "id": 3,
+              "name": "Phụ kiện"
+            },
+            {
+              "id": 4,
+              "name": "Âm thanh"
+            },
+            {
+              "id": 5,
+              "name": ""
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Phone fixture 1",
+              "category_id": 1
+            },
+            {
+              "id": 2,
+              "name": "Phone fixture 2",
+              "category_id": 1
+            },
+            {
+              "id": 3,
+              "name": "Laptop fixture",
+              "category_id": 2
+            }
+          ]
+        }
+      },
+      "reason": "Required marker/error placement hoặc request suppression không đạt.",
+      "executionOrder": 43,
+      "timestamp": "2026-10-13T22:55:26+07:00",
+      "durationMs": 1035,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-043.png",
+        "evidence/C/execution/traces/C-TC-043.zip"
+      ]
+    },
+    {
+      "id": "C-TC-044",
+      "group": "UI",
+      "title": "Heading",
+      "steps": "Mở trang category; đếm/đọc `h1`",
+      "expected": "Đúng một `h1` mô tả nội dung trang category",
+      "coverage": "C-R18; C-UI-H1; N/A-conformance",
+      "status": "FAIL",
+      "actual": {
+        "headings": [
+          "EShop Admin"
+        ]
+      },
+      "reason": "Trang không có đúng một h1 mô tả category.",
+      "executionOrder": 44,
+      "timestamp": "2026-10-13T22:55:27+07:00",
+      "durationMs": 705,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-044.png",
+        "evidence/C/execution/traces/C-TC-044.zip"
+      ]
+    },
+    {
+      "id": "C-TC-045",
+      "group": "UI/N/A",
+      "title": "Breadcrumb",
+      "steps": "Kiểm tra breadcrumb trang category",
+      "expected": "`BLOCKED`: FR-23 không bắt buộc breadcrumb cho Admin category; chỉ ghi observation",
+      "coverage": "FR-23-non-applicable; N/A-no-applicable-partition; N/A-no-boundary",
+      "status": "BLOCKED",
+      "actual": {
+        "breadcrumbs": 0
+      },
+      "reason": "FR-23 không bắt buộc breadcrumb cho Admin category page.",
+      "executionOrder": 45,
+      "timestamp": "2026-10-13T22:55:28+07:00",
+      "durationMs": 652,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-045.png",
+        "evidence/C/execution/traces/C-TC-045.zip"
+      ]
+    },
+    {
+      "id": "C-TC-046",
+      "group": "UI",
+      "title": "Màu button",
+      "steps": "Kiểm tra computed color của Thêm/Xóa",
+      "expected": "Thêm màu xanh, Xóa màu đỏ",
+      "coverage": "C-R17; C-UI-COLOR; N/A-conformance",
+      "status": "PASS",
+      "actual": {
+        "create": "rgb(37, 99, 235)",
+        "delete": "rgb(239, 68, 68)"
+      },
+      "reason": "",
+      "executionOrder": 46,
+      "timestamp": "2026-10-13T22:55:29+07:00",
+      "durationMs": 658,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-046.png",
+        "evidence/C/execution/traces/C-TC-046.zip"
+      ]
+    },
+    {
+      "id": "C-TC-047",
+      "group": "UI",
+      "title": "Tab order",
+      "steps": "Tab qua input, Thêm và các nút Xóa",
+      "expected": "Focus theo trên-xuống, trái-phải; không bỏ qua control",
+      "coverage": "C-R19; C-UI-TAB; N/A-ordered-conformance",
+      "status": "PASS",
+      "actual": {
+        "sequence": [
+          {
+            "tag": "INPUT",
+            "text": "",
+            "placeholder": "Tên danh mục mới"
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Thêm mới",
+            "placeholder": ""
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Xóa",
+            "placeholder": ""
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Xóa",
+            "placeholder": ""
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Xóa",
+            "placeholder": ""
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Xóa",
+            "placeholder": ""
+          },
+          {
+            "tag": "BODY",
+            "text": "EShop AdminDashboardDanh mụcSản phẩmMã Giảm GiáĐơn hàngNgười dùngĐăng xuấtQuản lý Danh mụcThêm mớiIDTên Danh MụcHành động#1Điện thoạiXóa#2LaptopXóa#3Phụ kiệnXóa#4Âm thanhXóa",
+            "placeholder": ""
+          },
+          {
+            "tag": "INPUT",
+            "text": "",
+            "placeholder": "Tên danh mục mới"
+          }
+        ],
+        "inputIndex": 0,
+        "addIndex": 1,
+        "deleteIndex": 2
+      },
+      "reason": "",
+      "executionOrder": 47,
+      "timestamp": "2026-10-13T22:55:29+07:00",
+      "durationMs": 817,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-047.png",
+        "evidence/C/execution/traces/C-TC-047.zip"
+      ]
+    },
+    {
+      "id": "C-TC-048",
+      "group": "UI",
+      "title": "Ngôn ngữ",
+      "steps": "Kiểm tra nhãn/nút/thông báo category",
+      "expected": "Dùng tiếng Việt, trừ thuật ngữ kỹ thuật chuẩn",
+      "coverage": "C-R16; C-UI-LANG; N/A-conformance",
+      "status": "PASS",
+      "actual": {
+        "required": [
+          "Quản lý Danh mục",
+          "Thêm mới",
+          "Tên Danh Mục",
+          "Hành động",
+          "Xóa"
+        ],
+        "placeholder": "Tên danh mục mới",
+        "panel": "Quản lý Danh mục\nThêm mới\nID\tTên Danh Mục\tHành động\n#1\tĐiện thoại\tXóa\n#2\tLaptop\tXóa\n#3\tPhụ kiện\tXóa\n#4\tÂm thanh\tXóa"
+      },
+      "reason": "",
+      "executionOrder": 48,
+      "timestamp": "2026-10-13T22:55:30+07:00",
+      "durationMs": 655,
+      "evidence": [
+        "evidence/C/execution/screenshots/C-TC-048.png",
+        "evidence/C/execution/traces/C-TC-048.zip"
+      ]
+    }
+  ]
+}
